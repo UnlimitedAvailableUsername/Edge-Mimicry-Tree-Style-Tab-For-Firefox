@@ -378,7 +378,6 @@ New Tab Button Theming
   right: 0 !important;
   position: absolute !important;
   z-index: -2;
-  background: var(--tab-hover-background)!important;
 }
 .newtab-button .extra-items-container::before {
   position: absolute;
