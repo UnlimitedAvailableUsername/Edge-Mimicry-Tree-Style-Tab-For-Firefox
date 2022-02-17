@@ -99,6 +99,7 @@
 
 
 
+
 /******************
 Tab-Related Theming
 ******************/
@@ -360,9 +361,8 @@ New Tab Button Theming
   z-index: 1000;
 }
 .newtab-button {
-  border: none !important;
-  text-align: left !important;
-  height:var(--new-tab-button-size)!important;
+  text-align: left;
+  height:var(--new-tab-button-size);
   bottom: 0;
   left: 0;
   right: 0;
@@ -373,9 +373,12 @@ New Tab Button Theming
   padding-left: calc(var(--new-tab-button-margin-left) + 6px);
 }
 .newtab-button .extra-items-container {
-  margin-left: calc(0px - calc(var(--new-tab-button-margin-left) * 2));
-  margin-right: calc(0px - calc(var(--new-tab-button-margin-right) + 3px));
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: absolute !important;
   z-index: -2;
+  background: var(--tab-hover-background)!important;
 }
 .newtab-button .extra-items-container::before {
   position: absolute;
@@ -456,8 +459,10 @@ New Tab Button Theming
 .contextual-identities-selector-anchor::after {
   background: none !important;
   content: "▲";
+  font-size: calc(var(--tab-font-size) / 1.2);
   text-align: center;
-  margin-top: calc((var(--new-tab-button-size) - var(--svg-small-icon-size)) / 2);
+  vertical-align: middle;
+  line-height: var(--new-tab-button-size);
 }
 
 
