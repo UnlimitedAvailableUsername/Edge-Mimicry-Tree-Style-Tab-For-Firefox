@@ -12,5 +12,6 @@ A theme created for Tree Style Tab extension on Mozilla Firefox, that tries to r
 If you want to also copy the hover feature of sidebar found on Microsoft Edge Browser, then you can use the userChrome.css and other files included on the "Optional Tweaks" folder.
 
 ## Notes:
+- When pasting the code to Extra Style Rules, make sure to check the "No Decorations" on Appearance panel option.
 - The Tree Style Tab add-ons container (subpanel container) is not yet properly themed and modified, as I have no idea yet on what to do with it. But it is included in my to-do list. 
 - Some of my userChrome mods were originally forked from [MrOtherGuy's Collection of random CSS hacks for Firefox](https://github.com/MrOtherGuy/firefox-csshacks), specifically the [autohide_sidebar](https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/autohide_sidebar.css) and implemented my own mods to it.
