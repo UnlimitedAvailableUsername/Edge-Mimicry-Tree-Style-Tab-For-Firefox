@@ -140,6 +140,7 @@ tab-item .counter {
 .tab .label {
   font-size: var(--tab-font-size);
   padding-left: var(--tab-margin-before-icon);
+  color: var(--tab-text-regular);
 }
 tab-item .contextual-identity-marker {
   margin: 0 !important;
@@ -173,6 +174,7 @@ tab-item.active tab-item-substance {
   font-size: var(--tab-font-size);
   padding-left: var(--tab-margin-before-icon);
   text-shadow: 0px 1px 2px var(--tab-text-active-shadow);
+  color: var(--tab-text-regular);
 }
 tab-item.active .label-content {
   font-size: var(--tab-font-size);
@@ -392,6 +394,7 @@ New Tab Button Theming
   left: 0;
   right: 0;
   top: 0;
+  color: var(--tab-text-regular);
   vertical-align: middle;
   line-height: var(--new-tab-button-size);
   content: "New Tab";
@@ -407,6 +410,7 @@ New Tab Button Theming
   left: 0;
   right: 0;
   top: 0;
+  color: var(--tab-text-regular);
   vertical-align: middle;
   line-height: var(--new-tab-button-size);
   content: "Ctrl+T";
