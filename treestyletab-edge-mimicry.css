@@ -18,6 +18,8 @@
   --new-tab-button-margin-right-non-hovered: 11px;
   --new-tab-button-margin-top: 4px;
   --new-tab-button-anchor-size 24px;
+  
+  /* If you want to modify the animation duration then you can change these options*/
   --collapse-animation: 50ms ease-out;
   --indent-animation: 50ms ease;
   --tab-animation: background    var(--color-animation),
