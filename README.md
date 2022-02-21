@@ -3,6 +3,13 @@ A theme created for Tree Style Tab extension on Mozilla Firefox, that tries to r
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/81744148/154884867-e68a3464-cc64-4e65-bea1-b84822579d46.gif)
 
+## Previews:
+![ss-01](previews/SS-01.png) ![ss-02](previews/SS-02.png)
+![ss-05](previews/SS-05.png) ![ss-06](previews/SS-06.png)
+![ss-06](previews/SS-07.png) ![ss-07](previews/SS-08.png)
+
+
+
 ## Features include:
 - support for tab-coloring based on its container
 - follows your current firefox theme
