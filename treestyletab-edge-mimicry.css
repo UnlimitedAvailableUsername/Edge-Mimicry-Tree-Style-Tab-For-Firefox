@@ -41,13 +41,24 @@
   --faviconized-tab-size: 53px;
   --faviconized-tab-size-script: calc(var(--faviconized-tab-size) / 1.72);
   --favicon-pinned-size: 30px;
-  --tab-loading-fill: #0A84FF;
   --dark-sidebar: #3b3b3b;
+  --tab-like-surface: var(--browser-bg-base, var(--toolbar-non-lwt-bgcolor));
+  --tab-surface-regular: var(--browser-bg-for-header-image, var(--tab-like-surface));
+  --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+  --tab-text-inverted: var(--browser-bg-more-lighter, var(--toolbar-non-lwt-bgcolor));
+  --tab-text-active: var(--tab-text);
+  --tab-text-active-inverted: var(--toolbar-non-lwt-bgcolor);
 }
+#background {
+  background-color: var(--browser-background, var(--tabbar-bg));
+  background-image: var(--browser-bg-images, none);
+  background-position: var(--browser-bg-position, left);
+  background-size: var(--browser-bg-size, auto);
+  background-repeat: var(--browser-bg-repeat, none);
+}
+
 @media (prefers-color-scheme: dark) {
   :root{
-    --tab-text: #ffffff;
-    --in-content-page-background: var(--sidebar-background) !important;
     --bg-color: var(--sidebar-background) !important;
     --tab-text-active-shadow: #000000;
     --tab-border-color: #686868;
@@ -57,16 +68,15 @@
 	--tab-hover-background: #ffffff45;
     --tab-closebox-background: #6B6B6B;
     --scrollbar-foreground: #7d7d7d;
-    --sidebar-background: #3b3b3b;
+    --sidebar-background: #3B3B3B00;
     --tab-close-box-background: #FFFFFFC4;
     --favicon-mask-color: 100;
-	--throbber-color: -var(--tab-text);
+	--throbber-color: var(--tab-text-regular);
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root{
-    --tab-text: #000000;
     --tab-text-active-shadow: transparent;
     --tab-border-color: #B8B8B8;
     --tab-background-shadow: #0000009E;
@@ -75,13 +85,12 @@
     --tab-hover-background:#0000000F;
     --tab-closebox-background: #C5C5C5;
     --scrollbar-foreground: #8d8d8d;
-    --sidebar-background: #f7f7f7;
+    --sidebar-background: #F7F7F733;
     --tab-close-box-background: #000000A0;
     --favicon-mask-color: 0;
-	--throbber-color: -var(--tab-text);
+	--throbber-color: -var(--tab-text-regular);
   }
   :root.incognito{
-    --tab-text: #FFFFFF;
     --tab-text-active-shadow: #000000;
     --tab-border-color: #686868;
     --tab-background-shadow: #000000;
@@ -90,10 +99,9 @@
 	--tab-hover-background: #ffffff45;
     --tab-closebox-background: #6B6B6B;
     --scrollbar-foreground: #7d7d7d;
-    --sidebar-background: #3b3b3b;
+    --sidebar-background: #3B3B3B33;
     --tab-close-box-background: #FFFFFFC4;
     --favicon-mask-color: 100;
-	--throbber-color: -var(--tab-text);
   }
 }
 
@@ -130,7 +138,6 @@ tab-item .counter {
   display: none;
 }
 .tab .label {
-  color: var(--tab-text);
   font-size: var(--tab-font-size);
   padding-left: var(--tab-margin-before-icon);
 }
@@ -390,10 +397,9 @@ New Tab Button Theming
   content: "New Tab";
   font-size: var(--tab-font-size);
   text-align: left;
-  color: var(--tab-text);
   padding-left: calc(var(--new-tab-icon-size) + var(--tab-margin-before-icon) + var(--tab-default-margin-left) + var(--tab-item-inside-padding));
   opacity: 0.85;
-  transition: opacity 0.2s linear 0s;
+  transition: opacity var(--tab-animation: opacity) linear;
 }
 .newtab-button .extra-items-container::after {
   position: absolute;
@@ -406,7 +412,6 @@ New Tab Button Theming
   content: "Ctrl+T";
   font-size: var(--tab-font-size);
   text-align: right;
-  color: var(--tab-text);
   padding-right: calc(var(--new-tab-button-anchor-size) + var(--tab-default-margin-left));
   opacity: 0.85;
   transition: opacity 0.2s linear 0s;
@@ -434,7 +439,6 @@ New Tab Button Theming
 .after-tabs .newtab-action-selector-anchor,
 .after-tabs .contextual-identities-selector-anchor {
   border: none !important;
-  color: var(--tab-text);
   padding: 0px !important;
   max-height: var(--new-tab-button-size);
   margin-top: var(--new-tab-button-margin-top);
