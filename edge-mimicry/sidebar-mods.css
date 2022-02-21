@@ -3,7 +3,7 @@ See the above repository for updates as well as full license text. */
 
 #sidebar-box{
   --uc-sidebar-width: 53px;
-  --uc-sidebar-hover-width: 269px;
+  --uc-sidebar-hover-width: 263px;
   --uc-autohide-sidebar-delay: 200ms; /* Delay before hiding the sidebar */
   position: relative;
   min-width: var(--uc-sidebar-width) !important;
