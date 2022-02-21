@@ -52,7 +52,7 @@
   --tab-text-active-inverted: var(--toolbar-non-lwt-bgcolor);
 }
 #background {
-  background-color: var(--browser-background, var(--tabbar-bg));
+  background-color: var(--browser-bg-base, var(--tabbar-bg));
   background-image: var(--browser-bg-images, none);
   background-position: var(--browser-bg-position, left);
   background-size: var(--browser-bg-size, auto);
