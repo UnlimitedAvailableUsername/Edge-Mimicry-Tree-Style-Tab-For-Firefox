@@ -13,7 +13,7 @@ A theme created for Tree Style Tab extension on Mozilla Firefox, that tries to r
 ## Features include:
 - support tab indention (up to 8 levels)
 - support for tab-coloring based on its container
-- follows your current firefox theme
+- follows your current firefox theme (still beta, not all things have been fixed yet)
 - built to handle different Firefox Sidebar configurations (so you can still use your own mods on userChrome without having to worry on breaking things on the tree style tab, well theoretically though if these mods are just as simple as changing the width, height, background etc. since I have no idea what kind of mods you've done on your userChrome sidebar.)
 
 ## Optional userChrome.css mods
