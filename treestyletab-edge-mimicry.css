@@ -56,39 +56,41 @@
   background-repeat: var(--browser-bg-repeat, none);
 }
 
+/*Dark Theme configurations*/
 @media (prefers-color-scheme: dark) {
   :root{
     --bg-color: var(--sidebar-background) !important;
-    --tab-text-active-shadow: #000000;
-    --tab-border-color: #686868;
-    --tab-background-shadow: #000000;
-    --tab-active-background: #4C98D12D;
-    --tab-hover-active-background: var(--tab-hover-background);
-	--tab-hover-background: #ffffff45;
-    --tab-closebox-background: #6B6B6B;
+    --favicon-mask-color: 100;
     --scrollbar-foreground: #7d7d7d;
     --sidebar-background: #3B3B3B00;
+    --tab-active-background: #4C98D12D;
+    --tab-background-shadow: #000000;
+    --tab-border-color: #686868;
     --tab-close-box-background: #FFFFFFC4;
-    --favicon-mask-color: 100;
+    --tab-closebox-background: #6B6B6B;
+    --tab-hover-active-background: var(--tab-hover-background);
+	--tab-hover-background: #ffffff45;
+    --tab-text-active-shadow: #000000;
 	--throbber-color: var(--tab-text-regular);
   }
 }
-
+/*Light Theme configurations*/
 @media (prefers-color-scheme: light) {
   :root{
-    --tab-text-active-shadow: transparent;
-    --tab-border-color: #B8B8B8;
-    --tab-background-shadow: #0000009E;
-    --tab-active-background: #437EB438;
-    --tab-hover-active-background: #FFFFFF54;
-    --tab-hover-background:#0000000F;
-    --tab-closebox-background: #C5C5C5;
+	--throbber-color: var(--tab-text-regular);
+    --favicon-mask-color: 0;
     --scrollbar-foreground: #8d8d8d;
     --sidebar-background: #F7F7F733;
+    --tab-active-background: #437EB438;
+    --tab-background-shadow: #0000009E;
+    --tab-border-color: #B8B8B8;
     --tab-close-box-background: #000000A0;
-    --favicon-mask-color: 0;
-	--throbber-color: -var(--tab-text-regular);
+    --tab-closebox-background: #C5C5C5;
+    --tab-hover-active-background: #FFFFFF54;
+    --tab-hover-background:#0000000F;
+    --tab-text-active-shadow: transparent;
   }
+  /*Private Window Light Theme configurations*/
   :root.incognito{
     --tab-text-active-shadow: #000000;
     --tab-border-color: #686868;
