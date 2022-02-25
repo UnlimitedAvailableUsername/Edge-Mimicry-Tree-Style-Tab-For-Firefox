@@ -12,6 +12,7 @@
   --new-tab-button-size: var(--tab-size);
   --new-tab-icon-size: 16px;
   --sidebar-hover-width: 266px; /*This must be updated along with the same variable found on sidebar-mods.css*/
+  --subpanel-header-height: 28px;
   --tab-corner-radius: 4px;
   --tab-default-margin-left: 9px;
   --tab-default-margin-right: 1px;
@@ -614,6 +615,7 @@ iframe#subpanel {
 }
 
 #subpanel-header-main {
+  height: var(--subpanel-header-height);
   display: flex;
   flex-grow: 1;
   justify-content: flex-start;
