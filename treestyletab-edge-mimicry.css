@@ -480,7 +480,7 @@ New Tab Button Theming
 /********************************
 Unhovered Sidebar Configurations
 *********************************/
-@media screen and (min-width: 10px) and (max-width: 53px){
+@media screen and (min-width: 0px) and (max-width: 53px){
   tab-item {
     max-width: var(--tab-size) !important;
   }
@@ -488,11 +488,11 @@ Unhovered Sidebar Configurations
     max-width: var(--faviconized-tab-size) !important;
   }
   #tabbar{
-    width: var(--sidebar-hover-width);
+    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
     scrollbar-width: none !important;
   }
   #tabbar-container {
-    width: var(--sidebar-hover-width);
+    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
   }
   #tabbar [data-level="1"] {
     margin-left: var(--tab-default-margin-left) !important;
