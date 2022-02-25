@@ -565,6 +565,12 @@ Unhovered Sidebar Configurations
   .contextual-identities-selector-anchor {
     display: none !important;
   }
+  #subpanel-selector-anchor .label{
+    display: none !important;
+  } 
+  #subpanel-selector-anchor .icon{
+    margin-right: 0px !important;
+  }
 }
 
 
@@ -636,7 +642,6 @@ iframe#subpanel {
   margin-top: 0px;
 }
 #subpanel-selector-anchor.clickable::after{
-  margin-top: 0px !important;
 }
 #subpanel-selector-anchor.clickable:hover{
   background: var(--tab-hover-background);  
