@@ -2,13 +2,13 @@
 See the above repository for updates as well as full license text. */
 
 #sidebar-box{
-  --uc-sidebar-width: 53px;
-  --uc-sidebar-hover-width: 267px;
-  --uc-autohide-sidebar-delay: 200ms; /* Delay before hiding the sidebar */
+  --sidebar-width: 53px;
+  --sidebar-hover-width: 266px;
+  --autohide-sidebar-delay: 200ms; /* Delay before hiding the sidebar */
   position: relative;
-  min-width: var(--uc-sidebar-width) !important;
-  width: var(--uc-sidebar-width) !important;
-  max-width: var(--uc-sidebar-width) !important;
+  min-width: var(--sidebar-width) !important;
+  width: var(--sidebar-width) !important;
+  max-width: var(--sidebar-width) !important;
   z-index:1;
 }
 
@@ -25,7 +25,7 @@ See the above repository for updates as well as full license text. */
 #sidebar-box[positionend]:-moz-locale-dir(rtl){ direction: ltr }
 #sidebar-box[positionend]:-moz-locale-dir(rtl) > *{ direction: rtl }
 
-#main-window[sizemode="fullscreen"] #sidebar-box{ --uc-sidebar-width: 1px; }
+#main-window[sizemode="fullscreen"] #sidebar-box{ --sidebar-width: 1px; }
 
 #sidebar-splitter{ 
   display: none !important;
@@ -34,13 +34,13 @@ See the above repository for updates as well as full license text. */
 #sidebar-header{ overflow: hidden; color: var(--chrome-color, inherit) !important}
 
 #sidebar{
-  transition: box-shadow 0.1s linear, min-width 75ms linear var(--uc-autohide-sidebar-delay) !important;
-  min-width: var(--uc-sidebar-width) !important;
+  transition: box-shadow 0.1s linear, min-width 75ms linear var(--autohide-sidebar-delay) !important;
+  min-width: var(--sidebar-width) !important;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.3) !important;
   will-change:  min-width !important;
 }
 #sidebar:hover{
-  min-width: var(--uc-sidebar-hover-width) !important;
+  min-width: var(--sidebar-hover-width) !important;
   transition-delay: 500ms !important;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25) !important;
 }
