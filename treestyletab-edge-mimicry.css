@@ -63,6 +63,7 @@
     --favicon-mask-color: 100;
     --scrollbar-foreground: #7d7d7d;
     --sidebar-background: #3B3B3B00;
+    --subpanel-icon-filter: invert(100%) brightness(100%);
     --tab-active-background: #4C98D12D;
     --tab-background-shadow: #000000;
     --tab-border-color: #686868;
@@ -81,6 +82,7 @@
     --favicon-mask-color: 0;
     --scrollbar-foreground: #8d8d8d;
     --sidebar-background: #F7F7F733;
+    --subpanel-icon-filter: invert(100%) brightness(0%);
     --tab-active-background: #437EB438;
     --tab-background-shadow: #0000009E;
     --tab-border-color: #B8B8B8;
@@ -278,7 +280,8 @@ tab-sound-button {
   opacity: 1.0;
 }
 
-/*
+
+/* Loading icon of Tabs
 :root.animation.blocking-throbber #blocking-screen .throbber::before,
 :root.animation #tabbar tab-item:not(.collapsed).loading .throbber::before {
   background-image: url("./throbber.svg");
@@ -563,3 +566,127 @@ Unhovered Sidebar Configurations
   }
 }
 
+
+
+
+
+
+
+/* sub panel */
+
+#subpanel-container {
+  top: ;
+  height: var(--subpanel-area-size);
+}
+
+#subpanel-container.collapsed iframe#subpanel {
+  visibility: collapse;
+}
+
+iframe#subpanel {
+  border: none;
+  height: var(--subpanel-content-size);
+  margin: 0;
+  max-height: none;
+  max-width: 100%;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#subpanel-header {
+  background: var(--tab-surface);
+  border-top: 1px solid var(--tab-border, var(--theme-colors-sidebar_border));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: 2;
+  margin: 0;
+  padding: 0 !important;
+}
+#subpanel-header.resizable {
+  cursor: auto;
+}
+
+#subpanel-container:not(.collapsed) #subpanel-header {
+  border-bottom: 1px solid var(--tab-border, var(--theme-colors-sidebar_border));
+}
+
+#subpanel-header-main {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#subpanel-selector-anchor {
+  display: relative !important;
+}
+
+#subpanel-selector-anchor .icon{
+  filter: var(--subpanel-icon-filter);
+  margin-right: 4px;
+  display: flex !important;
+  align-items: center !important;
+}
+#subpanel-selector-anchor .label{
+  margin-top: 0px;
+}
+#subpanel-selector-anchor.clickable::after{
+  margin-top: 0px !important;
+}
+#subpanel-selector-anchor.clickable:hover{
+  background: var(--tab-hover-background);  
+}
+#subpanel-selector-anchor.clickable.open{
+  background: var(--tab-hover-background);  
+}
+#subpanel-toggler::before{
+  content:;
+}
+#subpanel-toggler.clickable:hover {
+  background: var(--tab-hover-background);  
+}
+
+#subpanel-selector-anchor {
+  cursor: default;
+}
+
+#subpanel-selector-anchor > * {
+  pointer-events: none;
+}
+
+#subpanel-selector-anchor span.icon > img,
+#subpanel-selector span.icon > img {
+  height: 1em;
+  max-height: 1em;
+  max-width: 1em;
+  width: 1em;
+}
+
+#subpanel-selector-anchor span.icon > img:not([src]) {
+  display: none;
+}
+
+#subpanel-selector span.icon > :not([src]) {
+  visibility: hidden;
+}
+
+#subpanel-selector span.icon {
+  margin-right: 0.25em;
+}
+
+#subpanel-toggler {
+  cursor: default;
+  padding: 0 0.5em;
+  max-width: 1.5em;
+}
+
+#subpanel-toggler.clickable::before {
+  background: none !important;  
+}
+
+#subpanel-container.collapsed #subpanel-toggler::before {
+  content: "▲";
+}
