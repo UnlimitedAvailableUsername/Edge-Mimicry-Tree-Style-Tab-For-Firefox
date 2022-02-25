@@ -1,11 +1,9 @@
 :root{
   --after-tabs-area-size: 54px;
-  --dark-sidebar: #3b3b3b;
   --favicon-pinned-size: 30px;
   --favicon-size: 18px;
   --faviconized-tab-size-script: calc(var(--faviconized-tab-size) / 1.72);
   --faviconized-tab-size: 53px;
-  --new-tab-button-anchor-size: 1.5em;
   --new-tab-button-anchor-size: 24px;
   --new-tab-button-margin-left: var(--tab-default-margin-left);
   --new-tab-button-margin-right-non-hovered: 11px;
