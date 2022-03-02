@@ -120,6 +120,7 @@ tab-closebox {
   border-radius: 2px;
   padding: 1px;
   margin-right: 8px;
+  filter: var(--subpanel-icon-filter);
 }
 tab-closebox:hover {
   background: var(--tab-closebox-background);
