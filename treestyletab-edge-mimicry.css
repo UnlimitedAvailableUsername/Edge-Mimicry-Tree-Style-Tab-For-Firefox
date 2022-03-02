@@ -262,6 +262,7 @@ tab-item tab-label .label-content {
 .tab .twisty{
   position: absolute;
   margin-left: -14px;
+  filter: var(--subpanel-icon-filter);
 }
 tab-item.dragging {
   opacity: 1.0 !important;
@@ -315,13 +316,6 @@ Tab Container Theming
   box-shadow:
     inset 0px 11px 6px -10px #A3A3A372;
 }
-#tabbar-container #all-tabs {
-  width: unset !important;  
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-right: 4px;
-  z-index: 1000;
-}
 #contextual-identities-selector {
   background: var(--sidebar-background);
   max-height: unset !important;
@@ -331,6 +325,12 @@ Tab Container Theming
   background: var(--sidebar-background);
   max-height: unset !important;
   max-width: unset !important;
+}
+#tabbar.vbox.overflow{
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 4px;
+  width: unset !important;  
 }
 #tabbar [data-level] {
 }
@@ -439,6 +439,7 @@ New Tab Button Theming
   width: var(--new-tab-icon-size) !important;
   margin-left: 2px !important;
   position: relative !important;
+  filter: var(--subpanel-icon-filter);
 }
 .newtab-button:hover {
   background: var(--tab-hover-background)!important;
@@ -486,11 +487,8 @@ New Tab Button Theming
 Unhovered Sidebar Configurations
 *********************************/
 @media screen and (min-width: 0px) and (max-width: 53px){
-  tab-item {
+  tab-item:not(.faviconized) {
     max-width: var(--tab-size) !important;
-  }
-  tab-item.pinned {
-    max-width: var(--faviconized-tab-size) !important;
   }
   #tabbar{
     width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
@@ -499,35 +497,7 @@ Unhovered Sidebar Configurations
   #tabbar-container {
     width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
   }
-  #tabbar [data-level="1"] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-
-  #tabbar [data-level="2"] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-
-  #tabbar [data-level="3"] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-
-  #tabbar [data-level="4"] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-
-  #tabbar [data-level="5"] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-
-  #tabbar [data-level="6"] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-
-  #tabbar [data-level="7"] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-
-  #tabbar [data-level="8"] {
+  #tabbar tab-item:not(.faviconized)[data-level] {
     margin-left: var(--tab-default-margin-left) !important;
   }
   .tab .closebox {
@@ -538,12 +508,9 @@ Unhovered Sidebar Configurations
     opacity: 0.0 !important;
     margin-left:-6px;
   }
-  tab-item:not(.pinned) tab-item-substance {
+  tab-item:not(.faviconized) tab-item-substance {
     padding-left: 8px !important;
     padding-right: 8px !important;
-  }
-  tab-item.pinned:not(.faviconized) tab-item-substance {
-    padding-left: 8px;
   }
   .newtab-button-box{
     width: var(--tab-size) !important;
