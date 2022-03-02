@@ -620,6 +620,8 @@ iframe#subpanel {
   margin-top: 0px;
 }
 #subpanel-selector-anchor.clickable::after{
+  filter: var(--subpanel-icon-filter);
+
 }
 #subpanel-selector-anchor.clickable:hover{
   background: var(--tab-hover-background);  
