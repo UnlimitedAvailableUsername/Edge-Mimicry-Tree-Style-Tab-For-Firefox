@@ -217,7 +217,7 @@ tab-item.pinned:not(.faviconized) {
   margin-left: var(--tab-default-margin-left) !important;
   margin-right: var(--tab-default-margin-left) !important;
   margin-bottom: none !important;
-  margin-top: none !important;
+  margin-top: 4px !important;
   border-radius: var(--tab-corner-radius) !important;
   left: 0;
   right: 0;
@@ -458,20 +458,30 @@ New Tab Button Theming
   margin-right: calc(0px - var(--new-tab-button-margin-right));
   position: absolute;
   z-index: 1 !important;
-  width: var(--new-tab-button-anchor-size) !important;
+  width: var(--after-tabs-icon-size);
   max-width: var(--new-tab-button-anchor-size) !important;
   transition: opacity 0.2s !important;
 }
 .newtab-action-selector-anchor:hover,
 .contextual-identities-selector-anchor:hover {
   background: var(--tab-hover-background);
+  width: var(--new-tab-button-anchor-size) !important;
 }
 .newtab-action-selector-anchor.open,
 .contextual-identities-selector-anchor.open {
   background: var(--tab-hover-background);
+  width: var(--new-tab-button-anchor-size) !important;
 }
 .newtab-action-selector-anchor::after,
 .contextual-identities-selector-anchor::after {
+  background: none !important;
+  content: "▲";
+  font-size: var(--after-tabs-icon-size);
+  vertical-align: middle;
+  line-height: var(--new-tab-button-size);
+}
+.newtab-action-selector-anchor:hover::after,
+.contextual-identities-selector-anchor:hover::after {
   background: none !important;
   content: "▲";
   margin-left: calc(var(--new-tab-button-anchor-size)/2 - var(--after-tabs-icon-size)/2);
@@ -479,7 +489,6 @@ New Tab Button Theming
   vertical-align: middle;
   line-height: var(--new-tab-button-size);
 }
-
 
 
 
