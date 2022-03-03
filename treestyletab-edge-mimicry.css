@@ -173,6 +173,7 @@ tab-item.active tab-item-substance {
 .tab.active .label {
   font-size: var(--tab-font-size);
   padding-left: var(--tab-margin-before-icon);
+  text-shadow: 0px 0px 1px var(--tab-text-active-shadow);
   color: var(--tab-text-regular);
 }
 tab-item.active .label-content {
