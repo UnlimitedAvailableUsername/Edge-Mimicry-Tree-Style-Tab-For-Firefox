@@ -193,7 +193,7 @@ tab-item.active:hover {
   background: var(--tab-hover-active-background) !important;
 }
 tab-item.active {
-  background-color: var(--tab-active-background) !important;
+  background-color: var(--theme-colors-tab_selected, var(--tab-active-background)) !important;
   box-shadow: 0px 2px var(--tab-shadow-radius) var(--tab-background-shadow) !important;
   border-radius: var(--tab-corner-radius);
 }
