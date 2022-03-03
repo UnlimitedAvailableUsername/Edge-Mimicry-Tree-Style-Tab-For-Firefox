@@ -50,13 +50,7 @@
                           margin-right  var(--indent-animation);
 
 }
-#background {
-  background-color: var(--browser-bg-base, var(--tabbar-bg));
-  background-image: var(--browser-bg-images, none);
-  background-position: var(--browser-bg-position, left);
-  background-size: var(--browser-bg-size, auto);
-  background-repeat: var(--browser-bg-repeat, none);
-}
+
 
 /*Dark Theme configurations*/
 @media (prefers-color-scheme: dark) {
@@ -179,7 +173,6 @@ tab-item.active tab-item-substance {
 .tab.active .label {
   font-size: var(--tab-font-size);
   padding-left: var(--tab-margin-before-icon);
-  text-shadow: 0px 1px 2px var(--tab-text-active-shadow);
   color: var(--tab-text-regular);
 }
 tab-item.active .label-content {
@@ -247,7 +240,7 @@ tab-item.unread .label-content {
   font-weight: bold;
 }
 tab-label {
-  z-index: 1000000;
+  z-index: 1000;
 }
 tab-item tab-label .label-content {
   line-height: 2;
@@ -306,6 +299,13 @@ tab-sound-button {
 Tab Container Theming
 ********************/
 
+#background {
+  background-color: var(--browser-bg-base, var(--tabbar-bg));
+  background-image: var(--browser-bg-images, none);
+  background-position: var(--browser-bg-position, left);
+  background-size: var(--browser-bg-size, auto);
+  background-repeat: var(--browser-bg-repeat, none);
+}
 :root.sidebar #tabbar-container{
   width: unset !important;
   background: var(--sidebar-background) !important;
@@ -318,12 +318,12 @@ Tab Container Theming
     inset 0px 11px 6px -10px #A3A3A372;
 }
 #contextual-identities-selector {
-  background: var(--sidebar-background);
+  background: var(--browser-bg-base);
   max-height: unset !important;
   max-width: unset !important;
 }
 #newtab-action-selector {
-  background: var(--sidebar-background);
+  background: var(--browser-bg-base);
   max-height: unset !important;
   max-width: unset !important;
 }
