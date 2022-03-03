@@ -388,12 +388,16 @@ New Tab Button Theming
   padding-top: calc((var(--new-tab-button-size) - var(--tab-font-size))/2.5);
   padding-left: calc(var(--new-tab-button-margin-left) + 6px);
 }
+.newtab-button:hover {
+  background: var(--tab-hover-background)!important;
+  opacity: 1;
+}
 .newtab-button .extra-items-container {
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   position: absolute !important;
-  z-index: -2;
+  z-index: 0;
 }
 .newtab-button .extra-items-container::before {
   position: absolute;
@@ -442,10 +446,6 @@ New Tab Button Theming
   position: relative !important;
   filter: var(--subpanel-icon-filter);
 }
-.newtab-button:hover {
-  background: var(--tab-hover-background)!important;
-  opacity: 1;
-}
 
 /*Open new tab as..* *New Container Tab*/
 .after-tabs .newtab-action-selector-anchor,
@@ -471,6 +471,10 @@ New Tab Button Theming
 .contextual-identities-selector-anchor.open {
   background: var(--tab-hover-background);
   width: var(--new-tab-button-anchor-size) !important;
+}
+.newtab-action-selector-anchor.open::after,
+.contextual-identities-selector-anchor.open::after {
+  margin-left: calc(var(--new-tab-button-anchor-size)/2 - var(--after-tabs-icon-size)/2);
 }
 .newtab-action-selector-anchor::after,
 .contextual-identities-selector-anchor::after {
