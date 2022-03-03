@@ -159,7 +159,7 @@ tab-item .contextual-identity-marker {
   opacity: 0.3;
 }
 tab-item.active .contextual-identity-marker {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 tab-item.pinned .contextual-identity-marker {
   opacity: 0.5;
