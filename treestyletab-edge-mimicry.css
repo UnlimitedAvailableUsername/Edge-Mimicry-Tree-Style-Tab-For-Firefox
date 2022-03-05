@@ -267,7 +267,7 @@ tab-item.unread .label-content {
   font-weight: bold;
 }
 tab-item.active {
-  background-color: var(--theme-colors-tab_selected, var(--theme-colors-focus_outline, var(--tab-active-background))) !important;
+  background-color: var(--tab-surface-active) !important;
   box-shadow: 0px 2px var(--tab-shadow-radius) var(--tab-background-shadow) !important;
   border-radius: var(--tab-corner-radius);
 }
