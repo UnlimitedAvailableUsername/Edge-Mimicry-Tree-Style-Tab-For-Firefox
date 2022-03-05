@@ -397,42 +397,10 @@ tab container theming
 }
 
 
-/*************************
-context menu/popup theming
-*************************/
-#newtab-action-selector li,
-#contextual-identities-selector li{
-  padding: 4px 12px 4px 32px!important;
-  color: var(--theme-colors-popup_text);
-}
-#newtab-action-selector,
-#contextual-identities-selector{
-  background: var(--context-menu-background-color);
-  border-color: var(--context-menu-border-color);
-  border-radius: var(--tab-corner-radius);
-  border-width: 1px ;
-  border-style: solid;
-  padding: var(--context-menu-padding);
-  box-shadow: none !important;
-}
-#subpanel-selector {
-  background: var(--context-menu-background-color);
-  border-color: var(--context-menu-border-color);
-  border-radius: var(--tab-corner-radius);
-  border-width: 1px ;
-  border-style: solid;
-  padding: var(--context-menu-padding);
-  box-shadow: none !important;
-}
-#subpanel-selector li{
-  padding: 4px 12px 4px 18px !important;
-  color: var(--context-menu-list-text-color) !important;
-}
-
 
 
 /*********************
-New Tab Button Theming
+new tab button theming
 *********************/
 .newtab-button-box {
   box-shadow : 0 -1px 0 var(--tab-sidebar-border-color);
@@ -657,6 +625,34 @@ sub panel theming
 #subpanel-container.collapsed #subpanel-toggler::before {
   content: "▲";
 }
+
+
+
+/*************************
+context menu/popup theming
+*************************/
+#newtab-action-selector,
+#contextual-identities-selector,
+#subpanel-selector,
+#tabContextMenu{
+  background: var(--context-menu-background-color);
+  border-color: var(--context-menu-border-color);
+  border-radius: var(--tab-corner-radius);
+  border-width: 1px ;
+  border-style: solid;
+  padding: var(--context-menu-padding);
+  box-shadow: none !important;
+}
+#newtab-action-selector li,
+#contextual-identities-selector li{
+  padding: 4px 12px 4px 32px!important;
+  color: var(--theme-colors-popup_text);
+}
+#subpanel-selector li{
+  padding: 4px 12px 4px 18px !important;
+  color: var(--context-menu-list-text-color) !important;
+}
+
 
 
 
