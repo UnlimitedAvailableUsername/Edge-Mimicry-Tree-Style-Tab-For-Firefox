@@ -19,7 +19,7 @@
   --tab-closebox-size: 20px;
   --tab-corner-radius: 4px;
   --tab-default-margin-left: 9px;
-  --tab-default-margin-right: 1px;
+  --tab-default-margin-right: 9px;
   --tab-font-size: 13px;
   --tab-item-inside-padding: 16px;
   --tab-like-surface: var(--theme-colors-toolbar, var(--browser-bg-active-for-header-image, var(--browser-bg-base, var(--toolbar-non-lwt-bgcolor))));
@@ -336,13 +336,23 @@ Tab Container Theming
   box-shadow:
     inset 0px 11px 6px -10px #A3A3A372;
 }
+#newtab-action-selector li,
+#contextual-identities-selector li{
+  padding: 4px 12px 4px 32px!important;
+  color: var(--theme-colors-popup_text);
+}
 #newtab-action-selector,
-#contextual-identities-selector {
+#contextual-identities-selector{
+  background: var(--theme-colors-popup);
+  border-color: var(--theme-colors-popup_border) !important;
+  border-radius: var(--tab-corner-radius) !important;
+  border-width: 1px !important;
+  border-style: solid;
+  padding: 3px 0px;
 }
 #tabbar.vbox.overflow{
   padding-top: 4px;
   padding-bottom: 4px;
-  padding-right: 4px;
   width: unset !important;  
 }
 #tabbar [data-level] {
