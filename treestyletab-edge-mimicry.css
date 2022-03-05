@@ -645,12 +645,25 @@ context menu/popup theming
 }
 #newtab-action-selector li,
 #contextual-identities-selector li{
-  padding: 4px 12px 4px 32px!important;
+  padding: 5px 27px 5px 32px!important;
   color: var(--theme-colors-popup_text);
 }
 #subpanel-selector li{
-  padding: 4px 12px 4px 18px !important;
+  padding: 5px 27px 5px 18px !important;
   color: var(--context-menu-list-text-color) !important;
+}
+#tabContextMenu li{
+  padding: 5px 27px 5px 12px !important;
+  color: var(--context-menu-list-text-color) !important;
+}
+#tabContextMenu li.separator {
+  padding: 0px 0px !important;
+  margin: 2px 12px !important;
+  border: none;
+  height: 1px;
+  max-height: 1px;
+  background: var(--context-menu-list-text-color);
+  opacity: 0.2;
 }
 
 
