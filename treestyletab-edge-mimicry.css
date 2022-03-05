@@ -1,6 +1,11 @@
+/********************
+layout configurations
+********************/
 :root{
   --after-tabs-area-size: 54px;
   --after-tabs-icon-size: calc(var(--tab-font-size) / 1.2);
+  --context-menu-list-padding-vertical: 4px;
+  --context-menu-padding: 3px 0px;
   --favicon-pinned-size: 30px;
   --favicon-size: 18px;
   --faviconized-tab-size-script: calc(var(--faviconized-tab-size) / 1.72);
@@ -14,38 +19,23 @@
   --new-tab-icon-size: 16px;
   --sidebar-hover-width: 266px; /*This must be updated along with the same variable found on sidebar-mods.css*/
   --subpanel-header-height: 28px;
-  --subpanel-toggler-width: 20px;
   --subpanel-toggler-font-size: 8px;
+  --subpanel-toggler-width: 20px;
   --tab-closebox-size: 20px;
   --tab-corner-radius: 4px;
   --tab-default-margin-left: 9px;
   --tab-default-margin-right: 9px;
   --tab-font-size: 13px;
   --tab-item-inside-padding: 16px;
-  --tab-like-surface: var(--theme-colors-toolbar, var(--browser-bg-active-for-header-image, var(--browser-bg-base, var(--toolbar-non-lwt-bgcolor))));
   --tab-margin-before-icon: 7.5px;
   --tab-shadow-radius: var(--tab-corner-radius);
-  --tab-sidebar-border-color: var(--theme-colors-sidebar_border, var(--tab-sidebar-border-default-color));
   --tab-size: 33px;
-  --tab-surface-active: var(--browser-selected-tab-bg, var(--tab-like-surface, var(--in-content-button-background-mixed)));
-  --tab-surface-active-bgimage: var(--toolbar-non-lwt-bgimage);
-  --tab-surface-regular: var(--browser-bg-for-header-image, var(--tab-like-surface));
-  --tab-text-active-inverted: var(--toolbar-non-lwt-bgcolor);
-  --tab-text-active: var(--tab-text);
-  --tab-text-inverted: var(--browser-bg-more-lighter, var(--toolbar-non-lwt-bgcolor));
-  --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
-  --toolbar-non-lwt-bgcolor: var(--in-content-page-background);
-  --toolbar-non-lwt-textcolor: var(--in-content-page-color);
-  /* linear-gradient is from https://searchfox.org/mozilla-central/rev/6338ce9f059dbcf98072ad29033f3a4327085ddb/browser/themes/shared/tabs.inc.css#599 */
-  --toolbar-non-lwt-bgimage: linear-gradient(var(--browser-selected-tab-bg,
-                                             var(--non-lwt-selected-tab-background-color-proton,transparent)),
-                                             var(--browser-selected-tab-bg,
-                                             var(--non-lwt-selected-tab-background-color-proton,transparent))),
-                             linear-gradient(var(--toolbar-bgcolor, transparent),
-                                             var(--toolbar-bgcolor, transparent)),
-    										 var(--lwt-header-image, none);
+}
 
-  /* If you want to modify the animation duration then you can change these options*/
+/***********************
+animation configurations
+***********************/
+:root{
   --collapse-animation: 50ms ease-out;
   --indent-animation: 50ms ease;
   --tab-animation: background    var(--color-animation),
@@ -64,38 +54,45 @@
                    top           var(--collapse-animation);
   --tab-indent-animation: margin-left   var(--indent-animation),
                           margin-right  var(--indent-animation);
-
 }
 
-
-/*Dark Theme configurations*/
-@media (prefers-color-scheme: dark) {
-  :root{
-    --bg-color: var(--sidebar-background) !important;
-    --favicon-mask-color: 100;
-    --scrollbar-foreground: #7d7d7d;
-    --sidebar-background: #3B3B3B00;
-    --subpanel-icon-filter: invert(100%) brightness(100%);
-    --tab-active-background: #4C98D12D;
-    --tab-background-shadow: #000000;
-    --tab-sidebar-border-default-color: #686868;
-    --tab-close-box-background: #FFFFFFC4;
-    --tab-closebox-background: #6B6B6B;
-    --tab-hover-active-background: var(--tab-hover-background);
-	--tab-hover-background: #ffffff45;
-    --tab-text-active-shadow: #000000;
-	--throbber-color: var(--tab-text-regular);
-    --tab-highlighted-glow: rgb(84, 255, 189);
-    --toolbar-non-lwt-bgcolor: rgb(66,65,77);
-  }
+/************
+color schemes
+************/
+:root {
+  --context-menu-background-color: var(--theme-colors-popup, var(--context-menu-background-color-default));
+  --context-menu-border-color: var(--theme-colors-popup_border, var(--tab-sidebar-border-default-color));
+  --context-menu-list-text-color: var(--theme-colors-popup_text);
+  --multiselected-color-opacity: 0.8;
+  --multiselected-color: var(--theme-colors-tab_selected);
+  --tab-like-surface: var(--theme-colors-toolbar, var(--browser-bg-active-for-header-image), var(--browser-bg-base), var(--toolbar-non-lwt-bgcolor));
+  --tab-sidebar-border-color: var(--theme-colors-sidebar_border, var(--tab-sidebar-border-default-color));
+  --tab-surface-active-bgimage: var(--toolbar-non-lwt-bgimage);
+  --tab-surface-active: var(--browser-selected-tab-bg, var(--tab-like-surface, var(--in-content-button-background-mixed)));
+  --tab-surface-regular: var(--browser-bg-for-header-image, var(--tab-like-surface));
+  --tab-text-active-inverted: var(--toolbar-non-lwt-bgcolor);
+  --tab-text-active: var(--tab-text);
+  --tab-text-inverted: var(--browser-bg-more-lighter, var(--toolbar-non-lwt-bgcolor));
+  --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+  --toolbar-non-lwt-bgcolor: var(--in-content-page-background);
+  /* linear-gradient is from https://searchfox.org/mozilla-central/rev/6338ce9f059dbcf98072ad29033f3a4327085ddb/browser/themes/shared/tabs.inc.css#599 */
+  --toolbar-non-lwt-bgimage: linear-gradient(var(--browser-selected-tab-bg,
+                                             var(--non-lwt-selected-tab-background-color-proton,transparent)),
+                                             var(--browser-selected-tab-bg,
+                                             var(--non-lwt-selected-tab-background-color-proton,transparent))),
+                             linear-gradient(var(--toolbar-bgcolor, transparent),
+                                             var(--toolbar-bgcolor, transparent)),
+    										 var(--lwt-header-image, none);
+  --toolbar-non-lwt-textcolor: var(--in-content-page-color);
 }
 /*Light Theme configurations*/
 @media (prefers-color-scheme: light) {
   :root{
+    --context-menu-background-color-default: #F7F7F7;
 	--throbber-color: var(--tab-text-regular);
     --favicon-mask-color: 0;
     --scrollbar-foreground: #8d8d8d;
-    --sidebar-background: #F7F7F733;
+    --sidebar-background-color-default: #F7F7F7;
     --subpanel-icon-filter: invert(100%) brightness(0%);
     --tab-active-background: #437EB438;
     --tab-background-shadow: #0000009E;
@@ -121,20 +118,46 @@
     --favicon-mask-color: 100;
   }
 }
+/*Dark Theme configurations*/
+@media (prefers-color-scheme: dark) {
+  :root{
+    --context-menu-background-color-default: #3B3B3B;
+    --favicon-mask-color: 100;
+    --scrollbar-foreground: #7d7d7d;
+    --sidebar-background-color-default: #3B3B3B;
+    --subpanel-icon-filter: invert(100%) brightness(100%);
+    --tab-active-background: #4C98D12D;
+    --tab-background-shadow: #000000;
+    --tab-sidebar-border-default-color: #686868;
+    --tab-close-box-background: #FFFFFFC4;
+    --tab-closebox-background: #6B6B6B;
+    --tab-hover-active-background: var(--tab-hover-background);
+	--tab-hover-background: #ffffff45;
+    --tab-text-active-shadow: #000000;
+	--throbber-color: var(--tab-text-regular);
+    --tab-highlighted-glow: rgb(84, 255, 189);
+    --toolbar-non-lwt-bgcolor: rgb(66,65,77);
+  }
+}
 
 
 
-
-/******************
-Tab-Related Theming
-******************/
+/************************
+tab-items-related theming
+************************/
 .tab .label {
   font-size: var(--tab-font-size);
   padding-left: var(--tab-margin-before-icon);
   color: var(--tab-text-regular);
+  line-height: 2;
+  z-index: 1000;
 }
 .tab.active .label {
   text-shadow: 0px 0px 2px var(--tab-text-active-shadow);
+}
+.tab .twisty{
+  position: absolute;
+  margin-left: -14px;
 }
 tab-closebox {
   border-radius: 2px;
@@ -142,9 +165,6 @@ tab-closebox {
   margin-right: 8px;
   width: var(--tab-closebox-size);
   height: var(--tab-closebox-size);
-}
-tab-closebox:hover {
-  background: var(--tab-closebox-background);
 }
 tab-closebox::after {
   background: none;
@@ -155,6 +175,39 @@ tab-closebox::after {
   height: inherit;
   text-align: center;
   color: var(--tab-text-regular);
+}
+tab-closebox:hover {
+  background: var(--tab-closebox-background);
+}
+tab-item .highlighter, 
+tab-item .counter {
+  display: none;
+}
+#dummy-favicon-size-box {
+  min-height: var(--faviconized-tab-size-script);
+  max-height: var(--faviconized-tab-size-script);
+}
+/*Do not modify to preserve non-pinned tabs icon sizes*/
+.tab:not(.pinned) .favicon {
+    --favicon-size: 17px;
+}
+tab-item.dragging {
+  opacity: 1.0 !important;
+}
+.favicon-builtin::before {
+  background: url("https://res.cloudinary.com/markr/image/upload/v1644733137/file_babuft.svg") no-repeat center / 75%;
+  filter: brightness(var(--favicon-mask-color));
+}
+tab-item[data-current-uri^="about:logins"] .favicon-builtin::before,
+:root.simulate-svg-context-fill tab-item[data-current-uri^="about:logins"] .favicon-builtin::before {
+  filter: none !important;
+}
+tab-item[data-current-uri^="about:privatebrowsing"] .favicon-builtin::before,
+:root.simulate-svg-context-fill tab-item[data-current-uri^="about:privatebrowsing"] .favicon-builtin::before {
+  filter: none !important;
+}
+tab-sound-button {
+  opacity: 1.0;
 }
 tab-item {
   margin-left: var(--tab-default-margin-left);
@@ -169,52 +222,6 @@ tab-item:not(.pinned) tab-item-substance {
 tab-item  tab-item-substance {
   height: var(--tab-size);
   border-radius: var(--tab-corner-radius);
-}
-tab-item .highlighter, 
-tab-item .counter {
-  display: none;
-}
-tab-item .contextual-identity-marker {
-  margin: 0 !important;
-  position: absolute !important;
-  pointer-events: none;Full Auto-show/hide Theme
-  z-index: 0;
-  
-  bottom: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  top: 0 !important;
-  
-  width: unset !important;
-  height: unset !important;  
-    
-  opacity: 0.3;
-}
-tab-item.active .contextual-identity-marker {
-  opacity: 0.7;
-}
-tab-item.pinned .contextual-identity-marker {
-  opacity: 0.5;
-}
-tab-item.discarded .contextual-identity-marker {    
-  opacity: 0.2;
-}
-tab-item.active tab-item-substance {
-  height: var(--tab-size);
-}
-tab-item.active:hover {
-  background: var(--tab-hover-active-background) !important;
-}
-tab-item.active {
-  background-color: var(--theme-colors-tab_selected, var(--tab-active-background)) !important;
-  box-shadow: 0px 2px var(--tab-shadow-radius) var(--tab-background-shadow) !important;
-  border-radius: var(--tab-corner-radius);
-}
-tab-item.discarded tab-item-substance {
-  opacity: 0.4;
-}
-tab-item.discarded:hover tab-item-substance {
-  opacity: 0.8;
 }
 tab-item:hover {
   background: var(--tab-hover-background) !important;
@@ -259,43 +266,66 @@ tab-item.pinned.active:not(.faviconized)  tab-item-substance {
 tab-item.unread .label-content {
   font-weight: bold;
 }
-tab-label {
-  z-index: 1000;
+tab-item.active {
+  background-color: var(--theme-colors-tab_selected, var(--theme-colors-focus_outline, var(--tab-active-background))) !important;
+  box-shadow: 0px 2px var(--tab-shadow-radius) var(--tab-background-shadow) !important;
+  border-radius: var(--tab-corner-radius);
 }
-tab-item tab-label .label-content {
-  line-height: 2;
+tab-item.active tab-item-substance {
+  height: var(--tab-size);
 }
-#dummy-favicon-size-box {
-  min-height: var(--faviconized-tab-size-script);
-  max-height: var(--faviconized-tab-size-script);
+tab-item.active:hover {
+  background: var(--tab-hover-active-background) !important;
 }
-/*Do not modify to preserve non-pinned tabs icon sizes*/
-.tab:not(.pinned) .favicon {
-    --favicon-size: 17px;
+tab-item.discarded tab-item-substance {
+  opacity: 0.4;
 }
-.tab .twisty{
+tab-item.discarded:hover tab-item-substance {
+  opacity: 0.8;
+}
+tab-item .contextual-identity-marker {
+  margin: 0 !important;
+  position: absolute !important;
+  pointer-events: none;Full Auto-show/hide Theme
+  z-index: 0;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: unset !important;
+  height: unset !important;  
+  opacity: 0.3;
+}
+tab-item.active .contextual-identity-marker {
+  opacity: 0.7;
+}
+tab-item.pinned .contextual-identity-marker {
+  opacity: 0.5;
+}
+tab-item.discarded .contextual-identity-marker {    
+  opacity: 0.2;
+}
+.mutiple-highlighted > tab-item.highlighted tab-item-substance::after {
+  background: var(--multiselected-color);
+  bottom: 0;
+  content: " ";
+  display: block;
+  left: 0;
+  opacity: var(--multiselected-color-opacity);
+  pointer-events: none;
   position: absolute;
-  margin-left: -14px;
-}
-tab-item.dragging {
-  opacity: 1.0 !important;
-}
-.favicon-builtin::before {
-  background: url("https://res.cloudinary.com/markr/image/upload/v1644733137/file_babuft.svg") no-repeat center / 75%;
-  filter: brightness(var(--favicon-mask-color));
-}
-tab-item[data-current-uri^="about:logins"] .favicon-builtin::before,
-:root.simulate-svg-context-fill tab-item[data-current-uri^="about:logins"] .favicon-builtin::before {
-  filter: none !important;
-}
-tab-item[data-current-uri^="about:privatebrowsing"] .favicon-builtin::before,
-:root.simulate-svg-context-fill tab-item[data-current-uri^="about:privatebrowsing"] .favicon-builtin::before {
-  filter: none !important;
-}
-tab-sound-button {
-  opacity: 1.0;
+  right: 0;
+  top: 0;
+  z-index: 10;
 }
 
+/* show more-highlighter like as tree */
+tab-item:not(.faviconized) .highlighter::after {
+   top: calc(var(--tab-highlighter-size) * 2);
+}
+tab-item[data-child-ids].subtree-collapsed.highlighted.some-descendants-highlighted .highlighter::after {
+  width: calc(var(--tab-highlighter-size) * 2);
+}
 
 /* Loading icon of Tabs
 :root.animation.blocking-throbber #blocking-screen .throbber::before,
@@ -315,11 +345,10 @@ tab-sound-button {
 
 
 /********************
-Tab Container Theming
+tab container theming
 ********************/
-
 #background {
-  background-color: var(--browser-bg-base, var(--tabbar-bg));
+  background-color: var(--theme-colors-toolbar, var(--sidebar-background-color-default));
   background-image: var(--browser-bg-images, none);
   background-position: var(--browser-bg-position, left);
   background-size: var(--browser-bg-size, auto);
@@ -327,7 +356,6 @@ Tab Container Theming
 }
 :root.sidebar #tabbar-container{
   width: unset !important;
-  background: var(--sidebar-background) !important;
 }
 :root.left #tabbar {
   direction: ltr; /*Right scrollbar*/
@@ -335,20 +363,6 @@ Tab Container Theming
   scrollbar-color: var(--scrollbar-foreground) #00000000;
   box-shadow:
     inset 0px 11px 6px -10px #A3A3A372;
-}
-#newtab-action-selector li,
-#contextual-identities-selector li{
-  padding: 4px 12px 4px 32px!important;
-  color: var(--theme-colors-popup_text);
-}
-#newtab-action-selector,
-#contextual-identities-selector{
-  background: var(--theme-colors-popup);
-  border-color: var(--theme-colors-popup_border) !important;
-  border-radius: var(--tab-corner-radius) !important;
-  border-width: 1px !important;
-  border-style: solid;
-  padding: 3px 0px;
 }
 #tabbar.vbox.overflow{
   padding-top: 4px;
@@ -383,6 +397,39 @@ Tab Container Theming
 }
 
 
+/*************************
+context menu/popup theming
+*************************/
+#newtab-action-selector li,
+#contextual-identities-selector li{
+  padding: 4px 12px 4px 32px!important;
+  color: var(--theme-colors-popup_text);
+}
+#newtab-action-selector,
+#contextual-identities-selector{
+  background: var(--context-menu-background-color);
+  border-color: var(--context-menu-border-color);
+  border-radius: var(--tab-corner-radius);
+  border-width: 1px ;
+  border-style: solid;
+  padding: var(--context-menu-padding);
+  box-shadow: none !important;
+}
+#subpanel-selector {
+  background: var(--context-menu-background-color);
+  border-color: var(--context-menu-border-color);
+  border-radius: var(--tab-corner-radius);
+  border-width: 1px ;
+  border-style: solid;
+  padding: var(--context-menu-padding);
+  box-shadow: none !important;
+}
+#subpanel-selector li{
+  padding: 4px 12px 4px 18px !important;
+  color: var(--context-menu-list-text-color) !important;
+}
+
+
 
 /*********************
 New Tab Button Theming
@@ -413,6 +460,11 @@ New Tab Button Theming
 .newtab-button:hover {
   background: var(--tab-hover-background)!important;
   opacity: 1;
+}
+.newtab-button::after {
+  width: var(--new-tab-icon-size) !important;
+  margin-left: 2px !important;
+  position: relative !important;
 }
 .newtab-button .extra-items-container {
   bottom: 0 !important;
@@ -451,23 +503,16 @@ New Tab Button Theming
   text-align: right;
   padding-right: calc(var(--new-tab-button-anchor-size) + var(--tab-default-margin-left));
   opacity: 0.85;
-  transition: opacity 0.2s linear 0s;
+  transition: opacity var(--collapse-animation);
 }
-
 .newtab-button .extra-items-container:hover::before {
-  transition: opacity 0.2s linear 0s !important;
+  transition: opacity var(--collapse-animation) !important;
   opacity: 1.0 !important;
 }
 .newtab-button .extra-items-container:hover::after {
-  transition: opacity 0.2s linear 0s !important;
+  transition: opacity var(--collapse-animation) !important;
   opacity: 1.0 !important;
 }
-.newtab-button::after {
-  width: var(--new-tab-icon-size) !important;
-  margin-left: 2px !important;
-  position: relative !important;
-}
-
 /*Open new tab as..* *New Container Tab*/
 .after-tabs .newtab-action-selector-anchor,
 .after-tabs .contextual-identities-selector-anchor {
@@ -481,21 +526,12 @@ New Tab Button Theming
   z-index: 1 !important;
   width: var(--after-tabs-icon-size);
   max-width: var(--new-tab-button-anchor-size) !important;
-  transition: opacity 0.2s !important;
+  transition: opacity var(--collapse-animation) !important;
 }
 .newtab-action-selector-anchor:hover,
 .contextual-identities-selector-anchor:hover {
   background: var(--tab-hover-background);
   width: var(--new-tab-button-anchor-size) !important;
-}
-.newtab-action-selector-anchor.open,
-.contextual-identities-selector-anchor.open {
-  background: var(--tab-hover-background);
-  width: var(--new-tab-button-anchor-size) !important;
-}
-.newtab-action-selector-anchor.open::after,
-.contextual-identities-selector-anchor.open::after {
-  margin-left: calc(var(--new-tab-button-anchor-size)/2 - var(--after-tabs-icon-size)/2);
 }
 .newtab-action-selector-anchor::after,
 .contextual-identities-selector-anchor::after {
@@ -514,80 +550,21 @@ New Tab Button Theming
   vertical-align: middle;
   line-height: var(--new-tab-button-size);
 }
-
-
-
-
-/********************************
-Unhovered Sidebar Configurations
-*********************************/
-@media screen and (min-width: 0px) and (max-width: 53px){
-  tab-item:not(.faviconized) {
-    max-width: var(--tab-size) !important;
-  }
-  #tabbar{
-    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
-    scrollbar-width: none !important;
-  }
-  #tabbar-container {
-    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
-  }
-  #tabbar tab-item:not(.faviconized)[data-level] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-  .tab .closebox {
-    display: none;
-  }
-  .tab .twisty {
-    position:absolute;
-    opacity: 0.0 !important;
-    margin-left:-6px;
-  }
-  tab-item:not(.faviconized) tab-item-substance {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-  }
-  .newtab-button-box{
-    width: var(--tab-size) !important;
-  }
-  .newtab-button .extra-items-container::before {
-    content: "";
-    opacity: 0.0;
-    transition: opacity 0.2s linear 0s;
-  }
-  .newtab-button .extra-items-container::after {
-    content: "";
-    opacity: 0.0;
-    transition: opacity 0.2s linear 0s;
-  }
-  .newtab-button:hover::before {
-    transition: opacity 0.2s linear 0s !important;
-    opacity: 0.0 !important;
-  }
-  .newtab-action-selector-anchor,
-  .contextual-identities-selector-anchor {
-    display: none !important;
-  }
-  #subpanel-selector-anchor .label{
-    display: none !important;
-  } 
-  #subpanel-selector-anchor .icon{
-    margin-right: 0px !important;
-  }
+.newtab-action-selector-anchor.open,
+.contextual-identities-selector-anchor.open {
+  background: var(--tab-hover-background);
+  width: var(--new-tab-button-anchor-size) !important;
+}
+.newtab-action-selector-anchor.open::after,
+.contextual-identities-selector-anchor.open::after {
+  margin-left: calc(var(--new-tab-button-anchor-size)/2 - var(--after-tabs-icon-size)/2);
 }
 
 
 
-
-
-
-
-/* sub panel */
-
-#subpanel-container {
-  height: var(--subpanel-area-size);
-}
-
+/****************
+sub panel theming
+****************/
 #subpanel-header {
   background: var(--tab-surface);
   border-top: 1px solid var(--tab-border, var(--theme-colors-sidebar_border));
@@ -680,3 +657,65 @@ Unhovered Sidebar Configurations
 #subpanel-container.collapsed #subpanel-toggler::before {
   content: "▲";
 }
+
+
+
+
+/********************************
+Unhovered Sidebar Configurations
+*********************************/
+@media screen and (min-width: 0px) and (max-width: 53px){
+  tab-item:not(.faviconized) {
+    max-width: var(--tab-size) !important;
+  }
+  #tabbar{
+    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
+    scrollbar-width: none !important;
+  }
+  #tabbar-container {
+    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
+  }
+  #tabbar tab-item:not(.faviconized)[data-level] {
+    margin-left: var(--tab-default-margin-left) !important;
+  }
+  .tab .closebox {
+    display: none;
+  }
+  .tab .twisty {
+    position:absolute;
+    opacity: 0.0 !important;
+    margin-left:-6px;
+  }
+  tab-item:not(.faviconized) tab-item-substance {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .newtab-button-box{
+    width: var(--tab-size) !important;
+  }
+  .newtab-button .extra-items-container::before {
+    content: "";
+    opacity: 0.0;
+    transition: opacity var(--collapse-animation) !important;
+  }
+  .newtab-button .extra-items-container::after {
+    content: "";
+    opacity: 0.0;
+    transition: opacity var(--collapse-animation) !important;
+  }
+  .newtab-button:hover::before {
+    transition: opacity var(--collapse-animation) !important;
+    opacity: 0.0 !important;
+  }
+  .newtab-action-selector-anchor,
+  .contextual-identities-selector-anchor {
+    display: none !important;
+  }
+  #subpanel-selector-anchor .label{
+    display: none !important;
+  } 
+  #subpanel-selector-anchor .icon{
+    margin-right: 0px !important;
+  }
+}
+
