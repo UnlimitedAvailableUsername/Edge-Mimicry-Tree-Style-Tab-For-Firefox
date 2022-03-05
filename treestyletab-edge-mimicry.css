@@ -338,7 +338,6 @@ Tab Container Theming
 }
 #newtab-action-selector,
 #contextual-identities-selector {
-  background: var(--toolbar-non-lwt-bgcolor);
 }
 #tabbar.vbox.overflow{
   padding-top: 4px;
