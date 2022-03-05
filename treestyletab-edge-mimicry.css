@@ -642,6 +642,7 @@ context menu/popup theming
   border-style: solid;
   padding: var(--context-menu-padding);
   box-shadow: none !important;
+  transition: none !important;
 }
 #newtab-action-selector li,
 #contextual-identities-selector li{
