@@ -354,8 +354,8 @@ tab container theming
   background-size: var(--browser-bg-size, auto);
   background-repeat: var(--browser-bg-repeat, none);
 }
-:root.sidebar #tabbar-container{
-  width: unset !important;
+#tabbar-container{
+  width: unset;
 }
 :root.left #tabbar {
   direction: ltr; /*Right scrollbar*/
