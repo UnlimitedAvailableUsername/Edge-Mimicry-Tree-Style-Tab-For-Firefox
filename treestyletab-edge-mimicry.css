@@ -14,7 +14,7 @@ layout configurations
   --new-tab-button-margin-left: var(--tab-default-margin-left);
   --new-tab-button-margin-right-non-hovered: 11px;
   --new-tab-button-margin-right: 14px;
-  --new-tab-button-margin-top: 4px;
+  --new-tab-button-margin-top: 8px;
   --new-tab-button-size: var(--tab-size);
   --new-tab-icon-size: 16px;
   --sidebar-hover-width: 266px; /*This must be updated along with the same variable found on sidebar-mods.css*/
@@ -110,7 +110,7 @@ color schemes
     --tab-background-shadow: #000000;
     --tab-active-background: #4C98D12D;
     --tab-hover-active-background: var(--tab-hover-background);
-	--tab-hover-background: #ffffff45;
+	--tab-hover-background: #ffff ff45;
     --tab-closebox-background: #6B6B6B;
     --scrollbar-foreground: #7d7d7d;
     --sidebar-background: #3B3B3B33;
@@ -407,7 +407,7 @@ new tab button theming
   margin-left: var(--new-tab-button-margin-left);
   margin-right: var(--new-tab-button-margin-right);
   margin-top: var(--new-tab-button-margin-top);
-  padding-top: calc(var(--new-tab-button-size) + var(--new-tab-button-margin-top));
+  padding-top: calc(var(--new-tab-button-size) + 4px);
   position: absolute;
   left: 0;
   right: 0;
@@ -647,7 +647,7 @@ context menu/popup theming
 #newtab-action-selector li,
 #contextual-identities-selector li{
   padding: 5px 27px 5px 32px!important;
-  color: var(--theme-colors-popup_text);
+  color: var(--context-menu-list-text-color);
 }
 #subpanel-selector li{
   padding: 5px 27px 5px 18px !important;
@@ -661,10 +661,10 @@ context menu/popup theming
   padding: 0px 0px !important;
   margin: 2px 12px !important;
   border: none;
-  height: 1px;
+  height: 32px !important;
   max-height: 1px;
   background: var(--context-menu-list-text-color);
-  opacity: 0.2;
+  opacity: 0.2 !important;
 }
 
 
