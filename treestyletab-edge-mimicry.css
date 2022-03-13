@@ -14,7 +14,8 @@ layout configurations
   --new-tab-button-margin-left: var(--tab-default-margin-left);
   --new-tab-button-margin-right-non-hovered: 11px;
   --new-tab-button-margin-right: 14px;
-  --new-tab-button-margin-top: 8px;
+  --new-tab-button-margin-top: 4px;
+  --new-tab-button-margin-top-overflow: 8px;
   --new-tab-button-size: var(--tab-size);
   --new-tab-icon-size: 16px;
   --sidebar-hover-width: 266px; /*This must be updated along with the same variable found on sidebar-mods.css*/
@@ -62,6 +63,7 @@ color schemes
 :root {
   --context-menu-background-color: var(--theme-colors-popup, var(--context-menu-background-color-default));
   --context-menu-border-color: var(--theme-colors-popup_border, var(--tab-sidebar-border-default-color));
+  --context-menu-list-highlight: var(--theme-colors-popup_highlight, var(--tab-hover-background));
   --context-menu-list-text-color: var(--theme-colors-popup_text);
   --multiselected-color-opacity: 0.8;
   --multiselected-color: var(--theme-colors-tab_selected);
@@ -110,7 +112,7 @@ color schemes
     --tab-background-shadow: #000000;
     --tab-active-background: #4C98D12D;
     --tab-hover-active-background: var(--tab-hover-background);
-	--tab-hover-background: #ffff ff45;
+	--tab-hover-background: #ffff;
     --tab-closebox-background: #6B6B6B;
     --scrollbar-foreground: #7d7d7d;
     --sidebar-background: #3B3B3B33;
@@ -366,7 +368,7 @@ tab container theming
 }
 #tabbar.vbox.overflow{
   padding-top: 4px;
-  padding-bottom: 4px;
+  padding-bottom: var(--new-tab-button-margin-top-overflow);
   width: unset !important;  
 }
 #tabbar [data-level] {
@@ -406,7 +408,7 @@ new tab button theming
   box-shadow : 0 -1px 0 var(--tab-sidebar-border-color);
   margin-left: var(--new-tab-button-margin-left);
   margin-right: var(--new-tab-button-margin-right);
-  margin-top: var(--new-tab-button-margin-top);
+  margin-top: var(--new-tab-button-margin-top-overflow);
   padding-top: calc(var(--new-tab-button-size) + 4px);
   position: absolute;
   left: 0;
@@ -496,8 +498,15 @@ new tab button theming
   max-width: var(--new-tab-button-anchor-size) !important;
   transition: opacity var(--collapse-animation) !important;
 }
+.after-tabs .newtab-action-selector-anchor {
+  border-right: 1px solid var(--tab-sidebar-border-color) !important;  
+}
+.after-tabs .contextual-identities-selector-anchor {
+  border-left: 1px solid var(--tab-sidebar-border-color) !important;
+}
 .newtab-action-selector-anchor:hover,
 .contextual-identities-selector-anchor:hover {
+  border: none !important;
   background: var(--tab-hover-background);
   width: var(--new-tab-button-anchor-size) !important;
 }
@@ -661,12 +670,19 @@ context menu/popup theming
   padding: 0px 0px !important;
   margin: 2px 12px !important;
   border: none;
-  height: 32px !important;
+  height: 1px !important;
   max-height: 1px;
-  background: var(--context-menu-list-text-color);
-  opacity: 0.2 !important;
+  background: var(--context-menu-border-color);
 }
-
+#contextual-identities-selector li:focus,
+#newtab-action-selector li:focus,
+#subpanel-selector li:focus,
+#tabContextMenu li:focus {
+  background: var(--context-menu-list-highlight);
+}
+#contextual-identities-selector li[data-icon]{
+  --icon-size: 32px;
+}
 
 
 
