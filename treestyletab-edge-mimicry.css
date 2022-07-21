@@ -66,7 +66,8 @@ color schemes
   --context-menu-list-highlight: var(--theme-colors-popup_highlight, var(--tab-hover-background));
   --context-menu-list-text-color: var(--theme-colors-popup_text);
   --multiselected-color-opacity: 0.8;
-  --multiselected-color: var(--theme-colors-tab_selected);
+  --multiselected-color: var(--theme-colors-tab_selected, var(--theme-colors-tab_selected-default));
+  --tab-closebox-background: var(--tab-surface-active, var(--tab-closebox-background-default));
   --tab-like-surface: var(--theme-colors-toolbar, var(--browser-bg-active-for-header-image), var(--browser-bg-base), var(--toolbar-non-lwt-bgcolor));
   --tab-sidebar-border-color: var(--theme-colors-sidebar_border, var(--tab-sidebar-border-default-color));
   --tab-surface-active-bgimage: var(--toolbar-non-lwt-bgimage);
@@ -99,11 +100,11 @@ color schemes
     --tab-active-background: #437EB438;
     --tab-background-shadow: #0000009E;
     --tab-sidebar-border-default-color: #B8B8B8;
-    --tab-close-box-background: #000000A0;
-    --tab-closebox-background: #C5C5C5;
+    --tab-closebox-background-default: #C5C5C5;
     --tab-hover-active-background: #FFFFFF54;
     --tab-hover-background:#0000000F;
     --tab-text-active-shadow: transparent;
+    --theme-colors-tab_selected-default: var(--tab-hover-background);
   }
   /*Private Window Light Theme configurations*/
   :root.incognito{
@@ -113,11 +114,11 @@ color schemes
     --tab-active-background: #4C98D12D;
     --tab-hover-active-background: var(--tab-hover-background);
 	--tab-hover-background: #ffff;
-    --tab-closebox-background: #6B6B6B;
+    --tab-closebox-background-default: #6B6B6B;
     --scrollbar-foreground: #7d7d7d;
     --sidebar-background: #3B3B3B33;
-    --tab-close-box-background: #FFFFFFC4;
     --favicon-mask-color: 100;
+    --theme-colors-tab_selected-default: var(--tab-hover-background);
   }
 }
 /*Dark Theme configurations*/
@@ -131,14 +132,14 @@ color schemes
     --tab-active-background: #4C98D12D;
     --tab-background-shadow: #000000;
     --tab-sidebar-border-default-color: #686868;
-    --tab-close-box-background: #FFFFFFC4;
-    --tab-closebox-background: #6B6B6B;
+    --tab-closebox-background-default: #6B6B6B;
     --tab-hover-active-background: var(--tab-hover-background);
 	--tab-hover-background: #ffffff45;
     --tab-text-active-shadow: #000000;
 	--throbber-color: var(--tab-text-regular);
     --tab-highlighted-glow: rgb(84, 255, 189);
     --toolbar-non-lwt-bgcolor: rgb(66,65,77);
+    --theme-colors-tab_selected-default: var(--tab-hover-background);
   }
 }
 
@@ -177,6 +178,7 @@ tab-closebox::after {
   height: inherit;
   text-align: center;
   color: var(--tab-text-regular);
+  margin-top: -1px;
 }
 tab-closebox:hover {
   background: var(--tab-closebox-background);
@@ -221,7 +223,7 @@ tab-item {
 tab-item:not(.pinned) tab-item-substance {
   padding-left: var(--tab-item-inside-padding) !important;
 }
-tab-item  tab-item-substance {
+tab-item tab-item-substance {
   height: var(--tab-size);
   border-radius: var(--tab-corner-radius);
 }
@@ -366,7 +368,7 @@ tab container theming
   box-shadow:
     inset 0px 11px 6px -10px #A3A3A372;
 }
-#tabbar.vbox.overflow{
+#all-tabs{
   padding-top: 4px;
   padding-bottom: var(--new-tab-button-margin-top-overflow);
   width: unset !important;  
@@ -435,6 +437,8 @@ new tab button theming
   width: var(--new-tab-icon-size) !important;
   margin-left: 2px !important;
   position: relative !important;
+  fill: var(--tab-text-active);
+  background-blend-mode: overlay;
 }
 .newtab-button .extra-items-container {
   bottom: 0 !important;
@@ -678,7 +682,7 @@ context menu/popup theming
 #newtab-action-selector li:focus,
 #subpanel-selector li:focus,
 #tabContextMenu li:focus {
-  background: var(--context-menu-list-highlight);
+  background-color: var(--context-menu-list-highlight);
 }
 #contextual-identities-selector li[data-icon]{
   --icon-size: 32px;
