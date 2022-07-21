@@ -426,29 +426,28 @@ new tab button theming
   position: absolute;
   margin-left: calc(0px - var(--new-tab-button-margin-left));
   margin-right: calc(0px - var(--new-tab-button-margin-right));
-  padding-top: calc((var(--new-tab-button-size) - var(--tab-font-size))/2.5);
   padding-left: calc(var(--new-tab-button-margin-left) + 6px);
+  display: relative !important;
 }
 .newtab-button:hover {
   background: var(--tab-hover-background)!important;
   opacity: 1;
 }
 .newtab-button::after {
-  width: var(--new-tab-icon-size) !important;
-  margin-left: 2px !important;
-  position: relative !important;
+  background: none;
+  content: "+";
+  font-family: "Times New Roman";
+  font-size: calc(2*var(--new-tab-icon-size));
   fill: var(--tab-text-active);
-  background-blend-mode: overlay;
+  margin-top: calc(var(--new-tab-icon-size)/-5) !important;
 }
 .newtab-button .extra-items-container {
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  position: absolute !important;
   z-index: 0;
 }
 .newtab-button .extra-items-container::before {
-  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
@@ -487,6 +486,7 @@ new tab button theming
   transition: opacity var(--collapse-animation) !important;
   opacity: 1.0 !important;
 }
+
 /*Open new tab as..* *New Container Tab*/
 .after-tabs .newtab-action-selector-anchor,
 .after-tabs .contextual-identities-selector-anchor {
