@@ -160,7 +160,13 @@ tab-items-related theming
 }
 .tab .twisty{
   position: absolute;
-  margin-left: -14px;
+  margin-left: -16px;
+}
+tab-item:not(.collapsed) tab-twisty::before {
+  background: none;
+  content: "v";
+  transform: scaleY(0.4);
+  text-align: center;
 }
 tab-closebox {
   border-radius: 2px;
