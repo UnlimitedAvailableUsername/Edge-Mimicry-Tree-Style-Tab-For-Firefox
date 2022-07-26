@@ -77,6 +77,7 @@ color schemes
   --tab-text-active: var(--tab-text);
   --tab-text-inverted: var(--browser-bg-more-lighter, var(--toolbar-non-lwt-bgcolor));
   --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+  --theme-colors-tab_selected-default: var(--tab-hover-background);
   --toolbar-non-lwt-bgcolor: var(--in-content-page-background);
   /* linear-gradient is from https://searchfox.org/mozilla-central/rev/6338ce9f059dbcf98072ad29033f3a4327085ddb/browser/themes/shared/tabs.inc.css#599 */
   --toolbar-non-lwt-bgimage: linear-gradient(var(--browser-selected-tab-bg,
@@ -93,44 +94,29 @@ color schemes
   :root{
     --context-menu-background-color-default: #F7F7F7;
 	--throbber-color: var(--tab-text-regular);
-    --favicon-mask-color: 0;
+    --favicon-default-color: #000000;
     --scrollbar-foreground: #8d8d8d;
     --sidebar-background-color-default: #F7F7F7;
     --subpanel-icon-filter: invert(100%) brightness(0%);
     --tab-active-background: #437EB438;
-    --tab-background-shadow: #0000009E;
+    --tab-background-shadow: var(--tab-text-regular,#0000009E);
     --tab-sidebar-border-default-color: #B8B8B8;
     --tab-closebox-background-default: #C5C5C5;
     --tab-hover-active-background: #FFFFFF54;
     --tab-hover-background:#0000000F;
     --tab-text-active-shadow: transparent;
-    --theme-colors-tab_selected-default: var(--tab-hover-background);
-  }
-  /*Private Window Light Theme configurations*/
-  :root.incognito{
-    --tab-text-active-shadow: #000000;
-    --tab-sidebar-border-color: #686868;
-    --tab-background-shadow: #000000;
-    --tab-active-background: #4C98D12D;
-    --tab-hover-active-background: var(--tab-hover-background);
-	--tab-hover-background: #ffff;
-    --tab-closebox-background-default: #6B6B6B;
-    --scrollbar-foreground: #7d7d7d;
-    --sidebar-background: #3B3B3B33;
-    --favicon-mask-color: 100;
-    --theme-colors-tab_selected-default: var(--tab-hover-background);
   }
 }
 /*Dark Theme configurations*/
 @media (prefers-color-scheme: dark) {
   :root{
     --context-menu-background-color-default: #3B3B3B;
-    --favicon-mask-color: 100;
+    --favicon-default-color: #ffffff;
     --scrollbar-foreground: #7d7d7d;
     --sidebar-background-color-default: #3B3B3B;
     --subpanel-icon-filter: invert(100%) brightness(100%);
     --tab-active-background: #4C98D12D;
-    --tab-background-shadow: #000000;
+    --tab-background-shadow: var(--tab-text-regular,#000000);
     --tab-sidebar-border-default-color: #686868;
     --tab-closebox-background-default: #6B6B6B;
     --tab-hover-active-background: var(--tab-hover-background);
@@ -139,7 +125,6 @@ color schemes
 	--throbber-color: var(--tab-text-regular);
     --tab-highlighted-glow: rgb(84, 255, 189);
     --toolbar-non-lwt-bgcolor: rgb(66,65,77);
-    --theme-colors-tab_selected-default: var(--tab-hover-background);
   }
 }
 
@@ -205,19 +190,15 @@ tab-item.dragging {
   opacity: 1.0 !important;
 }
 .favicon-builtin::before {
-  background: url("https://res.cloudinary.com/markr/image/upload/v1644733137/file_babuft.svg") no-repeat center / 75%;
-  filter: brightness(var(--favicon-mask-color));
-}
-tab-item[data-current-uri^="about:logins"] .favicon-builtin::before,
-:root.simulate-svg-context-fill tab-item[data-current-uri^="about:logins"] .favicon-builtin::before {
-  filter: none !important;
-}
-tab-item[data-current-uri^="about:privatebrowsing"] .favicon-builtin::before,
-:root.simulate-svg-context-fill tab-item[data-current-uri^="about:privatebrowsing"] .favicon-builtin::before {
-  filter: none !important;
+  background: var(--tab-text, var(--favicon-default-color));
+  -webkit-mask-image: url("https://res.cloudinary.com/markr/image/upload/v1644733137/file_babuft.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
 }
 tab-sound-button {
   opacity: 1.0;
+}
+tab-sound-button::before, tab-sound-button::after{
 }
 tab-item {
   margin-left: var(--tab-default-margin-left);
@@ -280,6 +261,11 @@ tab-item.active {
   background-color: var(--tab-surface-active) !important;
   box-shadow: 0px 2px var(--tab-shadow-radius) var(--tab-background-shadow) !important;
   border-radius: var(--tab-corner-radius);
+}
+tab-item.faviconized.active {
+  box-shadow: none !important;
+  outline: 2px solid var(--tab-text, var(--tab-sidebar-border-color));
+  outline-offset: -2px;
 }
 tab-item.active tab-item-substance {
   height: var(--tab-size);
@@ -444,7 +430,7 @@ new tab button theming
   content: "+";
   font-family: "Times New Roman";
   font-size: calc(2*var(--new-tab-icon-size));
-  fill: var(--tab-text-active);
+  color: var(--tab-text);
   margin-top: calc(var(--new-tab-icon-size)/-5) !important;
 }
 .newtab-button .extra-items-container {
