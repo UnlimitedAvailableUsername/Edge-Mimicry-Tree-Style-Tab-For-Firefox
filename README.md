@@ -34,7 +34,7 @@ If you want to also copy the hover feature of sidebar found on Microsoft Edge, t
 
 
 ## Important Notes:
-- **For now it's still in beta again, because it seems that it doesn't work properly on some (or probably most) users as there seems to be problems with the icons. I am still working on to fix some issues, both on Windows and Linux Firefox platforms. Rest assured I'll update this repo once I'm done."
+- **For now it's still in beta again, because it seems that it doesn't work properly on some (or probably most) users as there seems to be problems with the icons. I am still working on to fix some issues, both on Windows and Linux Firefox platforms. Rest assured I'll update this repo once I'm done.**
 - When pasting the code to **Extra Style Rules**, make sure to check the **"No Decorations"** on Appearance panel option as this theme doesn't go well with the built-in themes of Tree Style Tab.
 
 ## Notes/Credits:
