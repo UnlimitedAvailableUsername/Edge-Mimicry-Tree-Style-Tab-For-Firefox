@@ -1,295 +1,699 @@
-/********************
-layout configurations
-********************/
-:root{
-  --after-tabs-area-size: 54px;
-  --after-tabs-icon-size: calc(var(--tab-font-size) / 1.2);
-  --context-menu-list-padding-vertical: 4px;
-  --context-menu-padding: 3px 0px;
-  --favicon-pinned-size: 30px;
-  --favicon-size: 18px;
-  --faviconized-tab-size-script: calc(var(--faviconized-tab-size) / 1.72);
-  --faviconized-tab-size: 53px;
-  --new-tab-button-anchor-size: 24px;
-  --new-tab-button-margin-left: var(--tab-default-margin-left);
-  --new-tab-button-margin-right-non-hovered: 11px;
-  --new-tab-button-margin-right: 14px;
-  --new-tab-button-margin-top: 4px;
-  --new-tab-button-margin-top-overflow: 8px;
-  --new-tab-button-size: var(--tab-size);
-  --new-tab-icon-size: 16px;
-  --sidebar-hover-width: 266px; /*This must be updated along with the same variable found on sidebar-mods.css*/
-  --subpanel-header-height: 28px;
-  --subpanel-toggler-font-size: 8px;
-  --subpanel-toggler-width: 20px;
-  --tab-closebox-size: 20px;
-  --tab-corner-radius: 4px;
-  --tab-default-margin-left: 9px;
-  --tab-default-margin-right: 9px;
-  --tab-font-size: 13px;
-  --tab-item-inside-padding: 16px;
-  --tab-margin-before-icon: 7.5px;
-  --tab-shadow-radius: var(--tab-corner-radius);
-  --tab-size: 33px;
-}
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
 
-/***********************
-animation configurations
-***********************/
-:root{
-  --collapse-animation: 50ms ease-out;
-  --indent-animation: 50ms ease;
-  --tab-animation: background    var(--color-animation),
-                   bottom        var(--collapse-animation),
-                   color         var(--color-animation),
-                   left          var(--collapse-animation),
-                   margin-bottom var(--collapse-animation),
-                   margin-top    var(--collapse-animation),
-                   max-height    var(--collapse-animation),
-                   max-width     var(--collapse-animation),
-                   min-height    var(--collapse-animation),
-                   min-width     var(--collapse-animation),
-                   opacity       var(--collapse-animation),
-                   padding       var(--collapse-animation),
-    			   right         var(--collapse-animation),
-                   top           var(--collapse-animation);
-  --tab-indent-animation: margin-left   var(--indent-animation),
-                          margin-right  var(--indent-animation);
-}
-
-/************
-color schemes
-************/
 :root {
-  --context-menu-background-color: var(--theme-colors-popup, var(--context-menu-background-color-default));
-  --context-menu-border-color: var(--theme-colors-popup_border, var(--tab-sidebar-border-default-color));
-  --context-menu-list-highlight: var(--theme-colors-popup_highlight, var(--tab-hover-background));
-  --context-menu-list-text-color: var(--theme-colors-popup_text);
-  --multiselected-color-opacity: 0.8;
-  --multiselected-color: var(--theme-colors-tab_selected, var(--theme-colors-tab_selected-default));
-  --tab-closebox-background: var(--tab-surface-active, var(--tab-closebox-background-default));
-  --tab-like-surface: var(--theme-colors-toolbar, var(--browser-bg-active-for-header-image), var(--browser-bg-base), var(--toolbar-non-lwt-bgcolor));
-  --tab-sidebar-border-color: var(--theme-colors-sidebar_border, var(--tab-sidebar-border-default-color));
-  --tab-surface-active-bgimage: var(--toolbar-non-lwt-bgimage);
-  --tab-surface-active: var(--browser-selected-tab-bg, var(--tab-like-surface, var(--in-content-button-background-mixed)));
-  --tab-surface-regular: var(--browser-bg-for-header-image, var(--tab-like-surface));
-  --tab-text-active-inverted: var(--toolbar-non-lwt-bgcolor);
-  --tab-text-active: var(--tab-text);
-  --tab-text-inverted: var(--browser-bg-more-lighter, var(--toolbar-non-lwt-bgcolor));
-  --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
-  --theme-colors-tab_selected-default: var(--tab-hover-background);
-  --toolbar-non-lwt-bgcolor: var(--in-content-page-background);
-  /* linear-gradient is from https://searchfox.org/mozilla-central/rev/6338ce9f059dbcf98072ad29033f3a4327085ddb/browser/themes/shared/tabs.inc.css#599 */
-  --toolbar-non-lwt-bgimage: linear-gradient(var(--browser-selected-tab-bg,
-                                             var(--non-lwt-selected-tab-background-color-proton,transparent)),
-                                             var(--browser-selected-tab-bg,
-                                             var(--non-lwt-selected-tab-background-color-proton,transparent))),
-                             linear-gradient(var(--toolbar-bgcolor, transparent),
-                                             var(--toolbar-bgcolor, transparent)),
-    										 var(--lwt-header-image, none);
-  --toolbar-non-lwt-textcolor: var(--in-content-page-color);
+  /* https://hg.mozilla.org/mozilla-central/raw-file/tip/toolkit/themes/shared/in-content/common.inc.css */
+  --in-content-page-color: var(--grey-90);
+  --in-content-page-background: var(--grey-10);
+  --in-content-text-color: var(--in-content-page-color);
+  --in-content-deemphasized-text: var(--grey-60);
+  --in-content-selected-text: #fff;
+  --in-content-box-background: #fff;
+  --in-content-box-background-hover: var(--grey-20);
+  --in-content-box-background-active: var(--grey-30);
+  --in-content-box-border-color: var(--grey-90-a30);
+  --in-content-box-border-color-mixed: rgb(calc((249 * 0.7) + (12 * 0.3)), calc((249 * 0.7) + (12 * 0.3)), calc((250 * 0.7) + (13 * 0.3)));
+  --in-content-box-info-background: var(--grey-20);
+  --in-content-item-hover: rgba(69, 161, 255, 0.2); /* blue 40 a20 */
+  --in-content-item-hover-mixed: rgb(calc((249 * 0.8) + (69 * 0.2)), calc((249 * 0.8) + (161 * 0.2)), calc((250 * 0.8) + (255 * 0.2)));
+  --in-content-item-selected: var(--blue-50);
+  --in-content-border-highlight: var(--blue-50);
+  --in-content-border-focus: var(--blue-50);
+  --in-content-border-hover: var(--grey-90-a50);
+  --in-content-border-hover-mixed: rgb(calc((249 * 0.5) + (12 * 0.5)), calc((249 * 0.5) + (12 * 0.5)), calc((250 * 0.5) + (13 * 0.5)));
+  --in-content-border-active: var(--blue-50);
+  --in-content-border-active-shadow: var(--blue-50-a30);
+  --in-content-border-invalid: var(--red-50);
+  --in-content-border-invalid-shadow: var(--red-50-a30);
+  --in-content-border-color: var(--grey-30);
+  --in-content-border-color-mixed: #d7d7db;
+  --in-content-category-outline-focus: 1px dotted var(--blue-50);
+  --in-content-category-text-selected: var(--blue-50);
+  --in-content-category-text-selected-active: var(--blue-60);
+  --in-content-category-background-hover: rgba(12,12,13,0.1);
+  --in-content-category-background-active: rgba(12,12,13,0.15);
+  --in-content-category-background-selected-hover: rgba(12,12,13,0.15);
+  --in-content-category-background-selected-active: rgba(12,12,13,0.2);
+  --in-content-tab-color: #424f5a;
+  --in-content-link-color: var(--blue-60);
+  --in-content-link-color-hover: var(--blue-70);
+  --in-content-link-color-active: var(--blue-80);
+  --in-content-link-color-visited: var(--blue-60);
+  --in-content-button-background: var(--grey-90-a10);
+  --in-content-button-background-mixed: rgb(calc((249 * 0.9) + (12 * 0.1)), calc((249 * 0.9) + (12 * 0.1)), calc((250 * 0.9) + (13 * 0.1)));
+  --in-content-button-background-hover: var(--grey-90-a20);
+  --in-content-button-background-hover-mixed: rgb(calc((249 * 0.8) + (12 * 0.2)), calc((249 * 0.8) + (12 * 0.2)), calc((250 * 0.8) + (13 * 0.2)));
+  --in-content-button-background-active: var(--grey-90-a30);
+  --in-content-button-background-active-mixed: rgb(calc((249 * 0.7) + (12 * 0.3)), calc((249 * 0.7) + (12 * 0.3)), calc((250 * 0.7) + (13 * 0.3)));
+
+  --blue-40: #45a1ff;
+  --blue-40-a10: rgb(69, 161, 255, 0.1);
+  --blue-50: #0a84ff;
+  --blue-50-a30: rgba(10, 132, 255, 0.3);
+  --blue-60: #0060df;
+  --blue-70: #003eaa;
+  --blue-80: #002275;
+  --grey-10: #f9f9fa;
+  --grey-10-a015: rgba(249, 249, 250, 0.015);
+  --grey-10-a20: rgba(249, 249, 250, 0.2);
+  --grey-20: #ededf0;
+  --grey-30: #d7d7db;
+  --grey-40: #b1b1b3;
+  --grey-60: #4a4a4f;
+  --grey-90: #0c0c0d;
+  --grey-90-a10: rgba(12, 12, 13, 0.1);
+  --grey-90-a11: rgba(12, 12, 13, 0.11);
+  --grey-90-a20: rgba(12, 12, 13, 0.2);
+  --grey-90-a30: rgba(12, 12, 13, 0.3);
+  --grey-90-a40: rgba(12, 12, 13, 0.4);
+  --grey-90-a50: rgba(12, 12, 13, 0.5);
+  --grey-90-a60: rgba(12, 12, 13, 0.6);
+  --green-50: #30e60b;
+  --green-60: #12bc00;
+  --green-70: #058b00;
+  --green-80: #006504;
+  --green-90: #003706;
+  --orange-50: #ff9400;
+  --purple-70: #6200a4;
+  --red-50: #ff0039;
+  --red-50-a10: rgba(255, 0, 57, 0.1);
+  --red-50-a30: rgba(255, 0, 57, 0.3);
+  --red-60: #d70022;
+  --red-70: #a4000f;
+  --red-80: #5a0002;
+  --red-90: #3e0200;
+  --yellow-10: #ffff98;
+  --yellow-50: #ffe900;
+  --yellow-60: #d7b600;
+  --yellow-60-a30: rgba(215, 182, 0, 0.3);
+  --yellow-70: #a47f00;
+  --yellow-80: #715100;
+  --yellow-90: #3e2800;
+
+  /* https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/themes/addons/dark/manifest.json */
+  --dark-frame: #1c1b22;
+  --dark-icons: rgb(251,251,254);
+  --dark-ntp-background: #2A2A2E;
+  --dark-ntp-text: rgb(251, 251, 254);
+  --dark-popup: rgb(66,65,77);
+  --dark-popup-border: rgb(82,82,94);
+  --dark-popup-text: rgb(251,251,254);
+  --dark-sidebar: #38383D;
+  --dark-sidebar-text: rgb(249, 249, 250);
+  --dark-sidebar-border: rgba(255, 255, 255, 0.1);
+  --dark-tab-background-text: #fbfbfe;
+  --dark-tab-line: transparent;
+  --dark-toolbar: rgb(43,42,51);
+  --dark-toolbar-bottom-separator: hsl(240, 5%, 5%);
+  --dark-toolbar-field: rgb(28,27,34);
+  --dark-toolbar-field-border: transparent;
+  --dark-toolbar-field-separator: #5F6670;
+  --dark-toolbar-field-text: rgb(251,251,254);
+
+  /* https://searchfox.org/mozilla-central/rev/35873cfc312a6285f54aa5e4ec2d4ab911157522/browser/themes/shared/tabs.inc.css#24 */
+  --tab-loading-fill: #0A84FF;
+
+  --focus-outline-color: #0061E0; /* https://searchfox.org/mozilla-central/rev/f60e5304300b286376664b25143cdc6b38a0f0d7/browser/themes/shared/browser-shared.css#124 */
+  --focus-outline-color-a40: #0061E066; /* 40% alpha */
+
+
+  --bg-color: var(--grey-10);
+  --text-color: var(--grey-90);
 }
-/*Light Theme configurations*/
-@media (prefers-color-scheme: light) {
-  :root{
-    --context-menu-background-color-default: #F7F7F7;
-	--throbber-color: var(--tab-text-regular);
-    --favicon-default-color: #000000;
-    --scrollbar-foreground: #8d8d8d;
-    --sidebar-background-color-default: #F7F7F7;
-    --subpanel-icon-filter: invert(100%) brightness(0%);
-    --tab-active-background: #437EB438;
-    --tab-background-shadow: var(--tab-text-regular,#0000009E);
-    --tab-sidebar-border-default-color: #B8B8B8;
-    --tab-closebox-background-default: #C5C5C5;
-    --tab-hover-active-background: #FFFFFF54;
-    --tab-hover-background:#0000000F;
-    --tab-text-active-shadow: transparent;
+
+:link {
+  color: var(--in-content-link-color);
+}
+:visited {
+  color: var(--in-content-link-color-visited);
+}
+
+:link:hover,
+:visited:hover {
+  color: var(--in-content-link-color-hover);
+}
+
+:link:active,
+:visited:active {
+  color: var(--in-content-link-color-active);
+}
+
+textarea,
+input {
+  background: var(--in-content-box-background);
+  border: thin solid var(--in-content-box-border-color-mixed);
+  color: var(--in-content-text-color);
+}
+textarea:hover,
+input:hover {
+  border-color: var(--in-content-border-hover-mixed);
+}
+textarea:focus,
+input:focus {
+  border-color: var(--in-content-border-focus);
+  box-shadow: 0 0 0 1px var(--in-content-border-active),
+              0 0 0 4px var(--in-content-border-active-shadow);
+}
+button,
+select {
+  background: var(--in-content-button-background-mixed);
+  border: 0 none transparent;
+  color: var(--in-content-text-color);
+}
+button:hover,
+select:hover {
+  background: var(--in-content-button-background-hover-mixed);
+}
+button:focus,
+select:focus {
+  background: var(--in-content-button-background-active-mixed);
+  box-shadow: 0 0 0 1px var(--in-content-border-active),
+              0 0 0 4px var(--in-content-border-active-shadow);
+}
+option {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+option:active,
+option:focus {
+  background: var(--in-content-item-selected);
+}
+option:hover {
+  background: var(--in-content-item-hover-mixed);
+}
+
+fieldset,
+hr {
+  border: thin solid var(--in-content-box-border-color-mixed);
+}
+
+hr {
+  border-width: thin 0 0 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.sidebar,
+  :root:not(.sidebar) {
+    /* https://hg.mozilla.org/mozilla-central/raw-file/tip/toolkit/themes/shared/in-content/common.inc.css */
+    --in-content-page-background: #2A2A2E /* rgb(42, 42, 46) */;
+    --in-content-page-color: rgb(249, 249, 250);
+    --in-content-text-color: var(--in-content-page-color);
+    --in-content-deemphasized-text: var(--grey-40);
+    --in-content-box-background: #202023;
+    --in-content-box-background-hover: /* rgba(249,249,250,0.15) */ rgb(calc((42 * 0.85) + (249 * 0.15)), calc((42 * 0.85) + (249 * 0.15)), calc((46 * 0.85) + (250 * 0.15)));
+    --in-content-box-background-active: /*rgba(249,249,250,0.2) */ rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
+    --in-content-box-background-odd: rgba(249,249,250,0.05);
+    --in-content-box-info-background: rgba(249,249,250,0.15);
+
+    --in-content-border-color: rgba(249,249,250,0.2);
+    --in-content-border-color-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
+    --in-content-border-hover: rgba(249,249,250,0.3);
+    --in-content-border-hover-mixed: rgb(calc((42 * 0.7) + (249 * 0.3)), calc((42 * 0.7) + (249 * 0.3)), calc((46 * 0.7) + (250 * 0.3)));
+    --in-content-box-border-color: rgba(249,249,250,0.2);
+    --in-content-box-border-color-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
+
+    --in-content-button-background: rgba(249,249,250,0.1);
+    --in-content-button-background-mixed: rgb(calc((42 * 0.9) + (249 * 0.1)), calc((42 * 0.9) + (249 * 0.1)), calc((46 * 0.9) + (250 * 0.1)));
+    --in-content-button-background-hover: rgba(249,249,250,0.15);
+    --in-content-button-background-hover-mixed: rgb(calc((42 * 0.85) + (249 * 0.15)), calc((42 * 0.85) + (249 * 0.15)), calc((46 * 0.85) + (250 * 0.15)));
+    --in-content-button-background-active: rgba(249,249,250,0.2);
+    --in-content-button-background-active-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
+
+    --in-content-link-color: var(--blue-40);
+    --in-content-link-color-hover: var(--blue-50);
+    --in-content-link-color-active: var(--blue-60);
+
+    --focus-outline-color-a40: #00DDFF66; /* 40% alpha */
+
+    --bg-color: var(--in-content-page-background);
+    --text-color: var(--in-content-text-color);
   }
 }
-/*Dark Theme configurations*/
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+/*****************************************
+**color schemes (modded from proton.css)**
+*****************************************/
+:root {
+  --context-menu-background-color: var(--theme-colors-popup, var(--context-menu-background-color-default));
+  --context-menu-border-color: var(--theme-colors-popup_border, var(--tab-sidebar-border-color));
+  --context-menu-list-highlight: var(--theme-colors-popup_highlight, var(--tab-hover-background));
+  --context-menu-list-text-color: var(--theme-colors-popup_text);
+  --in-content-page-background: rgb(255,255,255);
+  --toolbar-non-lwt-bgcolor: var(--in-content-page-background);
+  --toolbar-non-lwt-textcolor: var(--in-content-page-color);
+  /* linear-gradient is from https://searchfox.org/mozilla-central/rev/6338ce9f059dbcf98072ad29033f3a4327085ddb/browser/themes/shared/tabs.inc.css#599 */
+  --toolbar-non-lwt-bgimage: linear-gradient(var(--browser-selected-tab-bg, var(--non-lwt-selected-tab-background-color-proton, transparent)),
+                                             var(--browser-selected-tab-bg, var(--non-lwt-selected-tab-background-color-proton, transparent))),
+                             linear-gradient(var(--toolbar-bgcolor, transparent),
+                                             var(--toolbar-bgcolor, transparent)),
+                             var(--lwt-header-image, none);
+  --tab-like-surface: var(--theme-colors-toolbar, var(--browser-bg-active-for-header-image, var(--browser-bg-base, var(--toolbar-non-lwt-bgcolor))));
+  --tab-surface-regular: transparent;
+  --tab-surface-active-bgimage: var(--toolbar-non-lwt-bgimage);
+  --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+  --tab-text-inverted: var(--browser-bg-more-lighter, var(--toolbar-non-lwt-bgcolor));
+  --tab-text-active: var(--browser-fg-active, var(--toolbar-non-lwt-textcolor));
+  --tab-text-active-inverted: var(--toolbar-non-lwt-bgcolor);
+  --tab-border: var(--browser-border, var(--browser-bg-more-darker, var(--in-content-box-border-color-mixed)));
+  --tab-active-border-near: var(--browser-bg-active-for-header-image, var(--grey-90-a40) /* color-mix(in srgb, var(--grey-90, currentcolor) 40%, transparent) */);
+  --tab-active-border-far: var(--browser-bg-active-for-header-image, var(--grey-90-a20) /* color-mix(in srgb, var(--grey-90, currentcolor) 20%, transparent) */);
+  --tab-surface-active: var(--browser-selected-tab-bg, var(--tab-like-surface, var(--in-content-button-background-mixed)));
+  --tab-sidebar-border-color: var(--theme-colors-sidebar_border, var(--tab-sidebar-border-default-color));
+  --tab-dropmarker: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+  --throbber-color: var(--browser-loading-indicator, var(--tab-loading-fill)); /**/
+  --throbber-color-active: var(--browser-loading-indicator, var(--tab-loading-fill)); /**/
+  --tabbar-bg: var(--theme-colors-toolbar, var(--sidebar-background-color-default));
+  --tab-highlighted-glow: rgb(42, 195, 162); /* https://searchfox.org/mozilla-central/rev/74f3c420ee54001059e1850bef3be876749ff873/browser/themes/shared/tabs.inc.css#927 */
+  --multiselected-color: var(--tab-surface-active);
+}
+:root[data-user-agent*="Mac"] {
+  --non-lwt-selected-tab-background-color-proton: transparent;
+}
+
+
 @media (prefers-color-scheme: dark) {
-  :root{
-    --context-menu-background-color-default: #3B3B3B;
-    --favicon-default-color: #ffffff;
-    --scrollbar-foreground: #7d7d7d;
+  :root {
+    --context-menu-background-color-default: #3b3b3b;
     --sidebar-background-color-default: #3B3B3B;
-    --subpanel-icon-filter: invert(100%) brightness(100%);
-    --tab-active-background: #4C98D12D;
-    --tab-background-shadow: var(--tab-text-regular,#000000);
-    --tab-sidebar-border-default-color: #686868;
-    --tab-closebox-background-default: #6B6B6B;
-    --tab-hover-active-background: var(--tab-hover-background);
-	--tab-hover-background: #ffffff45;
-    --tab-text-active-shadow: #000000;
-	--throbber-color: var(--tab-text-regular);
+    --tab-highlighter: var(--browser-tab-highlighter, var(--dark-tab-line));
     --tab-highlighted-glow: rgb(84, 255, 189);
+	--tab-hover-background: #ffffff45;
+    --tab-sidebar-border-default-color: #686868;
     --toolbar-non-lwt-bgcolor: rgb(66,65,77);
   }
 }
 
+@media not (prefers-color-scheme: dark) {
+  :root {
+    --context-menu-background-color-default: #F7F7F7;
+    --tab-hover-background:#0000000F;
+    --tab-sidebar-border-default-color: #B8B8B8;
+    --sidebar-background-color-default: #F7F7F7;
+  }
 
 
-/************************
-tab-items-related theming
-************************/
-.tab .label {
-  font-size: var(--tab-font-size);
-  padding-left: var(--tab-margin-before-icon);
-  color: var(--tab-text-regular);
-  line-height: 2;
-  z-index: 1000;
+:root[color-scheme="system-color"][data-user-agent*="Linux"] {
+  --toolbar-non-lwt-textcolor: -moz-dialogtext;
+  --toolbar-non-lwt-bgcolor: -moz-dialog;
+  --in-content-box-border-color-mixed: ThreeDShadow;
 }
-.tab.active .label {
-  text-shadow: 0px 0px 2px var(--tab-text-active-shadow);
-}
-.tab .twisty{
-  position: absolute;
-  margin-left: -16px;
-}
-tab-item:not(.collapsed) tab-twisty::before {
-  background: none;
-  content: "v";
-  transform: scaleY(0.4);
-  text-align: center;
-}
-tab-closebox {
-  border-radius: 2px;
-  padding: 0px;
-  margin-right: 8px;
-  width: var(--tab-closebox-size);
-  height: var(--tab-closebox-size);
-}
-tab-closebox::after {
-  background: none;
-  content: "✕";
-  font-size: var(--tab-font-size);
-  line-height: var(--tab-closebox-size);
-  width: inherit;
-  height: inherit;
-  text-align: center;
-  color: var(--tab-text-regular);
-  margin-top: -1px;
-}
-tab-closebox:hover {
-  background: var(--tab-closebox-background);
-}
-tab-item .highlighter, 
-tab-item .counter {
-  display: none;
-}
-#dummy-favicon-size-box {
-  min-height: var(--faviconized-tab-size-script);
-  max-height: var(--faviconized-tab-size-script);
-}
-/*Do not modify to preserve non-pinned tabs icon sizes*/
-.tab:not(.pinned) .favicon {
-    --favicon-size: 17px;
-}
-tab-item.dragging {
-  opacity: 1.0 !important;
-}
-.favicon-builtin::before {
-  background: var(--tab-text, var(--favicon-default-color));
-  -webkit-mask-image: url("https://res.cloudinary.com/markr/image/upload/v1644733137/file_babuft.svg");
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-}
-tab-sound-button {
-  opacity: 1.0;
-}
-tab-sound-button::before, tab-sound-button::after{
-}
-tab-item {
-  margin-left: var(--tab-default-margin-left);
-  margin-right: var(--tab-default-margin-right);
-  margin-top: 4.75px;
-  margin-bottom: 0px;
-  transition: padding-left 0.5s ease !important;
-}
-tab-item:not(.pinned) tab-item-substance {
-  padding-left: var(--tab-item-inside-padding) !important;
-}
-tab-item tab-item-substance {
-  height: var(--tab-size);
-  border-radius: var(--tab-corner-radius);
-}
-tab-item:hover {
-  background: var(--tab-hover-background) !important;
-  border-radius: var(--tab-corner-radius);
-  opacity: 1;
-}
-tab-item.pinned {
-  border-radius: 0px !important;
-}
-tab-item.pinned:not(.faviconized) {
-  position: fixed;
-  height: var(--tab-size);
-  margin-left: var(--tab-default-margin-left) !important;
-  margin-right: var(--tab-default-margin-left) !important;
-  margin-bottom: none !important;
-  margin-top: 4px !important;
-  border-radius: var(--tab-corner-radius) !important;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-tab-item.pinned  tab-item-substance {
-  height: var(--faviconized-tab-size);
-  width: unset;
-  border-radius: 0px !important;
-  padding-left:var(--tab-item-inside-padding);
-}
-tab-item.pinned:not(.faviconized)  tab-item-substance {
-  height: var(--tab-size);
-  width: unset;
-  border-radius: var(--tab-corner-radius) !important;
+:root[color-scheme="system-color"][data-user-agent*="Linux"] #background {
+  --tabbar-bg: AppWorkspace;
 }
 
-tab-item.pinned.active  tab-item-substance {
-  height: var(--faviconized-tab-size);
-  width: unset;
+  /* we cannot know the GNOME3 "headerbar" color, so use inverted menu color instead. */
+  :root[color-scheme="system-color"][data-user-agent*="Linux"]
+    tab-item:not(.active):not(.bundled-active):not(.highlighted),
+  :root[color-scheme="system-color"][data-user-agent*="Linux"]
+    .after-tabs button,
+  :root[color-scheme="system-color"][data-user-agent*="Linux"]
+    .after-tabs [role="button"],
+  :root[color-scheme="system-color"][data-user-agent*="Linux"]
+    #subpanel-selector-anchor,
+  :root[color-scheme="system-color"][data-user-agent*="Linux"]
+    #background {
+    --toolbar-non-lwt-bgcolor: MenuText;
+    --toolbar-non-lwt-textcolor: Menu;
+    --tabbar-bg: var(--toolbar-non-lwt-bgcolor);
+    /* these colors need to redefined here to apply new --toolbar-non-lwt-textcolor */
+    --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+    --tab-text-active: var(--browser-fg-active, var(--toolbar-non-lwt-textcolor));
+    --tab-dropmarker: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+  }
 }
-tab-item.pinned.active:not(.faviconized)  tab-item-substance {
-  height: var(--tab-size);
-  border-radius: var(--tab-corner-radius) !important;
+
+
+
+
+
+/* root layout */
+:root{
+  --context-menu-list-padding-vertical: 4px;
+  --context-menu-padding: 3px 0px;
+  --scrollbar-placeholder-size: 1.2em;
+  --favicon-size: 17px;
+  --color-animation: 0s ease-out;
+  --scrollbar-placeholder-size: 10px;
+  --subpanel-header-height: 28px;
+  --subpanel-toggler-font-size: 8px;
+  --subpanel-toggler-width: 20px;
+  --tab-border-radius-size: 0.35em;
+  --tab-dropshadow-size: 0.2em;
+  --new-tab-button-anchor-size: 24px;
+  --new-tab-button-margin-right-non-hovered: 11px;
+  --new-tab-button-size: 36px;
+  --new-tab-button-margin-left: 0.65em;
+  --new-tab-button-margin-right:  0.65em;
+  --tab-margin-left: 0.65em;
+  --tab-margin-right: 0.65em;
 }
-tab-item.unread .label-content {
-  font-weight: bold;
+
+/* root container, background */
+
+:root,
+body,
+#background {
+  background-color: var(--browser-background, var(--tabbar-bg));
+  background-image: var(--browser-bg-images, none);
+  background-position: var(--browser-bg-position, left);
+  background-size: var(--browser-bg-size, auto);
+  background-repeat: repeat-y;
 }
-tab-item.active {
-  background-color: var(--tab-surface-active) !important;
-  box-shadow: 0px 2px var(--tab-shadow-radius) var(--tab-background-shadow) !important;
-  border-radius: var(--tab-corner-radius);
+:root.right,
+:root.right #background {
+  background-position: right;
 }
-tab-item.faviconized.active {
-  box-shadow: none !important;
-  outline: 2px solid var(--tab-text, var(--tab-sidebar-border-color));
+
+:root{
+  --tab-item-height: 48px;
+  --tab-item-margin: calc(var(--tab-item-height) - var(--tab-item-substance-height) - 4px);
+  --tab-item-substance-height: 32px;
+}
+/* tab bar */
+#all-tabs {
+}
+.tabs {
+}
+#tabbar {
+}
+.vbox.overflow.scrollbar-autohide {
+  box-shadow: inset 0px 11px 6px -12px var(--tab-text);
+}
+#tabbar, #tabbar-container {
+  scrollbar-color: var(--theme-colors-toolbar_bottom_separator, var(--in-content-button-background-hover-mixed))
+                   transparent;
+}
+#tabbar{
+  margin-right: 3px;
+}
+:root.left #tabbar{
+  direction: ltr;
+  overflow-x: hidden;
+}
+:root.right #tabbar{
+  direction: rtl;
+  overflow-x: hidden;
+}
+
+/* tab and tab-like items */
+tab-item:not(.faviconized) tab-item-substance {
+  margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
+  margin-right: var(--tab-margin-right);
+}
+tab-item:not(.faviconized) {
+  margin-bottom: calc(0em - var(--tab-item-margin));
+  height: var(--tab-item-height);
+}
+tab-item-substance:not(.faviconized) {
+  border-radius: var(--tab-border-radius-size);
+  z-index: auto;
+  height: var(--tab-item-substance-height);
+  margin-top: calc((var(--tab-item-height) - var(--tab-item-substance-height))/2);
+  line-height: var(--tab-item-substance-height);
+}
+tab-item:not(.faviconized).active tab-item-substance {
+  box-shadow: 0 0.2em 0.4em var(--browser-tab-highlighter, var(--tab-active-border-near)),
+              0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
+  outline: 1px solid var(--theme-colors-tab_line);
+}
+tab-item.active,
+tab-item.active:hover,
+tab-item.bundled-active,
+tab-item.bundled-active:hover,
+.mutiple-highlighted > tab-item.highlighted,
+.mutiple-highlighted > tab-item.highlighted:hover {
+  --tab-surface: var(--tab-surface-active);
+  --tab-surface-bgimage: var(--tab-surface-active-bgimage);
+  --throbber-color: var(--throbber-color-active);
+  --tab-text: var(--tab-text-active);
+  --tab-text-inverted: var(--tab-text-active-inverted);
+}
+
+tab-item:not(.active):not(.bundled-active):not(.highlighted):hover,
+tab-item:not(.active):not(.bundled-active):not(.highlighted):focus{
+  --tab-surface: var(--tab-text-regular);
+  --tab-text: var(--tab-text-regular);
+}
+tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover .background {
+  opacity: 0.15;
+}
+
+
+
+/* auto-hidden scrollbar placeholder workaround */
+:root.left #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance {
+  margin-right: var(--scrollbar-placeholder-size);
+}
+:root.right #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance {
+  margin-left: var(--scrollbar-placeholder-size);
+}
+
+
+/* Tab Background */
+
+
+tab-item .background {
+  background-color: var(--tab-surface);
+  background-image: var(--tab-surface-bgimage);
+  border-radius: var(--tab-border-radius-size);
+}
+
+/* extra focus ring for multiselected tabs https://bugzilla.mozilla.org/show_bug.cgi?id=1751807 */
+.mutiple-highlighted > tab-item.highlighted .background,
+.mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
+  outline: 1px solid var(--focus-outline-color);
+  outline-offset: -1px;
+}
+.mutiple-highlighted > tab-item.highlighted.active .background,
+.mutiple-highlighted > tab-item.highlighted.active tab-item-substance:hover .background {
+  outline-width: 2px;
   outline-offset: -2px;
 }
-tab-item.active tab-item-substance {
-  height: var(--tab-size);
-}
-tab-item.active:hover {
-  background: var(--tab-hover-active-background) !important;
-}
+
+
+
 tab-item.discarded tab-item-substance {
   opacity: 0.4;
 }
 tab-item.discarded:hover tab-item-substance {
   opacity: 0.8;
 }
-tab-item .contextual-identity-marker {
+
+
+
+/****Pinned Tabs****/
+
+/*Icon-Only Pinned Tabs*/
+:root {
+  --faviconized-tab-size: 3.4em !important;
+}
+/*Workaround - https://github.com/piroor/treestyletab/issues/1704#issuecomment-362404420*/
+#dummy-favicon-size-box {
+  min-height: calc(var(--faviconized-tab-size)/1.66666666666);
+  max-height: var(--faviconized-tab-size);
+  min-width: 3.6em !important;
+  max-width: 3.6em !important;
+}
+:root .pinned.faviconized.highlighted.active {
+}
+:root .pinned.faviconized {
   margin: 0 !important;
+}
+tab-item.pinned.faviconized tab-item-substance {
+  border-radius: var(--tab-border-radius-size);
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  margin-top: calc((var(--faviconized-tab-size) - var(--tab-item-substance-height))/2.5);
+  height: var(--tab-item-substance-height) !important;
+  width: var(--tab-item-substance-height);
+  min-width: var(--tab-item-substance-height);
+}
+tab-item.faviconized.active:not([data-drop-position]) tab-item-substance {
+  filter: drop-shadow(0 0.1em 0.15em var(--browser-tab-highlighter, var(--tab-active-border-near)));
+}
+tab-item.faviconized.active tab-item-substance .background {
+  outline: 1px solid var(--theme-colors-tab_line);
+  outline-offset: -1px;
+}
+
+/*Normal Pinned Tabs*/
+tab-item.pinned:not(.faviconized) {
+}
+
+
+
+
+/****Tab contents****/
+
+tab-item *:not(.sound-button) {
+  color: var(--tab-text);
+  display: flex;
+  line-height: 2.5em;
+}
+tab-counter.counter {
+  font-size: 10px;
+  line-height: 1;
+  border: 1px solid;
+  border-radius: 1em;
+  padding-bottom: 0.1em;
+}
+tab-counter.counter::before,
+tab-counter.counter::after {
+  margin: 0 0.2em;
+  content: "";
+}
+tab-item tab-label {
+  order: -1;
+  margin-left: 0em;
+  padding-bottom: 0.1em;
+}
+tab-twisty.twisty {
+  order: -1000 !important;
+  margin-left: -0.1em;
+}
+tab-item:not(.collapsed) tab-twisty::before {
+}
+tab-favicon:not(.faviconized).favicon-builtin.favicon-default,
+tab-item:not(.faviconized) tab-favicon.favicon {
+  order: -3;
+  margin-left: -0.3em;
+  margin-right: 0.5em;
+  min-width: var(--favicon-size);
+}
+.favicon-builtin.favicon-default {
+  margin-left: 0;
+}
+.favicon-image,
+.throbber {
+  position: absolute;
+}
+tab-item tab-sound-button {
+  order: -2;
+  margin-left: -0.2em;
+}
+
+/*Icon-Only Pinned Tabs*/
+tab-item.pinned {
+  padding: 0 !important;
+}
+tab-item.pinned tab-favicon {
+  margin-left: calc(0.65em - var(--svg-small-icon-size));
+}
+
+tab-item.faviconized {
+  --attention-marker-x-offset: calc(0px);
+  --attention-marker-y-offset: calc(0px);
+  --attention-marker-gradient: transparent;
+  --attention-marker-gradient-hover: var(--attention-marker-gradient);
+  }
+tab-item {
+}
+tab-item.faviconized.unread tab-item-substance tab-favicon::before, tab-item.attention tab-favicon::before {
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  background: #FF0000;
+  z-index: 100;
+  border-radius: 64px;
+  margin-left: 11px;
+  margin-top: -3px;
+}
+
+#blocking-screen .throbber, tab-item:not(.collapsed) .throbber {
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+}
+tab-item tab-closebox {
+  margin-right: 0.5em;
+  min-height: 18px;
+  min-width: 18px;
+  position: relative;
+}
+tab-item:not(.faviconized) tab-sound-button {
+  min-height: 18px;
+  min-width: 18px;
+}
+tab-item tab-closebox::before,
+tab-item:not(.faviconized) tab-sound-button::before {
+  border-radius: 10%;
+  content: "";
+  height: 18px;
+  width: 18px;
+  position: absolute;
+}
+tab-item:not(.faviconized)  tab-sound-button::before {
+  border-radius: 100%;
+}
+
+tab-closebox::after,
+tab-item:not(.faviconized) tab-sound-button::after {
+  background: var(--tab-text);
+  height: 14px;
+  width: 14px;
+}
+tab-closebox::after {
+  margin: 2px 0px 0px 2px;
+}
+tab-item:not(.faviconized) tab-sound-button::after {
+  margin: 2px 2px 0px 0px;
+}
+tab-item tab-closebox:hover::before,
+tab-item:not(.faviconized) tab-sound-button:hover::before {
+  background: var(--tab-text);
+  opacity: 0.1;
+}
+
+tab-item tab-closebox:active::before,
+tab-item:not(.faviconized) tab-sound-button:active::before {
+  opacity: 0.2;
+}
+
+tab-item .burster {
+  --throbber-color: var(--tab-loading-fill);
+}
+
+/* hide active tab marker and highlighter for collapsed tree */
+.highlighter::before,
+tab-item:not(.faviconized).subtree-collapsed.some-descendants-highlighted .highlighter::after,
+tab-item:not(.faviconized).subtree-collapsed.all-descendants-highlighted .highlighter::after {
+  display: none;
+}
+
+/* contextual identity marker in tabs */
+
+tab-item .contextual-identity-marker {
   position: absolute !important;
-  pointer-events: none;Full Auto-show/hide Theme
-  z-index: 0;
+  z-index: 10;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   top: 0 !important;
-  width: unset !important;
-  height: unset !important;  
+  width: 100% !important;
+  height: 100% !important;  
   opacity: 0.3;
 }
 tab-item.active .contextual-identity-marker {
@@ -301,237 +705,112 @@ tab-item.pinned .contextual-identity-marker {
 tab-item.discarded .contextual-identity-marker {    
   opacity: 0.2;
 }
-.mutiple-highlighted > tab-item.highlighted tab-item-substance::after {
-  background: var(--multiselected-color);
-  bottom: 0;
-  content: " ";
-  display: block;
-  left: 0;
-  opacity: var(--multiselected-color-opacity);
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 10;
-}
-
-/* show more-highlighter like as tree */
-tab-item:not(.faviconized) .highlighter::after {
-   top: calc(var(--tab-highlighter-size) * 2);
-}
-tab-item[data-child-ids].subtree-collapsed.highlighted.some-descendants-highlighted .highlighter::after {
-  width: calc(var(--tab-highlighter-size) * 2);
-}
-
-/* Loading icon of Tabs
-:root.animation.blocking-throbber #blocking-screen .throbber::before,
-:root.animation #tabbar tab-item:not(.collapsed).loading .throbber::before {
-  background-image: url("./throbber.svg");
-}
-:root.animation.simulate-svg-context-fill.blocking-throbber #blocking-screen .throbber::before,
-:root.animation.simulate-svg-context-fill #tabbar tab-item:not(.collapsed).loading .throbber::before {
-  background-image: none;
-  mask-image: url("./throbber.svg");
-}
-:root.animation #conductor-throbber {
-  background-image: url("./throbber.svg");
-}
-*/
-
-
-
-/********************
-tab container theming
-********************/
-#background {
-  background-color: var(--theme-colors-toolbar, var(--sidebar-background-color-default));
-  background-image: var(--browser-bg-images, none);
-  background-position: var(--browser-bg-position, left);
-  background-size: var(--browser-bg-size, auto);
-  background-repeat: var(--browser-bg-repeat, none);
-}
-#tabbar-container{
-  width: unset;
-}
-:root.left #tabbar {
-  direction: ltr; /*Right scrollbar*/
-  overflow-x: hidden !important;
-  scrollbar-color: var(--scrollbar-foreground) #00000000;
-  box-shadow:
-    inset 0px 11px 6px -10px #A3A3A372;
-}
-#all-tabs{
-  padding-top: 4px;
-  padding-bottom: var(--new-tab-button-margin-top-overflow);
-  width: unset !important;  
-}
-#tabbar [data-level] {
-}
-#tabbar [data-level="1"] {
-    margin-left: 20px !important;
-}
-#tabbar [data-level="2"] {
-    margin-left: 30px !important;
-}
-#tabbar [data-level="3"] {
-    margin-left: 40px !important;
-}
-#tabbar [data-level="4"] {
-    margin-left: 50px !important;
-}
-#tabbar [data-level="5"] {
-    margin-left: 60px !important;
-}
-#tabbar [data-level="6"] {
-    margin-left: 70px !important;
-}
-#tabbar [data-level="7"] {
-    margin-left: 80px !important;
-}
-#tabbar [data-level="8"] {
-    margin-left: 90px !important;
-}
-
-
 
 
 /*********************
 new tab button theming
 *********************/
-.newtab-button-box {
-  box-shadow : 0 -1px 0 var(--tab-sidebar-border-color);
-  margin-left: var(--new-tab-button-margin-left);
-  margin-right: var(--new-tab-button-margin-right);
-  margin-top: var(--new-tab-button-margin-top-overflow);
-  padding-top: calc(var(--new-tab-button-size) + 4px);
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+.after-tabs button,
+.after-tabs [role="button"] {
+  color: var(--tab-text);
+  height: var(--new-tab-button-size);  
+  line-height: var(--new-tab-button-size);
+  text-shadow: var(--tab-text-shadow);
+  --tab-surface: var(--tab-surface-regular);
+  --tab-text: var(--tab-text-regular);
+  --tab-text-shadow: var(--browser-textshadow-for-header-image, none);
+  z-index: 100;
+  border: none !important;
 }
-.newtab-button {
-  text-align: left;
-  height:var(--new-tab-button-size);
+.after-tabs button:hover,
+.after-tabs [role="button"]:hover {
+}
+.after-tabs button::before,
+.after-tabs [role="button"]::before {
+  margin-left: calc(0em - var(--new-tab-button-margin-left));
+  margin-right: calc(0em - var(--new-tab-button-margin-right));
+  background-color: var(--tab-text); 
+  content: "";
+  position: absolute;
+}
+
+.after-tabs button:hover::before,
+.after-tabs [role="button"]:hover::before {
+  margin-top: 4px;
   bottom: 0;
   left: 0;
   right: 0;
+  top: 0;
+  opacity: 0.1;
+}
+
+
+
+.newtab-button-box {
+  background-color: var(--tab-surface);
+  background-image: var(--tab-surface-bgimage);
+  box-shadow : 0 -1px 0 var(--tab-sidebar-border-color);
+  height: var(--new-tab-button-size);
+  margin-left: var(--new-tab-button-margin-left);
+  margin-right: var(--new-tab-button-margin-right);
   position: absolute;
-  margin-left: calc(0px - var(--new-tab-button-margin-left));
-  margin-right: calc(0px - var(--new-tab-button-margin-right));
-  padding-left: calc(var(--new-tab-button-margin-left) + 6px);
-  display: relative !important;
+  left: 0;
+  right: 0;
+  margin-top: var(--tab-item-margin);
 }
-.newtab-button:hover {
-  background: var(--tab-hover-background)!important;
-  opacity: 1;
+
+.newtab-button {
+  height: var(--new-tab-button-size);
+  text-align: left;
+  position: absolute;
+  width: 100%;
 }
-.newtab-button::after {
-  background: none;
-  content: "+";
-  font-family: "Times New Roman";
-  font-size: calc(2*var(--new-tab-icon-size));
-  color: var(--tab-text);
-  margin-top: calc(var(--new-tab-icon-size)/-5) !important;
+:root.simulate-svg-context-fill .newtab-button::after {
+  opacity: var(--button-opacity);
+  vertical-align: middle;
+  margin-left: calc(var(--svg-small-icon-size) - 0.6em);
 }
 .newtab-button .extra-items-container {
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  z-index: 0;
+  color: var(--tab-text);
+  justify-content:space-between;
+  padding-top: 2px;
 }
 .newtab-button .extra-items-container::before {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  color: var(--tab-text-regular);
-  vertical-align: middle;
-  line-height: var(--new-tab-button-size);
+  margin-left: calc(var(--svg-small-icon-size) + var(--favicon-size) + 0.5em - 0.3em);
   content: "New Tab";
-  font-size: var(--tab-font-size);
-  text-align: left;
-  padding-left: calc(var(--new-tab-icon-size) + var(--tab-margin-before-icon) + var(--tab-default-margin-left) + var(--tab-item-inside-padding));
-  opacity: 0.85;
-  transition: opacity var(--tab-animation: opacity) linear;
 }
 .newtab-button .extra-items-container::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  color: var(--tab-text-regular);
-  vertical-align: middle;
-  line-height: var(--new-tab-button-size);
+  opacity: 0.5;
+  margin-right: calc(0.5em + var(--tab-margin-right));
   content: "Ctrl+T";
-  font-size: var(--tab-font-size);
-  text-align: right;
-  padding-right: calc(var(--new-tab-button-anchor-size) + var(--tab-default-margin-left));
-  opacity: 0.85;
-  transition: opacity var(--collapse-animation);
-}
-.newtab-button .extra-items-container:hover::before {
-  transition: opacity var(--collapse-animation) !important;
-  opacity: 1.0 !important;
-}
-.newtab-button .extra-items-container:hover::after {
-  transition: opacity var(--collapse-animation) !important;
-  opacity: 1.0 !important;
 }
 
-/*Open new tab as..* *New Container Tab*/
-.after-tabs .newtab-action-selector-anchor,
-.after-tabs .contextual-identities-selector-anchor {
-  border: none !important;
-  padding: 0px !important;
-  max-height: var(--new-tab-button-size);
-  margin-top: var(--new-tab-button-margin-top);
-  margin-left: calc(0px - var(--new-tab-button-margin-left));
-  margin-right: calc(0px - var(--new-tab-button-margin-right));
-  position: absolute;
-  z-index: 1 !important;
-  width: var(--after-tabs-icon-size);
-  max-width: var(--new-tab-button-anchor-size) !important;
-  transition: opacity var(--collapse-animation) !important;
-}
-.after-tabs .newtab-action-selector-anchor {
-  border-right: 1px solid var(--tab-sidebar-border-color) !important;  
-}
-.after-tabs .contextual-identities-selector-anchor {
-  border-left: 1px solid var(--tab-sidebar-border-color) !important;
-}
 .newtab-action-selector-anchor:hover,
-.contextual-identities-selector-anchor:hover {
-  border: none !important;
-  background: var(--tab-hover-background);
-  width: var(--new-tab-button-anchor-size) !important;
-}
-.newtab-action-selector-anchor::after,
-.contextual-identities-selector-anchor::after {
-  background: none !important;
-  content: "▲";
-  font-size: var(--after-tabs-icon-size);
-  vertical-align: middle;
-  line-height: var(--new-tab-button-size);
-}
-.newtab-action-selector-anchor:hover::after,
-.contextual-identities-selector-anchor:hover::after {
-  background: none !important;
-  content: "▲";
-  margin-left: calc(var(--new-tab-button-anchor-size)/2 - var(--after-tabs-icon-size)/2);
-  font-size: var(--after-tabs-icon-size);
-  vertical-align: middle;
-  line-height: var(--new-tab-button-size);
-}
+.contextual-identities-selector-anchor:hover,
 .newtab-action-selector-anchor.open,
 .contextual-identities-selector-anchor.open {
-  background: var(--tab-hover-background);
-  width: var(--new-tab-button-anchor-size) !important;
+  /*can't change because background has mask icon*/
 }
-.newtab-action-selector-anchor.open::after,
-.contextual-identities-selector-anchor.open::after {
-  margin-left: calc(var(--new-tab-button-anchor-size)/2 - var(--after-tabs-icon-size)/2);
+
+.newtab-action-selector-anchor,
+.contextual-identities-selector-anchor {
+  height: var(--new-tab-button-size) !important;
+  max-height: var(--new-tab-button-size) !important;
 }
+.after-tabs .newtab-action-selector-anchor {
+  margin-left: calc(0em - var(--new-tab-button-margin-left));
+  left: 0%;
+}
+.after-tabs .contextual-identities-selector-anchor {
+  margin-right: calc(0em - var(--new-tab-button-margin-right));
+  right: 100%;
+}
+
+
+
 
 
 
@@ -569,10 +848,12 @@ sub panel theming
 }
 
 #subpanel-selector-anchor .icon{
-  filter: var(--subpanel-icon-filter);
   margin-right: 4px;
   display: flex !important;
   align-items: center !important;
+}
+#subpanel-selector-anchor.clickable > span.icon > img {
+  filter: grayscale(100%);
 }
 #subpanel-selector-anchor.clickable:hover{
   background: var(--tab-hover-background);  
@@ -585,7 +866,7 @@ sub panel theming
   cursor: default;
 }
 
-#subpanel-selector-anchor > * {
+#subpanel-selector-anchor * {
   pointer-events: none;
 }
 
@@ -633,6 +914,9 @@ sub panel theming
 
 
 
+
+
+
 /*************************
 context menu/popup theming
 *************************/
@@ -642,12 +926,16 @@ context menu/popup theming
 #tabContextMenu{
   background: var(--context-menu-background-color);
   border-color: var(--context-menu-border-color);
-  border-radius: var(--tab-corner-radius);
+  border-radius: var(--tab-border-radius-size);
   border-width: 1px ;
   border-style: solid;
   padding: var(--context-menu-padding);
   box-shadow: none !important;
   transition: none !important;
+}
+.menu-ui-marker.panel.bottom,
+.menu-ui-marker.panel.top {
+  display: none;
 }
 #newtab-action-selector li,
 #contextual-identities-selector li{
@@ -655,7 +943,7 @@ context menu/popup theming
   color: var(--context-menu-list-text-color);
 }
 #subpanel-selector li{
-  padding: 5px 27px 5px 18px !important;
+  padding: px 27px 5px 18x !important;
   color: var(--context-menu-list-text-color) !important;
 }
 #tabContextMenu li{
@@ -676,68 +964,12 @@ context menu/popup theming
 #tabContextMenu li:focus {
   background-color: var(--context-menu-list-highlight);
 }
+#contextual-identities-selector li::before,
+#newtab-action-selector li::before,
+#subpanel-selector li::before,
+#tabContextMenu li::before {
+  /*can't change since background uses masked icons*/
+}
 #contextual-identities-selector li[data-icon]{
   --icon-size: 32px;
 }
-
-
-
-
-/********************************
-Unhovered Sidebar Configurations
-*********************************/
-@media screen and (min-width: 0px) and (max-width: 53px){
-  tab-item:not(.faviconized) {
-    max-width: var(--tab-size) !important;
-  }
-  #tabbar{
-    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
-    scrollbar-width: none !important;
-  }
-  #tabbar-container {
-    width: var(--sidebar-hover-width); /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
-  }
-  #tabbar tab-item:not(.faviconized)[data-level] {
-    margin-left: var(--tab-default-margin-left) !important;
-  }
-  .tab .closebox {
-    display: none;
-  }
-  .tab .twisty {
-    position:absolute;
-    opacity: 0.0 !important;
-    margin-left:-6px;
-  }
-  tab-item:not(.faviconized) tab-item-substance {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-  }
-  .newtab-button-box{
-    width: var(--tab-size) !important;
-  }
-  .newtab-button .extra-items-container::before {
-    content: "";
-    opacity: 0.0;
-    transition: opacity var(--collapse-animation) !important;
-  }
-  .newtab-button .extra-items-container::after {
-    content: "";
-    opacity: 0.0;
-    transition: opacity var(--collapse-animation) !important;
-  }
-  .newtab-button:hover::before {
-    transition: opacity var(--collapse-animation) !important;
-    opacity: 0.0 !important;
-  }
-  .newtab-action-selector-anchor,
-  .contextual-identities-selector-anchor {
-    display: none !important;
-  }
-  #subpanel-selector-anchor .label{
-    display: none !important;
-  } 
-  #subpanel-selector-anchor .icon{
-    margin-right: 0px !important;
-  }
-}
-
