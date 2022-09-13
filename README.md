@@ -11,10 +11,9 @@ A theme created for Tree Style Tab extension on Mozilla Firefox, that tries to r
 
 
 ## Features include:
-- support tab indention (up to 8 levels) [this restriction will be removed soon since I found a workaround on the theming and can finally support the built-in auto tab-idention]
+- support tab indention 
 - support for tab-coloring based on its container
 - follows your current firefox theme
-- built to handle different Firefox Sidebar configurations (so you can still use your own mods on userChrome without having to worry on breaking things on the tree style tab, well theoretically though if these mods are just as simple as changing the width, height, background etc. since I have no idea what kind of mods you've done on your userChrome sidebar.)
 
 ## How to install:
 1. You must have [Tree Style Tab](https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/) extension installed on Firefox.
@@ -34,6 +33,7 @@ If you want to also copy the hover feature of sidebar found on Microsoft Edge, t
 
 
 ## Important Notes:
+- Linux users may encounter problems with the tab layout and margins, along with the default theme. I am still ivestigating how Firefox Linux handles browser theming as I primarily built and tested this mod on a windows machine.
 - **For now it's still in beta again, because it seems that it doesn't work properly on some (or probably most) users as there seems to be problems with the icons. I am still working on to fix some issues, both on Windows and Linux Firefox platforms. Rest assured I'll update this repo once I'm done.**
 - When pasting the code to **Extra Style Rules**, make sure to check the **"No Decorations"** on Appearance panel option as this theme doesn't go well with the built-in themes of Tree Style Tab.
 
