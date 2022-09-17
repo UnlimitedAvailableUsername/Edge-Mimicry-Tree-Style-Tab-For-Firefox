@@ -795,17 +795,19 @@ new tab button theming
   /*can't change because background has mask icon*/
 }
 
-.newtab-action-selector-anchor,
-.contextual-identities-selector-anchor {
+.after-tabs .newtab-action-selector-anchor,
+.after-tabs .contextual-identities-selector-anchor {
+  background: none;
   height: var(--new-tab-button-size) !important;
   max-height: var(--new-tab-button-size) !important;
+  z-index: 101;
+  margin-left: calc(0em + var(--new-tab-button-margin-left) - var(--new-tab-button-anchor-size));
+  margin-right: calc(0em + var(--new-tab-button-margin-right) - var(--new-tab-button-anchor-size));
 }
 .after-tabs .newtab-action-selector-anchor {
-  margin-left: calc(0em - var(--new-tab-button-margin-left));
-  left: 0%;
+  left: 100%;
 }
 .after-tabs .contextual-identities-selector-anchor {
-  margin-right: calc(0em - var(--new-tab-button-margin-right));
   right: 100%;
 }
 
