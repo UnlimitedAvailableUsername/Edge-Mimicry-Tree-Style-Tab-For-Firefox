@@ -519,9 +519,6 @@ tab-item.discarded:hover tab-item-substance {
 }
 :root .pinned.faviconized.highlighted.active {
 }
-:root .pinned.faviconized {
-  margin: 0 !important;
-}
 tab-item.pinned.faviconized tab-item-substance {
   border-radius: var(--tab-border-radius-size);
   margin-left: 0.5em;
@@ -538,6 +535,9 @@ tab-item.faviconized.active tab-item-substance .background {
   outline: 1px solid var(--theme-colors-tab_line);
   outline-offset: -1px;
 }
+.faviconized tab-favicon.favicon {
+  margin-left: -18px !important;
+}
 
 /*Normal Pinned Tabs*/
 tab-item.pinned:not(.faviconized) {
@@ -548,7 +548,7 @@ tab-item.pinned:not(.faviconized) {
 
 /****Tab contents****/
 
-tab-item *:not(.sound-button) {
+tab-item *:not(.sound-button):not(.counter):not(.faviconized) {
   color: var(--tab-text);
   display: flex;
   line-height: 2.5em;
