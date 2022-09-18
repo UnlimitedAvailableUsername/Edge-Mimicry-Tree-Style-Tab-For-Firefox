@@ -535,9 +535,6 @@ tab-item.faviconized.active tab-item-substance .background {
   outline: 1px solid var(--theme-colors-tab_line);
   outline-offset: -1px;
 }
-.faviconized tab-favicon.favicon {
-  margin-left: -18px !important;
-}
 
 /*Normal Pinned Tabs*/
 tab-item.pinned:not(.faviconized) {
@@ -548,7 +545,8 @@ tab-item.pinned:not(.faviconized) {
 
 /****Tab contents****/
 
-tab-item *:not(.sound-button):not(.counter):not(.faviconized) {
+
+tab-item *:not(.sound-button):not(.counter):not(.faviconized):not(.pinned) {
   color: var(--tab-text);
   display: flex;
   line-height: 2.5em;
@@ -599,8 +597,13 @@ tab-item tab-sound-button {
 tab-item.pinned {
   padding: 0 !important;
 }
+tab-item.pinned .closebox {
+  display: none !important;
+}
 tab-item.pinned tab-favicon {
   margin-left: calc(0.65em - var(--svg-small-icon-size));
+}
+.faviconized tab-favicon.favicon {
 }
 
 tab-item.faviconized {
@@ -609,7 +612,8 @@ tab-item.faviconized {
   --attention-marker-gradient: transparent;
   --attention-marker-gradient-hover: var(--attention-marker-gradient);
   }
-tab-item {
+tab-item.pinned.faviconized .twisty {
+  display: none !important;
 }
 tab-item.faviconized.unread tab-item-substance tab-favicon::before, tab-item.attention tab-favicon::before {
   position: absolute;
@@ -622,12 +626,13 @@ tab-item.faviconized.unread tab-item-substance tab-favicon::before, tab-item.att
   margin-top: -3px;
 }
 
+
 #blocking-screen .throbber, tab-item:not(.collapsed) .throbber {
   display: flex;
   overflow: hidden;
   position: absolute;
 }
-tab-item tab-closebox {
+tab-item:not(.faviconized):not(.pinned) tab-closebox.closebox {
   margin-right: 0.5em;
   min-height: 18px;
   min-width: 18px;
@@ -974,4 +979,58 @@ context menu/popup theming
 }
 #contextual-identities-selector li[data-icon]{
   --icon-size: 32px;
+}
+
+/**************
+hovered sidebar
+**************/
+@media screen and (min-width: 0px) and (max-width: 53px){
+  tab-item:not(.faviconized) {
+    max-width: var(--tab-size) !important;
+  }
+  #tabbar, #tabbar-container {
+    width: 266px; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
+    margin-right: 0px;
+  }
+  #tabbar tab-item:not(.faviconized)[data-level] {
+    --tab-indent: calc(var(--tab-margin-left) - 0.55em) !important;
+  }
+  .tab .closebox {
+    display: none;
+  }
+  .tab .twisty {
+    opacity: 0.0 !important;
+    margin-left:-16px;
+  }
+  tab-item:not(.faviconized) tab-item-substance {
+    padding-left: 12px !important;
+    margin-right: 4px !important;
+  }
+  .newtab-button-box{
+    width: var(--tab-size) !important;
+  }
+  .newtab-button .extra-items-container::before {
+    content: "";
+    opacity: 0.0;
+    transition: opacity var(--collapse-animation) !important;
+  }
+  .newtab-button .extra-items-container::after {
+    content: "";
+    opacity: 0.0;
+    transition: opacity var(--collapse-animation) !important;
+  }
+  .newtab-button:hover::before {
+    transition: opacity var(--collapse-animation) !important;
+    opacity: 0.0 !important;
+  }
+  .newtab-action-selector-anchor,
+  .contextual-identities-selector-anchor {
+    display: none !important;
+  }
+  #subpanel-selector-anchor .label{
+    display: none !important;
+  } 
+  #subpanel-selector-anchor .icon{
+    margin-right: 0px !important;
+  }
 }
