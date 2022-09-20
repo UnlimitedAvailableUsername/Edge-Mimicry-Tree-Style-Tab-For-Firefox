@@ -565,7 +565,6 @@ tab-counter.counter::after {
 }
 tab-item tab-label {
   order: -1;
-  margin-left: 0em;
   padding-bottom: 0.1em;
 }
 tab-twisty.twisty {
@@ -580,6 +579,7 @@ tab-item:not(.faviconized) tab-favicon.favicon {
   margin-left: -0.3em;
   margin-right: 0.5em;
   min-width: var(--favicon-size);
+  transition: margin-left 0s ;
 }
 .favicon-builtin.favicon-default {
   margin-left: 0;
@@ -782,6 +782,7 @@ new tab button theming
   color: var(--tab-text);
   justify-content:space-between;
   padding-top: 2px;
+  visibility: visible; 
 }
 .newtab-button .extra-items-container::before {
   margin-left: calc(var(--svg-small-icon-size) + var(--favicon-size) + 0.5em - 0.3em);
@@ -981,47 +982,42 @@ context menu/popup theming
   --icon-size: 32px;
 }
 
+
 /**************
 hovered sidebar
 **************/
 @media screen and (min-width: 0px) and (max-width: 53px){
   tab-item:not(.faviconized) {
-    max-width: var(--tab-size) !important;
+    max-width: 53px !important;
   }
   #tabbar, #tabbar-container {
-    width: 266px; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
+    min-width: 266px; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
     margin-right: 0px;
   }
   #tabbar tab-item:not(.faviconized)[data-level] {
-    --tab-indent: calc(var(--tab-margin-left) - 0.55em) !important;
+    --tab-indent: calc(var(--tab-margin-left) - 0.6em) !important;
   }
-  .tab .closebox {
-    display: none;
-  }
+  tab-counter.counter,
+  tab-label,
+  tab-twisty.twisty,
+  tab-closebox,
   .tab .twisty {
-    opacity: 0.0 !important;
-    margin-left:-16px;
+    display: none !important;
   }
-  tab-item:not(.faviconized) tab-item-substance {
-    padding-left: 12px !important;
-    margin-right: 4px !important;
+  tab-favicon * {
+    margin-left: calc(var(--favicon-size) - 0.3em ) !important;
+  }
+  tab-item-substance {
+    margin-right: 0.75em !important;
+    transition: padding 0s !important; 
   }
   .newtab-button-box{
-    width: var(--tab-size) !important;
+    max-width: 53px !important;
   }
-  .newtab-button .extra-items-container::before {
-    content: "";
-    opacity: 0.0;
-    transition: opacity var(--collapse-animation) !important;
-  }
+  .newtab-button .extra-items-container::before,
   .newtab-button .extra-items-container::after {
     content: "";
-    opacity: 0.0;
-    transition: opacity var(--collapse-animation) !important;
-  }
-  .newtab-button:hover::before {
-    transition: opacity var(--collapse-animation) !important;
-    opacity: 0.0 !important;
+    visibility: hidden;
   }
   .newtab-action-selector-anchor,
   .contextual-identities-selector-anchor {
@@ -1029,7 +1025,7 @@ hovered sidebar
   }
   #subpanel-selector-anchor .label{
     display: none !important;
-  } 
+  }
   #subpanel-selector-anchor .icon{
     margin-right: 0px !important;
   }
