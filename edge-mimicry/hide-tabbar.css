@@ -1,20 +1,17 @@
-/* hides the native tabs */
+/* hides the native tabs without changing height */
 #main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
   opacity: 0;
   pointer-events: none;
 }
-#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
-    visibility: collapse !important;
-}
 
+/* adjust toolbar position to make use of title bar whitespace left after hiding tabs */
 #nav-bar {
     margin-top: -28px;
 	margin-right: 182px;
 	margin-bottom: 0px;
 }
 
-.tab {
-  margin-left: 1px;
-  margin-right: 1px;
- }
- #tabbrowser-tabs { visibility: collapse !important; } 
+/* hides the tabs and changes the height of title bar */
+#tabbrowser-tabs {
+  visibility: collapse !important;
+} 

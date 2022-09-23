@@ -571,8 +571,6 @@ tab-twisty.twisty {
   order: -1000 !important;
   margin-left: -0.1em;
 }
-tab-item:not(.collapsed) tab-twisty::before {
-}
 tab-favicon:not(.faviconized).favicon-builtin.favicon-default,
 tab-item:not(.faviconized) tab-favicon.favicon {
   order: -3;
@@ -591,6 +589,11 @@ tab-item:not(.faviconized) tab-favicon.favicon {
 tab-item tab-sound-button {
   order: -2;
   margin-left: -0.2em;
+  border-radius: 100% !important;
+}
+tab-item:not(.faviconized) tab-sound-button {
+  min-height: 18px;
+  min-width: 18px;
 }
 
 /*Icon-Only Pinned Tabs*/
@@ -602,8 +605,6 @@ tab-item.pinned .closebox {
 }
 tab-item.pinned tab-favicon {
   margin-left: calc(0.65em - var(--svg-small-icon-size));
-}
-.faviconized tab-favicon.favicon {
 }
 
 tab-item.faviconized {
@@ -632,43 +633,40 @@ tab-item.faviconized.unread tab-item-substance tab-favicon::before, tab-item.att
   overflow: hidden;
   position: absolute;
 }
-tab-item:not(.faviconized):not(.pinned) tab-closebox.closebox {
+tab-closebox {
   margin-right: 0.5em;
   min-height: 18px;
   min-width: 18px;
   position: relative;
-}
-tab-item:not(.faviconized) tab-sound-button {
-  min-height: 18px;
-  min-width: 18px;
-}
-tab-item tab-closebox::before,
-tab-item:not(.faviconized) tab-sound-button::before {
   border-radius: 10%;
+}
+tab-closebox::before {
+  content: "";
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  border-radius: 10%;
+}
+tab-item:not(.faviconized) tab-sound-button::before {
+  border-radius: 100%;
   content: "";
   height: 18px;
   width: 18px;
   position: absolute;
 }
-tab-item:not(.faviconized)  tab-sound-button::before {
-  border-radius: 100%;
-}
-
 tab-closebox::after,
 tab-item:not(.faviconized) tab-sound-button::after {
   background: var(--tab-text);
   height: 14px;
   width: 14px;
+  margin: 2px 2px 0px 0px;
 }
 tab-closebox::after {
   margin: 2px 0px 0px 2px;
 }
-tab-item:not(.faviconized) tab-sound-button::after {
-  margin: 2px 2px 0px 0px;
-}
-tab-item tab-closebox:hover::before,
-tab-item:not(.faviconized) tab-sound-button:hover::before {
-  background: var(--tab-text);
+tab-closebox:hover::before,
+tab-sound-button:hover::before {
+  background: var(--tab-text) !important;
   opacity: 0.1;
 }
 
@@ -986,15 +984,14 @@ context menu/popup theming
 /**************
 hovered sidebar
 **************/
-@media screen and (min-width: 0px) and (max-width: 53px){
+@media screen and (min-width: 0px) and (max-width: 48px){
   tab-item:not(.faviconized) {
-    max-width: 53px !important;
+    max-width: 48px !important;
   }
   #tabbar, #tabbar-container {
-    min-width: 266px; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
-    margin-right: 0px;
+    min-width: 266px !important; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
   }
-  #tabbar tab-item:not(.faviconized)[data-level] {
+  #tabbar tab-item:not(.faviconized):not(.pinned)[data-level] {
     --tab-indent: calc(var(--tab-margin-left) - 0.6em) !important;
   }
   tab-counter.counter,
@@ -1004,15 +1001,39 @@ hovered sidebar
   .tab .twisty {
     display: none !important;
   }
-  tab-favicon * {
+  .favicon * {
     margin-left: calc(var(--favicon-size) - 0.3em ) !important;
   }
-  tab-item-substance {
-    margin-right: 0.75em !important;
-    transition: padding 0s !important; 
+  tab-item tab-sound-button {
+    margin-left: -1.2em;
+    background: var(--tab-surface-active);
+    opacity: 1.0;
   }
-  .newtab-button-box{
-    max-width: 53px !important;
+  tab-item:not(.faviconized) tab-sound-button {
+    min-height: 18px;
+    min-width: 18px;
+  }
+  tab-item:not(.faviconized) tab-sound-button::before {
+    content: "";
+    height: 18px;
+    width: 18px;
+    position: absolute;
+  }
+  tab-item:not(.faviconized) tab-sound-button::after {
+    background: var(--tab-text);
+    height: 14px;
+    width: 14px;
+  }
+  tab-item:not(.faviconized) tab-sound-button::after {
+    margin: 2px 2px 0px 0px;
+  }
+  tab-item:not(.faviconized) tab-sound-button:hover::before {
+    background: var(--tab-text);
+    opacity: 0.1;
+  }
+  .newtab-button-box {
+    width: 32px !important /*WTF?*/;
+    margin-left: var(--new-tab-button-margin-left);
   }
   .newtab-button .extra-items-container::before,
   .newtab-button .extra-items-container::after {
