@@ -569,18 +569,15 @@ tab-item tab-label {
 }
 tab-twisty.twisty {
   order: -1000 !important;
-  margin-left: -0.1em;
+  margin-left: -0.15em;
 }
 tab-favicon:not(.faviconized).favicon-builtin.favicon-default,
 tab-item:not(.faviconized) tab-favicon.favicon {
   order: -3;
-  margin-left: -0.3em;
+  margin-left: -0.5em;
   margin-right: 0.5em;
   min-width: var(--favicon-size);
   transition: margin-left 0s ;
-}
-.favicon-builtin.favicon-default {
-  margin-left: 0;
 }
 .favicon-image,
 .throbber {
@@ -1001,8 +998,9 @@ hovered sidebar
   .tab .twisty {
     display: none !important;
   }
-  .favicon * {
-    margin-left: calc(var(--favicon-size) - 0.3em ) !important;
+  tab-favicon:not(.faviconized).favicon-builtin.favicon-default,
+  tab-item:not(.faviconized) tab-favicon.favicon {
+    margin-left: calc(var(--favicon-size) - 0.6em ) !important;
   }
   tab-item tab-sound-button {
     margin-left: -1.2em;
