@@ -1003,24 +1003,24 @@ hovered sidebar
     margin-left: calc(var(--favicon-size) - 0.6em ) !important;
   }
   tab-item tab-sound-button {
-    margin-left: -1.2em;
+    margin-left: -2.75em;
     background: var(--tab-surface-active);
     opacity: 1.0;
   }
   tab-item:not(.faviconized) tab-sound-button {
-    min-height: 18px;
-    min-width: 18px;
+    min-height: 32px;
+    min-width: 32px;
   }
   tab-item:not(.faviconized) tab-sound-button::before {
     content: "";
-    height: 18px;
-    width: 18px;
-    position: absolute;
+    height: 32px;
+    width: 32px;
   }
   tab-item:not(.faviconized) tab-sound-button::after {
     background: var(--tab-text);
-    height: 14px;
-    width: 14px;
+    height: 24px;
+    width: 24px;
+    margin: 4px 4px 0px 0px !important;
   }
   tab-item:not(.faviconized) tab-sound-button::after {
     margin: 2px 2px 0px 0px;
