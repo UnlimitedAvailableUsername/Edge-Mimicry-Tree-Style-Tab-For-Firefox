@@ -1030,18 +1030,16 @@ hovered sidebar
     opacity: 0.1;
   }
   .newtab-button-box {
-    width: 32px !important /*WTF?*/;
+    width: 32px !important /*at the moment I can't set the margin-right to work correctly*/;
     margin-left: var(--new-tab-button-margin-left);
   }
   .newtab-button .extra-items-container::before,
-  .newtab-button .extra-items-container::after {
-    content: "";
-    visibility: hidden;
-  }
+  .newtab-button .extra-items-container::after,
   .newtab-action-selector-anchor,
   .contextual-identities-selector-anchor {
     display: none !important;
   }
+  
   #subpanel-selector-anchor .label{
     display: none !important;
   }
