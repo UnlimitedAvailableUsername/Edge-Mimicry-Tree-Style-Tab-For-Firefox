@@ -393,14 +393,10 @@ body,
   --tab-item-substance-height: 32px;
 }
 /* tab bar */
-#all-tabs {
-}
-.tabs {
-}
-#tabbar {
+#tabbar.overflow {
+  box-shadow: inset 0px 11px 6px -12px var(--tab-text);
 }
 .vbox.overflow.scrollbar-autohide {
-  box-shadow: inset 0px 11px 6px -12px var(--tab-text);
 }
 #tabbar, #tabbar-container {
   scrollbar-color: var(--theme-colors-toolbar_bottom_separator, var(--in-content-button-background-hover-mixed))
@@ -418,7 +414,11 @@ body,
   overflow-x: hidden;
 }
 
+
 /* tab and tab-like items */
+:root {
+  --visual-gap-offset: 0.5em !important;
+}
 tab-item:not(.faviconized) tab-item-substance {
   margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
   margin-right: var(--tab-margin-right);
@@ -427,6 +427,15 @@ tab-item:not(.faviconized) {
   margin-bottom: calc(0em - var(--tab-item-margin));
   height: var(--tab-item-height);
 }
+
+tab-item.pinned:not(.faviconized) {
+  z-index: -1 !important;
+}
+tab-item.pinned > tab-item-substance:not(.faviconized) {
+  margin-top: 0em !important;
+  margin-bottom: calc((var(--tab-item-height) - var(--tab-item-substance-height))/2) !important;
+}
+
 tab-item-substance:not(.faviconized) {
   border-radius: var(--tab-border-radius-size);
   z-index: auto;
@@ -473,8 +482,6 @@ tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:
 
 
 /* Tab Background */
-
-
 tab-item .background {
   background-color: var(--tab-surface);
   background-image: var(--tab-surface-bgimage);
@@ -492,7 +499,6 @@ tab-item .background {
   outline-width: 2px;
   outline-offset: -2px;
 }
-
 
 
 tab-item.discarded tab-item-substance {
