@@ -387,14 +387,13 @@ body,
   background-position: right;
 }
 
-:root{
-  --tab-item-height: 48px;
-  --tab-item-margin: calc(var(--tab-item-height) - var(--tab-item-substance-height) - 4px);
-  --tab-item-substance-height: 32px;
-}
+
 /* tab bar */
+
 #tabbar.overflow {
   box-shadow: inset 0px 11px 6px -12px var(--tab-text);
+  padding-right: 0.2em;
+  padding-bottom: var(--tab-item-margin);
 }
 .vbox.overflow.scrollbar-autohide {
 }
@@ -403,8 +402,9 @@ body,
                    transparent;
 }
 #tabbar{
-  margin-right: 3px;
+  margin-top: calc(var(--pinned-tabs-area-size));
 }
+
 :root.left #tabbar{
   direction: ltr;
   overflow-x: hidden;
@@ -415,35 +415,35 @@ body,
 }
 
 
+
 /* tab and tab-like items */
-:root {
-  --visual-gap-offset: 0.5em !important;
-}
-tab-item:not(.faviconized) tab-item-substance {
-  margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
-  margin-right: var(--tab-margin-right);
+
+:root{
+  --tab-item-height: 48px;
+  --tab-item-margin: calc(var(--tab-item-height) - var(--tab-item-substance-height) - 4px);
+  --tab-item-substance-height: 32px;
 }
 tab-item:not(.faviconized) {
-  margin-bottom: calc(0em - var(--tab-item-margin));
-  height: var(--tab-item-height);
-}
-
-tab-item.pinned:not(.faviconized) {
-  z-index: -1 !important;
-}
-tab-item.pinned > tab-item-substance:not(.faviconized) {
-  margin-top: 0em !important;
-  margin-bottom: calc((var(--tab-item-height) - var(--tab-item-substance-height))/2) !important;
-}
-
-tab-item-substance:not(.faviconized) {
-  border-radius: var(--tab-border-radius-size);
-  z-index: auto;
   height: var(--tab-item-substance-height);
-  margin-top: calc((var(--tab-item-height) - var(--tab-item-substance-height))/2);
+  margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
+  margin-right: var(--tab-margin-right);
+  border-radius: var(--tab-border-radius-size);
+  margin-bottom: -4px;
+}
+tab-item:not(.faviconized):not(.collapsed) {
+  margin-top: calc(var(--tab-item-substance-height)/4);
+}
+tab-item.pinned:not(.faviconized) {
+  top: calc(var(--tabbar-top-area-size) + var(--pinned-position-top));
+}
+tab-item:not(.faviconized) > tab-item-substance {
+  z-index: auto;
+  margin-left: 0em !important;
+  margin-right: 0em;
+  padding-right: 0.5em;
   line-height: var(--tab-item-substance-height);
 }
-tab-item:not(.faviconized).active tab-item-substance {
+tab-item:not(.faviconized).active {
   box-shadow: 0 0.2em 0.4em var(--browser-tab-highlighter, var(--tab-active-border-near)),
               0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
   outline: 1px solid var(--theme-colors-tab_line);
@@ -460,7 +460,6 @@ tab-item.bundled-active:hover,
   --tab-text: var(--tab-text-active);
   --tab-text-inverted: var(--tab-text-active-inverted);
 }
-
 tab-item:not(.active):not(.bundled-active):not(.highlighted):hover,
 tab-item:not(.active):not(.bundled-active):not(.highlighted):focus{
   --tab-surface: var(--tab-text-regular);
@@ -514,25 +513,27 @@ tab-item.discarded:hover tab-item-substance {
 
 /*Icon-Only Pinned Tabs*/
 :root {
-  --faviconized-tab-size: 3.4em !important;
+  --faviconized-tab-size: 48px !important;
 }
 /*Workaround - https://github.com/piroor/treestyletab/issues/1704#issuecomment-362404420*/
 #dummy-favicon-size-box {
-  min-height: calc(var(--faviconized-tab-size)/1.66666666666);
+  min-height: calc(var(--faviconized-tab-size)/2);
   max-height: var(--faviconized-tab-size);
-  min-width: 3.6em !important;
-  max-width: 3.6em !important;
+  min-width: var(--faviconized-tab-size) !important;
+  max-width: var(--faviconized-tab-size) !important;
 }
-:root .pinned.faviconized.highlighted.active {
+tab-item.faviconized {
+  outline: 1px solid transparent; /**debug purposes only**/
 }
-tab-item.pinned.faviconized tab-item-substance {
+tab-item.faviconized tab-item-substance {
   border-radius: var(--tab-border-radius-size);
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  margin-top: calc((var(--faviconized-tab-size) - var(--tab-item-substance-height))/2.5);
+  margin-left: var(--tab-margin-left) !important;
+  margin-right: 0em !important;
+  margin-top: calc(var(--tab-margin-left)/2) !important;
+  margin-bottom: 0em !important;
   height: var(--tab-item-substance-height) !important;
-  width: var(--tab-item-substance-height);
-  min-width: var(--tab-item-substance-height);
+  width: var(--tab-item-substance-height) !important;
+  padding: 0 !important;
 }
 tab-item.faviconized.active:not([data-drop-position]) tab-item-substance {
   filter: drop-shadow(0 0.1em 0.15em var(--browser-tab-highlighter, var(--tab-active-border-near)));
@@ -542,20 +543,14 @@ tab-item.faviconized.active tab-item-substance .background {
   outline-offset: -1px;
 }
 
-/*Normal Pinned Tabs*/
-tab-item.pinned:not(.faviconized) {
-}
-
-
 
 
 /****Tab contents****/
 
-
 tab-item *:not(.sound-button):not(.counter):not(.faviconized):not(.pinned) {
   color: var(--tab-text);
   display: flex;
-  line-height: 2.5em;
+  height: var(--tab-item-substance-height);
 }
 tab-counter.counter {
   font-size: 10px;
@@ -563,6 +558,7 @@ tab-counter.counter {
   border: 1px solid;
   border-radius: 1em;
   padding-bottom: 0.1em;
+  margin-left: 0.3em;
 }
 tab-counter.counter::before,
 tab-counter.counter::after {
@@ -580,10 +576,9 @@ tab-twisty.twisty {
 tab-favicon:not(.faviconized).favicon-builtin.favicon-default,
 tab-item:not(.faviconized) tab-favicon.favicon {
   order: -3;
-  margin-left: -0.5em;
+  margin-left: -0.2em;
   margin-right: 0.5em;
   min-width: var(--favicon-size);
-  transition: margin-left 0s ;
 }
 .favicon-image,
 .throbber {
@@ -599,25 +594,28 @@ tab-item:not(.faviconized) tab-sound-button {
   min-width: 18px;
 }
 
-/*Icon-Only Pinned Tabs*/
-tab-item.pinned {
-  padding: 0 !important;
-}
-tab-item.pinned .closebox {
+/*Pinned Tabs*/
+tab-item.pinned .closebox,
+tab-item.pinned .twisty {
   display: none !important;
 }
-tab-item.pinned tab-favicon {
-  margin-left: calc(0.65em - var(--svg-small-icon-size));
+tab-item:not(.faviconized).pinned > tab-item-substance > tab-favicon:not(.faviconized).favicon-builtin.favicon-default,
+tab-item:not(.faviconized).pinned > tab-item-substance > tab-favicon.favicon {
+  margin-left: calc(var(--favicon-size) - 0.3em);
 }
 
+/*Icon-Only Pinned Tabs*/
+tab-item.faviconized {
+  padding: 0 !important;
+}
+tab-item.faviconized tab-favicon {
+  margin-left: calc(var(--favicon-size) - 0.6em) !important;
+}
 tab-item.faviconized {
   --attention-marker-x-offset: calc(0px);
   --attention-marker-y-offset: calc(0px);
   --attention-marker-gradient: transparent;
   --attention-marker-gradient-hover: var(--attention-marker-gradient);
-  }
-tab-item.pinned.faviconized .twisty {
-  display: none !important;
 }
 tab-item.faviconized.unread tab-item-substance tab-favicon::before, tab-item.attention tab-favicon::before {
   position: absolute;
@@ -637,11 +635,11 @@ tab-item.faviconized.unread tab-item-substance tab-favicon::before, tab-item.att
   position: absolute;
 }
 tab-closebox {
-  margin-right: 0.5em;
   min-height: 18px;
   min-width: 18px;
   position: relative;
   border-radius: 10%;
+  top: calc(calc(var(--tab-item-substance-height) - 18px)/2);
 }
 tab-closebox::before {
   content: "";
@@ -812,10 +810,10 @@ new tab button theming
   margin-right: calc(0em + var(--new-tab-button-margin-right) - var(--new-tab-button-anchor-size));
 }
 .after-tabs .newtab-action-selector-anchor {
-  left: 100%;
+  right: 100%;
 }
 .after-tabs .contextual-identities-selector-anchor {
-  right: 100%;
+  left: 100%;
 }
 
 
@@ -988,14 +986,14 @@ context menu/popup theming
 hovered sidebar
 **************/
 @media screen and (min-width: 0px) and (max-width: 48px){
-  tab-item:not(.faviconized) {
-    max-width: 48px !important;
-  }
-  #tabbar, #tabbar-container {
+  #tabbar-container {
     min-width: 266px !important; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
   }
   #tabbar tab-item:not(.faviconized):not(.pinned)[data-level] {
-    --tab-indent: calc(var(--tab-margin-left) - 0.6em) !important;
+    --tab-indent: 0em !important;
+  }
+  tab-item:not(.faviconized) {
+    width: var(--tab-item-substance-height);
   }
   tab-counter.counter,
   tab-label,
@@ -1036,8 +1034,10 @@ hovered sidebar
     opacity: 0.1;
   }
   .newtab-button-box {
-    width: 32px !important /*at the moment I can't set the margin-right to work correctly*/;
+    width: 100%;
     margin-left: var(--new-tab-button-margin-left);
+    margin-right: var(--new-tab-button-margin-right);
+
   }
   .newtab-button .extra-items-container::before,
   .newtab-button .extra-items-container::after,
