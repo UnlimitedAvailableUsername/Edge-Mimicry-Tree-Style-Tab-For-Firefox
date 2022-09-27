@@ -48,7 +48,6 @@
   --in-content-button-background-hover-mixed: rgb(calc((249 * 0.8) + (12 * 0.2)), calc((249 * 0.8) + (12 * 0.2)), calc((250 * 0.8) + (13 * 0.2)));
   --in-content-button-background-active: var(--grey-90-a30);
   --in-content-button-background-active-mixed: rgb(calc((249 * 0.7) + (12 * 0.3)), calc((249 * 0.7) + (12 * 0.3)), calc((250 * 0.7) + (13 * 0.3)));
-
   --blue-40: #45a1ff;
   --blue-40-a10: rgb(69, 161, 255, 0.1);
   --blue-50: #0a84ff;
@@ -115,11 +114,8 @@
 
   /* https://searchfox.org/mozilla-central/rev/35873cfc312a6285f54aa5e4ec2d4ab911157522/browser/themes/shared/tabs.inc.css#24 */
   --tab-loading-fill: #0A84FF;
-
   --focus-outline-color: #0061E0; /* https://searchfox.org/mozilla-central/rev/f60e5304300b286376664b25143cdc6b38a0f0d7/browser/themes/shared/browser-shared.css#124 */
   --focus-outline-color-a40: #0061E066; /* 40% alpha */
-
-
   --bg-color: var(--grey-10);
   --text-color: var(--grey-90);
 }
@@ -207,49 +203,27 @@ hr {
     --in-content-box-background-active: /*rgba(249,249,250,0.2) */ rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
     --in-content-box-background-odd: rgba(249,249,250,0.05);
     --in-content-box-info-background: rgba(249,249,250,0.15);
-
     --in-content-border-color: rgba(249,249,250,0.2);
     --in-content-border-color-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
     --in-content-border-hover: rgba(249,249,250,0.3);
     --in-content-border-hover-mixed: rgb(calc((42 * 0.7) + (249 * 0.3)), calc((42 * 0.7) + (249 * 0.3)), calc((46 * 0.7) + (250 * 0.3)));
     --in-content-box-border-color: rgba(249,249,250,0.2);
     --in-content-box-border-color-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
-
     --in-content-button-background: rgba(249,249,250,0.1);
     --in-content-button-background-mixed: rgb(calc((42 * 0.9) + (249 * 0.1)), calc((42 * 0.9) + (249 * 0.1)), calc((46 * 0.9) + (250 * 0.1)));
     --in-content-button-background-hover: rgba(249,249,250,0.15);
     --in-content-button-background-hover-mixed: rgb(calc((42 * 0.85) + (249 * 0.15)), calc((42 * 0.85) + (249 * 0.15)), calc((46 * 0.85) + (250 * 0.15)));
     --in-content-button-background-active: rgba(249,249,250,0.2);
     --in-content-button-background-active-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
-
     --in-content-link-color: var(--blue-40);
     --in-content-link-color-hover: var(--blue-50);
     --in-content-link-color-active: var(--blue-60);
-
     --focus-outline-color-a40: #00DDFF66; /* 40% alpha */
-
     --bg-color: var(--in-content-page-background);
     --text-color: var(--in-content-text-color);
   }
 }
 
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
 
 
@@ -349,6 +323,7 @@ hr {
 
 
 
+
 /* root layout */
 :root{
   --context-menu-list-padding-vertical: 4px;
@@ -372,7 +347,6 @@ hr {
 }
 
 /* root container, background */
-
 :root,
 body,
 #background {
@@ -393,9 +367,6 @@ body,
 #tabbar.overflow {
   box-shadow: inset 0px 11px 6px -12px var(--tab-text);
   padding-right: 0.2em;
-  padding-bottom: var(--tab-item-margin);
-}
-.vbox.overflow.scrollbar-autohide {
 }
 #tabbar, #tabbar-container {
   scrollbar-color: var(--theme-colors-toolbar_bottom_separator, var(--in-content-button-background-hover-mixed))
@@ -403,6 +374,7 @@ body,
 }
 #tabbar{
   margin-top: calc(var(--pinned-tabs-area-size));
+  padding-bottom: var(--tab-item-margin);
 }
 
 :root.left #tabbar{
@@ -437,7 +409,6 @@ tab-item.pinned:not(.faviconized) {
   top: calc(var(--tabbar-top-area-size) + var(--pinned-position-top));
 }
 tab-item:not(.faviconized) > tab-item-substance {
-  z-index: auto;
   margin-left: 0em !important;
   margin-right: 0em;
   padding-right: 0.5em;
@@ -757,10 +728,10 @@ new tab button theming
   height: var(--new-tab-button-size);
   margin-left: var(--new-tab-button-margin-left);
   margin-right: var(--new-tab-button-margin-right);
+  margin-top: var(--tab-item-margin);
   position: absolute;
   left: 0;
   right: 0;
-  margin-top: var(--tab-item-margin);
 }
 
 .newtab-button {
@@ -769,15 +740,15 @@ new tab button theming
   position: absolute;
   width: 100%;
 }
-:root.simulate-svg-context-fill .newtab-button::after {
+.newtab-button::after {
   opacity: var(--button-opacity);
   vertical-align: middle;
   margin-left: calc(var(--svg-small-icon-size) - 0.6em);
 }
 .newtab-button .extra-items-container {
-  bottom: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
   color: var(--tab-text);
   justify-content:space-between;
   padding-top: 2px;
@@ -793,8 +764,6 @@ new tab button theming
   content: "Ctrl+T";
 }
 
-.newtab-action-selector-anchor:hover,
-.contextual-identities-selector-anchor:hover,
 .newtab-action-selector-anchor.open,
 .contextual-identities-selector-anchor.open {
   /*can't change because background has mask icon*/
@@ -806,8 +775,8 @@ new tab button theming
   height: var(--new-tab-button-size) !important;
   max-height: var(--new-tab-button-size) !important;
   z-index: 101;
-  margin-left: calc(0em + var(--new-tab-button-margin-left) - var(--new-tab-button-anchor-size));
-  margin-right: calc(0em + var(--new-tab-button-margin-right) - var(--new-tab-button-anchor-size));
+  margin-left: calc(0em - var(--new-tab-button-margin-left));
+  margin-right: 2em !important;
 }
 .after-tabs .newtab-action-selector-anchor {
   right: 100%;
@@ -815,8 +784,6 @@ new tab button theming
 .after-tabs .contextual-identities-selector-anchor {
   left: 100%;
 }
-
-
 
 
 
@@ -923,7 +890,6 @@ sub panel theming
 
 
 
-
 /*************************
 context menu/popup theming
 *************************/
@@ -987,7 +953,7 @@ hovered sidebar
 **************/
 @media screen and (min-width: 0px) and (max-width: 48px){
   #tabbar-container {
-    min-width: 266px !important; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
+    min-width: 258px !important; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
   }
   #tabbar tab-item:not(.faviconized):not(.pinned)[data-level] {
     --tab-indent: 0em !important;
@@ -1034,10 +1000,7 @@ hovered sidebar
     opacity: 0.1;
   }
   .newtab-button-box {
-    width: 100%;
-    margin-left: var(--new-tab-button-margin-left);
-    margin-right: var(--new-tab-button-margin-right);
-
+    width: 12.5%;
   }
   .newtab-button .extra-items-container::before,
   .newtab-button .extra-items-container::after,
