@@ -3,7 +3,7 @@ See the above repository for updates as well as full license text. */
 
 #sidebar-box{
   --sidebar-width: 48px;
-  --sidebar-hover-width: 258px;
+  --sidebar-hover-width: calc(var(--sidebar-width)*5);
   --autohide-sidebar-delay: 200ms; /* Delay before hiding the sidebar */
   position: relative;
   min-width: var(--sidebar-width) !important;
