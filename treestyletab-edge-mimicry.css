@@ -474,7 +474,6 @@ tab-item .background {
   outline-offset: -2px;
 }
 
-
 tab-item.discarded tab-item-substance {
   opacity: 0.4;
 }
@@ -500,8 +499,8 @@ tab-item.faviconized tab-item-substance {
   border-radius: var(--tab-border-radius-size);
   top: calc(var(--tab-margin-left)) !important;
   left: var(--tab-margin-left) !important;
-  height: var(--tab-item-substance-height) !important;
-  width: var(--tab-item-substance-height) !important;
+  max-height: var(--tab-item-substance-height) !important;
+  max-width: var(--tab-item-substance-height) !important;
   padding: 0 !important;
 }
 tab-item.faviconized.active:not([data-drop-position]) tab-item-substance {
@@ -697,7 +696,8 @@ tab-item.faviconized {
   --attention-marker-gradient: transparent;
   --attention-marker-gradient-hover: var(--attention-marker-gradient);
 }
-tab-item.faviconized.unread tab-item-substance tab-favicon::before, tab-item.attention tab-favicon::before {
+tab-item.faviconized.unread tab-item-substance tab-favicon::before,
+tab-item.attention tab-favicon::before {
   height: 8px;
   width: 8px;
   outline: 1px solid var(--tab-text);
@@ -862,7 +862,7 @@ Bottom Tab Bar Area
   display: relative !important;
 }
 
-#subpanel-selector-anchor .icon{
+#subpanel-selector-anchor .icon {
   margin-right: 4px;
   display: flex !important;
   align-items: center !important;
@@ -870,10 +870,10 @@ Bottom Tab Bar Area
 #subpanel-selector-anchor.clickable > span.icon > img {
   filter: grayscale(100%);
 }
-#subpanel-selector-anchor.clickable:hover{
+#subpanel-selector-anchor.clickable:hover {
   background: var(--tab-hover-background);  
 }
-#subpanel-selector-anchor.clickable.open{
+#subpanel-selector-anchor.clickable.open {
   background: var(--tab-hover-background);  
 }
 
@@ -932,36 +932,25 @@ Bottom Tab Bar Area
 Context menu/popup theming
 *************************/
 
-#newtab-action-selector,
-#contextual-identities-selector,
-#subpanel-selector,
-#tabContextMenu{
-  background: var(--context-menu-background-color);
+.menu,
+.menu-ui {
+  box-shadow: none !important;
+  transition: none !important;
+  padding: var(--context-menu-padding);
   border-color: var(--context-menu-border-color);
   border-radius: var(--tab-border-radius-size);
   border-width: 1px ;
   border-style: solid;
-  padding: var(--context-menu-padding);
-  box-shadow: none !important;
-  transition: none !important;
+  --menu-ui-background-color: var(--context-menu-background-color);
+  --menu-ui-text-color: var(--tab-text);
+  --menu-ui-background-color-active: var(--tab-text);
+  --menu-ui-text-color-active: var(--tab-text);
 }
 .menu-ui-marker.panel.bottom,
 .menu-ui-marker.panel.top {
   display: none;
 }
-#newtab-action-selector li,
-#contextual-identities-selector li{
-  padding: 5px 27px 5px 32px!important;
-  color: var(--context-menu-list-text-color);
-}
-#subpanel-selector li{
-  padding: px 27px 5px 18x !important;
-  color: var(--context-menu-list-text-color) !important;
-}
-#tabContextMenu li{
-  padding: 5px 27px 5px 12px !important;
-  color: var(--context-menu-list-text-color) !important;
-}
+
 #tabContextMenu li.separator {
   padding: 0px 0px !important;
   margin: 2px 12px !important;
@@ -974,18 +963,96 @@ Context menu/popup theming
 #newtab-action-selector li:focus,
 #subpanel-selector li:focus,
 #tabContextMenu li:focus {
-  background-color: var(--context-menu-list-highlight);
+  background-color: #00000000 !important;
 }
-#contextual-identities-selector li::before,
-#newtab-action-selector li::before,
-#subpanel-selector li::before,
-#tabContextMenu li::before {
-  /*can't change since background uses masked icons*/
+.menu li,
+.menu-ui.panel li {
+  height: 28px;
+  line-height: 28px;
+  min-width: 128px;
+  padding: 0;
 }
-#contextual-identities-selector li[data-icon]{
-  --icon-size: 32px;
+ul:not(#subpanel-selector).menu li,
+ul:not(#subpanel-selector).menu-ui.panel li {
+  padding: 0 0 0 calc(var(--favicon-size) + 1em);
+}
+ul.menu li.hover::before,
+ul:not(#subpanel-selector).menu-ui.panel li.hover::before,
+#subpanel-selector li.radio.hover::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: inherit;
+}
+ul.menu li.hover:hover::before,
+ul:not(#subpanel-selector).menu-ui.panel li.hover:hover::before,
+#subpanel-selector li.radio.hover:hover::after {
+  background: var(--tab-text);
+  opacity: 0.15;
+}
+#newtab-action-selector .icon {
+  height: 28px;
+  max-height: 28px !important;
 }
 
+:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog {
+  border-radius: calc(var(--tab-border-radius-size)*1.75);
+  padding: 0em;
+  max-width: 100%;
+  min-width: 152px;
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog::before {
+  display: inline-block;
+  content: "Close Tabs?";
+  font-size: 130%;
+  font-weight: 600;
+  padding-left: 1.15em;
+  margin-top: 1em;
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog > div,
+:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog > label {
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-content {
+  padding-top: 0.5em;
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-check-label {
+  padding-bottom: 0.75em;
+  margin: 0;
+}
+
+:root:not([data-user-agent*="Linux"]) .rich-confirm-check-checkbox {
+  border: none;
+  position: absolute;
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-check-message {
+  margin-left: 24px;
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons {
+  flex-direction: row;
+  box-shadow : 0 -1px 0 var(--in-content-button-background-active);
+  background: var(--in-content-category-background-hover);
+  padding: 0.75em;
+  margin: 0;
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons button {
+  background: var(--in-content-page-background);
+  border-radius: calc(var(--tab-border-radius-size)*0.75);
+  width: 50%;
+  margin: 0.25em;
+  padding: 0.4em;
+  box-shadow: 0 0 0 1px var(--in-content-button-background-active);
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons button[title="Close tabs"] {
+  color: var(--in-content-page-background);
+  background: var(--in-content-link-color);
+}
+:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons button:hover {
+  opacity: 0.6;
+}
 
 /************************
 Hover-over sidebar layout
