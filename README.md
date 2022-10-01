@@ -25,10 +25,10 @@ A theme created for Tree Style Tab extension on Mozilla Firefox, that tries to r
 
 ## Optional userChrome.css mods
 If you want to also copy the hover feature of sidebar found on Microsoft Edge, then you can use the userChrome.css and other files included on the "edge-mimicry" folder. However, this sidebar mod will remove the resizeable feature since it uses a fixed width configuration.
-## How to install userChrome.css mods (Windows):
+## How to install userChrome.css mods:
 1. You must have **toolkit.legacyUserProfileCustomizations.stylesheets** set to **true** on the **about:config** of Firefox. If you have not, then set it and restart firefox afterwards.
-2. Launch the Run command window (Win Key + R) then enter **%appdata%**. From there, Navigate to Mozilla > Firefox > Profiles > bunch-of-random-strings-or-text-named-folder > chrome. If you cannot find the folder named "chrome", then create one.
-3. Copy-paste both **userChrome.css** and the "edge-mimicry" folder on the "chrome" folder.
+2. Go to **about:support** and find the **"Profile Directory"**. Click the **"open directory"** to navigate to your profile folder. Once you are at the profile folder, look for a folder named **"chrome"**, if it does not exist, then create one.
+3. Copy-paste both **userChrome.css** and the files inside the "edge-mimicry" folder on the "chrome" folder. (If you already have your own userChrome.css, then just copy-paste the "@import..." line on my userChrome.css to your existing userChrome.css.)
 4. Re-launch Firefox.
 
 
