@@ -833,98 +833,76 @@ Bottom Tab Bar Area
 *******************/
 
 #subpanel-header {
-  background: var(--tab-surface);
   border-top: 1px solid var(--tab-border, var(--theme-colors-sidebar_border));
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  line-height: 2;
-  margin: 0;
-  padding: 0 !important;
+  padding: 0;
+}
+#subpanel-container:not(.collapsed) #subpanel-header {
+  border-bottom: 1px solid var(--tab-border, var(--theme-colors-sidebar_border));
 }
 #subpanel-header.resizable {
   cursor: auto;
 }
 
-#subpanel-container:not(.collapsed) #subpanel-header {
-  border-bottom: 1px solid var(--tab-border, var(--theme-colors-sidebar_border));
-}
-
 #subpanel-header-main {
   height: var(--subpanel-header-height);
-  display: flex;
-  flex-grow: 1;
-  justify-content: flex-start;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-#subpanel-selector-anchor {
-  display: relative !important;
 }
 
-#subpanel-selector-anchor .icon {
+#subpanel-selector-anchor > .icon {
+  margin-left: 8px;
   margin-right: 4px;
   display: flex !important;
   align-items: center !important;
 }
-#subpanel-selector-anchor.clickable > span.icon > img {
-  filter: grayscale(100%);
+#subpanel-selector-anchor.clickable {
+  position: relative;
+  height: var(--subpanel-header-height);
+  padding: 0;
 }
-#subpanel-selector-anchor.clickable:hover {
-  background: var(--tab-hover-background);  
+#subpanel-selector-anchor.clickable::before {
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: 100%;
 }
-#subpanel-selector-anchor.clickable.open {
-  background: var(--tab-hover-background);  
+#subpanel-selector-anchor.clickable:hover::before,
+#subpanel-selector-anchor.clickable.open::before {
+  background: var(--tab-text);
+  opacity: 0.1;
 }
 
-#subpanel-selector-anchor {
+/**Subpanel Toggle Button**/
+
+#subpanel-toggler.clickable {
   cursor: default;
-}
-
-#subpanel-selector-anchor * {
-  pointer-events: none;
-}
-
-#subpanel-selector-anchor span.icon > img,
-#subpanel-selector span.icon > img {
-  height: 1em;
-  max-height: 1em;
-  max-width: 1em;
-  width: 1em;
-}
-
-#subpanel-selector-anchor span.icon > img:not([src]) {
-  display: none;
-}
-
-#subpanel-selector span.icon > :not([src]) {
-  visibility: hidden;
-}
-
-#subpanel-selector span.icon {
-  margin-right: 0.25em;
-}
-
-#subpanel-toggler {
-  cursor: default;
-  padding: 0 0;
+  padding: 0;
+  height: var(--subpanel-header-height);
   width: var(--subpanel-toggler-width) !important;
 }
-#subpanel-toggler::before{
-  margin: 0 0 0 0;
-  font-size: var(--subpanel-toggler-font-size);
-  margin-left: calc((var(--subpanel-toggler-width) / 2) - (var(--subpanel-toggler-font-size) / 2));
+#subpanel-toggler.clickable::before{
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  margin: 0;
 }
-#subpanel-toggler.clickable:hover {
-  background: var(--tab-hover-background);  
+#subpanel-toggler.clickable:hover::before {
+  background: var(--tab-text);
+  opacity: 0.1;
 }
 
-#subpanel-toggler.clickable::before {
-  background: none !important;  
-}
-
-#subpanel-container.collapsed #subpanel-toggler::before {
+#subpanel-toggler.clickable::after,
+#subpanel-container.collapsed #subpanel-toggler.clickable::after {
+  width: inherit;
+  text-align: center;
   content: "▲";
+  font-size: var(--subpanel-toggler-font-size);
+}
+#subpanel-container:not(.collapsed) #subpanel-toggler.clickable::after {
+  -moz-transform: scale(1, -1);
+  -webkit-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
 }
 
 
@@ -1118,10 +1096,9 @@ Hover-over sidebar layout
   
   /** Subpanel/Bottom Tabbar **/
   
-  #subpanel-selector-anchor .label{
+  #subpanel-selector-toggler,
+  #subpanel-selector-anchor .label,
+  #subpanel-selector-anchor::after {
     display: none !important;
-  }
-  #subpanel-selector-anchor .icon{
-    margin-right: 0px !important;
   }
 }
