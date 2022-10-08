@@ -1,9 +1,3 @@
-/*
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-*/
-
 :root {
   /* https://hg.mozilla.org/mozilla-central/raw-file/tip/toolkit/themes/shared/in-content/common.inc.css */
   --in-content-page-color: var(--grey-90);
@@ -181,15 +175,6 @@ option:hover {
   background: var(--in-content-item-hover-mixed);
 }
 
-fieldset,
-hr {
-  border: thin solid var(--in-content-box-border-color-mixed);
-}
-
-hr {
-  border-width: thin 0 0 0;
-}
-
 @media (prefers-color-scheme: dark) {
   :root.sidebar,
   :root:not(.sidebar) {
@@ -223,8 +208,6 @@ hr {
     --text-color: var(--in-content-text-color);
   }
 }
-
-
 
 
 /*****************************************
@@ -266,8 +249,6 @@ hr {
 :root[data-user-agent*="Mac"] {
   --non-lwt-selected-tab-background-color-proton: transparent;
 }
-
-
 @media (prefers-color-scheme: dark) {
   :root {
     --context-menu-background-color-default: #3b3b3b;
@@ -279,7 +260,6 @@ hr {
     --toolbar-non-lwt-bgcolor: rgb(66,65,77);
   }
 }
-
 @media not (prefers-color-scheme: dark) {
   :root {
     --context-menu-background-color-default: #F7F7F7;
@@ -287,8 +267,6 @@ hr {
     --tab-sidebar-border-default-color: #B8B8B8;
     --sidebar-background-color-default: #F7F7F7;
   }
-
-
 :root[color-scheme="system-color"][data-user-agent*="Linux"] {
   --toolbar-non-lwt-textcolor: -moz-dialogtext;
   --toolbar-non-lwt-bgcolor: -moz-dialog;
@@ -320,10 +298,6 @@ hr {
 }
 
 
-
-
-
-
 /***************
 Main body layout
 ****************/
@@ -347,6 +321,12 @@ Main body layout
   --new-tab-button-margin-right:  0.65em;
   --tab-margin-left: 0.65em;
   --tab-margin-right: 0.65em;
+  --tab-dropmarker-size: 2px;
+  --tab-item-margin: 4px;
+  --tab-item-substance-height: 32px;
+  overflow-x: hidden !important;
+  overflow-y: hidden;
+  scrollbar-color: var(--theme-colors-toolbar_bottom_separator, var(--in-content-button-background-hover-mixed)) transparent;
 }
 
 /** Container background **/
@@ -365,13 +345,15 @@ body,
   background-position: right;
 }
 
-
 /*******
 Tab Bar
 ********/
 
-:root {
-  overflow-x: hidden !important;
+:root.have-pinned-tabs {
+  --visual-gap-offset: 0.5em !important;
+}
+#tabbar {
+  transition: none;
 }
 :root.left #tabbar {
   direction: ltr;
@@ -380,14 +362,21 @@ Tab Bar
   direction: rtl;
 }
 #tabbar.overflow {
-  box-shadow: inset 0px 11px 6px -12px var(--tab-text);
+  --after-tabs-area-size: calc(32px + 5px) !important;
+  display: inline;
   padding-right: 0.2em;
-  --after-tabs-area-size: calc(32px + 5px);
-  scrollbar-color: var(--theme-colors-toolbar_bottom_separator, var(--in-content-button-background-hover-mixed)) transparent;
+  bottom: calc(var(--after-tabs-area-size) + var(--tabbar-bottom-area-size));
 }
-#all-tabs {
-  margin-top: 4px;
-  margin-bottom: 6px;
+:root.have-pinned-tabs > body > #tabbar-container > #tabbar::before {
+  content: "" !important;
+  position: sticky;
+  display: block;
+  top: 0;
+  opacity: 0.25 !important;
+  height: 1px !important;
+  width: calc(100% - 1.5em);
+  margin-left: 0.75em;
+  background-color: var(--tab-text); !important;
 }
 
 
@@ -395,22 +384,20 @@ Tab Bar
 Tab Items
 *********/
 
-:root{
-  --tab-item-height: 48px;
-  --tab-item-margin: calc(calc(var(--tab-item-height) - var(--tab-item-substance-height))/4);
-  --tab-item-substance-height: 32px;
-}
 tab-item:not(.faviconized) {
   height: var(--tab-item-substance-height);
   margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
   margin-right: var(--tab-margin-right);
   border-radius: var(--tab-border-radius-size) !important;
 }
-tab-item:not(.faviconized):not(.collapsed) {
-  margin-top: var(--tab-item-margin);
+tab-item.pinned + tab-item:not(.collapsed) {
+  margin-top: 0.5em;
 }
-tab-item.pinned:not(.faviconized) {
-  top: calc(var(--tabbar-top-area-size) + var(--pinned-position-top));
+tab-item:not(.faviconized):not(.collapsed) {
+  margin-bottom: var(--tab-item-margin);
+}
+tab-item:not(.pinned):last-of-type {
+  margin-bottom: 0.5em;
 }
 tab-item:not(.faviconized) > tab-item-substance {
   margin-left: 0em !important;
@@ -418,10 +405,13 @@ tab-item:not(.faviconized) > tab-item-substance {
   padding-right: 0.5em;
   line-height: var(--tab-item-substance-height);
 }
-tab-item:not(.faviconized).active {
-  box-shadow: 0 0.2em 0.4em var(--browser-tab-highlighter, var(--tab-active-border-near)),
-              0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
+tab-item:not(.faviconized):not(.pinned).active,
+tab-item.pinned:not(.faviconized).in-visible-area.active {
+  box-shadow: 0 0.2em 0.4em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
   outline: 1px solid var(--theme-colors-tab_line);
+}
+tab-item.bundled-active {
+  box-shadow: 0 0em 0.2em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
 }
 tab-item.active,
 tab-item.active:hover,
@@ -443,14 +433,16 @@ tab-item:not(.active):not(.bundled-active):not(.highlighted):focus{
 tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover .background {
   opacity: 0.15;
 }
+tab-item.dragging {
+  opacity: 1.0 !important;
+}
 
 /** auto-hidden scrollbar placeholder workaround **/
 
-:root.left #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance {
-  margin-right: var(--scrollbar-placeholder-size);
-}
+:root.left #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance,
 :root.right #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance {
   margin-left: var(--scrollbar-placeholder-size);
+  margin-right: var(--scrollbar-placeholder-size);
 }
 
 /** Tab Background **/
@@ -460,8 +452,6 @@ tab-item .background {
   background-image: var(--tab-surface-bgimage);
   border-radius: var(--tab-border-radius-size);
 }
-
-/** extra focus ring for multiselected tabs https://bugzilla.mozilla.org/show_bug.cgi?id=1751807 **/
 
 .mutiple-highlighted > tab-item.highlighted .background,
 .mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
@@ -473,7 +463,9 @@ tab-item .background {
   outline-width: 2px;
   outline-offset: -2px;
 }
-
+tab-item[data-drop-position="self"] tab-item-substance {
+  border-radius: var(--tab-border-radius-size);
+}
 tab-item.discarded tab-item-substance {
   opacity: 0.4;
 }
@@ -493,6 +485,7 @@ tab-item.discarded:hover tab-item-substance {
   min-height: calc(var(--faviconized-tab-size) * 0.57125) !important;
 }
 tab-item.faviconized {
+  top: var(--pinned-position-top);
   outline: 1px solid rgba(0,0,0,0); /**debug purposes only**/
 }
 tab-item.faviconized tab-item-substance {
@@ -561,15 +554,14 @@ tab-item:not(.faviconized) tab-favicon.favicon {
   position: absolute;
 }
 tab-item:not(.faviconized) tab-closebox {
-  min-height: 18px;
-  min-width: 18px;
-  position: relative;
-  top: calc(calc(var(--tab-item-substance-height) - 18px)/2);
+  min-width: 18px !important; /*do not remove*/
+  align-items: center;
+  justify-content: center;
 }
 tab-item:not(.faviconized) tab-closebox::before,
 tab-item:not(.faviconized) tab-closebox::after {
-  border-radius: 15% !important;
   position: absolute;
+  border-radius: 15%;
   content: "";
 }
 tab-item:not(.faviconized) tab-closebox::before {
@@ -579,7 +571,6 @@ tab-item:not(.faviconized) tab-closebox::before {
 tab-item:not(.faviconized) tab-closebox::after {
   height: 14px;
   width: 14px;
-  margin: 2px 0px 0px 2px;
 }
 
 tab-item:not(.faviconized) tab-sound-button {
@@ -791,6 +782,9 @@ New tab button area
   right: 0;
   justify-content:space-between;
 }
+#tabbar-container > .after-tabs > .newtab-button-box > .newtab-button > .extra-items-container {
+  margin-right: calc(1.25em + var(--tab-margin-right));
+}
 .newtab-button .extra-items-container::before {
   content: "New tab";
 }
@@ -950,12 +944,11 @@ Context menu/popup theming
   min-width: 128px;
   padding: 0;
 }
-ul:not(#subpanel-selector).menu li,
-ul:not(#subpanel-selector).menu-ui.panel li {
+ul:not(#subpanel-selector).menu-ui {
   padding: 0 0 0 calc(var(--favicon-size) + 1em);
 }
 ul.menu li.hover::before,
-ul:not(#subpanel-selector).menu-ui.panel li.hover::before,
+ul:not(#subpanel-selector).menu-ui li::before,
 #subpanel-selector li.radio.hover::after {
   content: "";
   display: inline-block;
@@ -965,7 +958,7 @@ ul:not(#subpanel-selector).menu-ui.panel li.hover::before,
   height: inherit;
 }
 ul.menu li.hover:hover::before,
-ul:not(#subpanel-selector).menu-ui.panel li.hover:hover::before,
+ul:not(#subpanel-selector).menu-ui li:hover::before,
 #subpanel-selector li.radio.hover:hover::after {
   background: var(--tab-text);
   opacity: 0.15;
@@ -973,6 +966,10 @@ ul:not(#subpanel-selector).menu-ui.panel li.hover:hover::before,
 #newtab-action-selector .icon {
   height: 28px;
   max-height: 28px !important;
+}
+
+#subpanel-selector.menu-ui > li > .icon {
+  margin-left: 1.5em;
 }
 
 :root:not([data-user-agent*="Linux"]) .rich-confirm-dialog {
