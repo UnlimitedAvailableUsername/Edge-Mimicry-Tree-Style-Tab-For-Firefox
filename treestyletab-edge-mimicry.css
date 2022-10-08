@@ -1044,6 +1044,9 @@ Hover-over sidebar layout
   #tabbar-container {
     min-width: 258px !important; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
   }
+  :root.have-pinned-tabs > body > #tabbar-container > #tabbar::before {
+    width: calc(48px - 1.5em);
+  }
       
   /** Tab items **/
   
