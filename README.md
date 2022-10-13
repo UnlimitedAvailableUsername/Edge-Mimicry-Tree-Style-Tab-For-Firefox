@@ -1,12 +1,12 @@
 # Edge Mimicry - Tree Style Tab Theme (Beta)
 A theme created for Tree Style Tab extension on Mozilla Firefox, that tries to replicate the vertical tab user interface of Microsoft Edge Browser
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/81744148/154884867-e68a3464-cc64-4e65-bea1-b84822579d46.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/81744148/195548478-496328c6-9169-4ce3-a1f9-afb0e11769d9.gif)
 
 ## Previews:
 ![ss-01](previews/SS-01.png) ![ss-02](previews/SS-02.png)
-![ss-05](previews/SS-05.png) ![ss-06](previews/SS-06.png)
-![ss-06](previews/SS-07.png) ![ss-07](previews/SS-08.png)
+![ss-05](previews/SS-03.png) ![ss-06](previews/SS-04.png)
+![ss-06](previews/SS-05.png) ![ss-07](previews/SS-06.png)
 
 
 
