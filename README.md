@@ -24,6 +24,9 @@ A theme created for Tree Style Tab extension on Mozilla Firefox, that tries to r
 6. Close then open the sidebar to restart the tree style tab extension and to be able to load the theme correctly. Alternatively, you can also disable then enable the extension for it to properly load the css codes (and probably to reset the script handling for the pinned tabs, because there seems to be a problem with the pinned tabs layout when in "icons only" mode.)  
 
 ## Optional userChrome.css mods
+
+![2022-10-13 17-05-56](https://user-images.githubusercontent.com/81744148/195555236-32e7c37e-0112-4ac8-8614-328a8db02acf.gif)
+
 If you want to also copy the hover feature of sidebar found on Microsoft Edge, then you can use the userChrome.css and other files included on the "edge-mimicry" folder. However, this sidebar mod will remove the resizeable feature since it uses a fixed width configuration.
 ## How to install userChrome.css mods:
 1. You must have **toolkit.legacyUserProfileCustomizations.stylesheets** set to **true** on the **about:config** of Firefox. If you have not, then set it and restart firefox afterwards.
