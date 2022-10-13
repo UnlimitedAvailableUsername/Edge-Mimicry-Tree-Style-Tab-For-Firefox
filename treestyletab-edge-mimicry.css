@@ -303,8 +303,6 @@ Main body layout
 ****************/
 
 :root{
-  --context-menu-list-padding-vertical: 4px;
-  --context-menu-padding: 3px 0px;
   --scrollbar-placeholder-size: 1.2em;
   --favicon-size: 16px;
   --color-animation: 0s ease-out;
@@ -314,8 +312,6 @@ Main body layout
   --subpanel-toggler-width: 20px;
   --tab-border-radius-size: 0.35em;
   --tab-dropshadow-size: 0.2em;
-  --new-tab-button-anchor-size: 24px;
-  --new-tab-button-margin-right-non-hovered: 11px;
   --new-tab-button-size: 36px;
   --new-tab-button-margin-left: 0.65em;
   --new-tab-button-margin-right:  0.65em;
@@ -379,7 +375,7 @@ Tab Bar
   background-color: var(--tab-text); !important;
 }
 #all-tabs {
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 /********
@@ -539,11 +535,10 @@ tab-twisty.twisty {
   margin-left: -0.15em;
 }
 tab-favicon:not(.faviconized).favicon-builtin.favicon-default,
-tab-item:not(.faviconized) tab-favicon.favicon {
-  margin-left: -0.2em;
-  margin-right: 0.5em;
+tab-item:not(.faviconized) tab-favicon.favicon,
+tab-item:not(.faviconized) tab-sound-button {
+  margin: 0 0.5em 0 -0.2em;
 }
-
 tab-item:not(.faviconized) tab-closebox {
   min-width: 18px !important; /*do not remove*/
   align-items: center;
@@ -566,8 +561,6 @@ tab-item:not(.faviconized) tab-closebox::after {
 tab-item:not(.faviconized) tab-sound-button {
   height: var(--tab-sound-button-background-size);
   width: var(--tab-sound-button-background-size);
-  margin-left: -0.3em;
-  margin-right: 0.5em;
 }
 tab-item:not(.faviconized) tab-sound-button::before,
 tab-item:not(.faviconized) tab-sound-button::after {
@@ -594,10 +587,9 @@ tab-sound-button:hover::before {
   background: var(--tab-text) !important;
   opacity: 0.15;
 }
-
-tab-item tab-closebox:active::before,
-tab-item:not(.faviconized) tab-sound-button:active::before {
-  opacity: 0.2;
+tab-closebox:active::before,
+tab-sound-button:active::before {
+  opacity: 0.4;
 }
 
 /**Order of Tab Contents**/
@@ -941,8 +933,6 @@ ul:not(#subpanel-selector).menu-ui li:hover::before,
 #newtab-action-selector .icon {
   min-height: 32px !important;
   margin-left: 8px;
-}
-#subpanel-selector {
 }
 #subpanel-selector.menu-ui > li > .icon {
   margin: 0em 0.5em;
