@@ -375,7 +375,7 @@ Tab Bar
   background-color: var(--tab-text); !important;
 }
 #all-tabs {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 /********
@@ -720,9 +720,8 @@ New tab button area
   left: 0;
   opacity: 0.1;
 }
-
 .after-tabs {
-  box-shadow : 0 -1px 0 var(--tab-sidebar-border-color);
+  box-shadow: inset 0 1px 0 var(--tab-sidebar-border-color);
   height: calc(32px + 5px);
   margin: 0px 0.65em 0px 0.65em;
 }
