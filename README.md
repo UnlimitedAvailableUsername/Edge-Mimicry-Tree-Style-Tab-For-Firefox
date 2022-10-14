@@ -36,6 +36,7 @@ If you want to also copy the hover feature of sidebar found on Microsoft Edge, t
 
 
 ## Important Notes:
+- **Hover Mod + Icon-Only Pinned Tabs** - When choosing both these options, the Tree Style Tab may sometimes have janky animation when hovering on the sidebar. This is a bug that cannot be fixed by simple means of CSS, since the position of pinned tabs is handled by the JavaScript. Best thing that I could find is to set the transition animation to "none".
 - Linux users may encounter problems with the tab layout and margins, along with the default theme. I am still investigating on how Firefox Linux handles browser theming since I primarily created and tested this mod on a Firefox installed on a windows machine.
 - **Still in beta, since I'm still fixing some theming issue on Linux. Rest assured I'll update this repo once I'm done.**
 - When pasting the code to **Extra Style Rules**, make sure to check the **"No Decorations"** on Appearance panel option as this theme doesn't go well with the built-in themes of Tree Style Tab.
