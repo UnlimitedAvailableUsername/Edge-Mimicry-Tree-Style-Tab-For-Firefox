@@ -5,7 +5,7 @@ See the above repository for updates as well as full license text. */
   --sidebar-width: 48px;
   --sidebar-hover-width: calc(calc(calc(var(--sidebar-width) - 0.65em) * 6) + 0.65em);
   /* If you want to adjust sidebar-hover-width, change the default number multiplied here (which is 6 - follows the number of icon-only pinned tabs) */
-  --autohide-sidebar-delay: 200ms; /* Delay before hiding the sidebar */
+  --autohide-sidebar-delay: 100ms; /* Delay before hiding the sidebar */
   position: relative;
   min-width: var(--sidebar-width) !important;
   width: var(--sidebar-width) !important;
@@ -42,7 +42,7 @@ See the above repository for updates as well as full license text. */
 }
 #sidebar:hover{
   min-width: var(--sidebar-hover-width) !important;
-  transition-delay: 500ms !important;
+  transition-delay: 250ms !important;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25) !important;
 }
 
