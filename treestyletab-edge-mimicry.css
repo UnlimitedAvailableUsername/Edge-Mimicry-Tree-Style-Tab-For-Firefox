@@ -318,7 +318,6 @@ Main body layout
   --tab-margin-left: 0.65em;
   --tab-margin-right: 0.65em;
   --tab-dropmarker-size: 2px;
-  --tab-item-margin: 4px;
   --tab-item-substance-height: 32px;
   overflow-x: hidden !important;
   overflow-y: hidden;
@@ -375,6 +374,7 @@ Tab Bar
   background-color: var(--tab-text); !important;
 }
 #all-tabs {
+  margin-top: 1px;
   margin-bottom: 4px;
 }
 
@@ -388,8 +388,8 @@ tab-item {
   margin-right: var(--tab-margin-right);
   border-radius: var(--tab-border-radius-size) !important;
 }
-tab-item:not(.faviconized):not(.collapsed) {
-  margin-top: var(--tab-item-margin);
+tab-item:not(.collapsed) {
+  margin-top: 3px;
 }
 tab-item tab-item-substance {
   margin: 0em !important;
