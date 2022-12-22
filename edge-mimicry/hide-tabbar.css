@@ -6,7 +6,7 @@
 
 /* adjust toolbar position to make use of title bar whitespace left after hiding tabs */
 #nav-bar {
-    margin-top: -28px;
+  margin-top: -36px;
 	margin-right: 182px;
 	margin-bottom: 0px;
 }
