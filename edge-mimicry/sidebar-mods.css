@@ -16,23 +16,22 @@ See the above repository for updates as well as full license text. */
   z-index:1;
 }
 
-#sidebar-title{ 
-  display: none 
+#sidebar-title { 
+  display: none !important;
 }
 #sidebar-box[positionend]{ 
-  direction: rtl 
+  direction: rtl;
 }
 #sidebar-box[positionend] > *{ 
-  direction: ltr
+  direction: ltr;
 }
 
 #sidebar-box[positionend]:-moz-locale-dir(rtl){ 
-  direction: ltr
+  direction: ltr;
 }
 #sidebar-box[positionend]:-moz-locale-dir(rtl) > *{ 
-  direction: rtl 
+  direction: rtl;
 }
-
 
 #sidebar-splitter{ 
   display: none !important;
@@ -53,10 +52,7 @@ See the above repository for updates as well as full license text. */
   transition-delay: var(--sidebar-transition-delay) !important;
   min-width: var(--sidebar-hover-width) !important;
   box-shadow: 3px 8px 6px rgba(0, 0, 0, 0.25) !important;
-}
-
-#sidebar-box:hover > #sidebar-header{
-  min-width: calc(var(--sidebar-hover-width) + 13px) !important;
+  border-right: 1px solid var(--chrome-content-separator-color) !important;
 }
 
 #sidebar-box {
@@ -83,12 +79,20 @@ See the above repository for updates as well as full license text. */
 
 #sidebar,
 #sidebar-header {
-  background-color: var(--lwt-accent-color) !important;
-  border-bottom: none !important;
   background-image: var(--lwt-additional-images);
-  background-position: auto;
   background-size: auto;
   background-repeat: no-repeat;
+}
+
+#sidebar {
+  background-color: var(--lwt-accent-color) !important;
+}
+
+#sidebar-header{
+  height: 40px !important;
+  font-size: inherit !important;
+  background-color: var(--toolbar-bgcolor) !important;
+  border-bottom: none !important;
 }
 
 #sidebar-box:not([positionend]):hover ~ #appcontent #statuspanel{ inset-inline: auto 0px !important; }
@@ -99,9 +103,13 @@ See the above repository for updates as well as full license text. */
   --sidebar-border-color: var(--chrome-content-separator-color) !important;
 }
 
+#sidebar-switcher-target {
+  padding: 2px 0px !important;
+}
+
 #sidebar-icon{
   -moz-box-ordinal-group: 0;
-  margin: 0px 4px;
+  margin: 2px 6px !important; 
   min-height: 16px !important;
   min-width: 16px !important;
 }
@@ -120,27 +128,13 @@ See the above repository for updates as well as full license text. */
   visibility: visible !important;
 }
 
-#sidebar-header{
-  height: 40px !important;
-  padding: 0em 0.75em;
-}
-
-#sidebar-header::before {
-	content: "";
-	display: inline-block;
-	height: inherit;
-	width: calc(100% + 1.5em - 4px);
-  background-color: var(--toolbar-bgcolor) !important;
-  margin-left: -0.75em;
-}
-
 #sidebar-header::after{
   content:"";
-  display: block;
-  position:absolute;
+  display: flex;
+  position: absolute;
+  top: 0;
   height: 1px;
   width: calc(var(--sidebar-width) - 16px) !important;
-  margin-top: -8px;
   background-color: var(--chrome-content-separator-color);
   transition: width 25ms linear var(--autohide-sidebar-delay) !important;
   will-change: width !important;
@@ -149,9 +143,6 @@ See the above repository for updates as well as full license text. */
 #sidebar-box:hover #sidebar-header::after{
   transition: width 50ms linear var(--autohide-sidebar-delay) !important;
   transition-delay: var(--sidebar-transition-delay) !important;
-  width: calc(var(--sidebar-hover-width) - 8px) !important;
+  width: calc(var(--sidebar-hover-width) - 16px) !important;
 }
 
-#sidebar-switcher-target{
-  margin-left: calc(0em - calc(100% + 0.75em)) !important;
-}
