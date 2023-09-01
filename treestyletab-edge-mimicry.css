@@ -369,12 +369,11 @@ Tab Bar
   top: 0;
   opacity: 0.45 !important;
   height: 1px !important;
-  width: calc(100% - 1.5em);
-  margin-left: 0.75em;
+  width: 92%;
+  left: 4%;
   background-color: var(--tab-text); !important;
 }
 #all-tabs {
-  margin-top: 1px;
   margin-bottom: 4px;
 }
 
@@ -383,8 +382,8 @@ Tab Items
 *********/
 
 tab-item {
-  height: var(--tab-item-substance-height);
-  margin-left: calc(var(--tab-margin-left) + var(--tab-indent));
+  height: var(--tab-item-substance-height) !important;
+  margin-left: calc(var(--tab-margin-left) + var(--tab-indent)) !important;
   margin-right: var(--tab-margin-right);
   border-radius: var(--tab-border-radius-size) !important;
 }
@@ -392,7 +391,7 @@ tab-item:not(.collapsed) {
   margin-top: 3px;
 }
 tab-item tab-item-substance {
-  margin: 0em !important;
+  margin: 0 !important;
   padding-right: 0.5em;
   line-height: var(--tab-item-substance-height);
 }
@@ -499,8 +498,8 @@ tab-counter.counter {
   font-size: 10px;
   line-height: 1;
   border: 1px solid;
-  border-radius: 8px;
-  padding: 0em 0.35em 0.1em 0.25em;
+  border-radius: 45%;
+  padding: 0em 0.3em;
   margin-left: 0.3em;
 }
 tab-counter.counter::before,
@@ -695,26 +694,28 @@ New tab button area
 }
 .after-tabs button:hover::before,
 .after-tabs [role="button"]:hover::before {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  height: 100%;
+  width: 100%;
   opacity: 0.1;
 }
 .after-tabs {
-  box-shadow: inset 0 1px 0 var(--tab-sidebar-border-color);
-  height: calc(32px + 5px);
-  margin: 0px 0.65em 0px 0.65em;
+  height: calc(32px + 5px) !important;
+  position: relative;
+}
+.after-tabs.vbox::before {
+  content: "" !important;
+  background: var(--tab-sidebar-border-color);
+  position: absolute;
+  top: 0;
+  left: 4%;
+  width: 92%;
+  height: 1px !important;
 }
 .newtab-button-box {
-  margin-top: 4px;
-  height: 32px;
+  height: 32px !important;
   position: absolute !important;
-  left: 0;
-  right: 0;
-}
-#tabbar-container > .after-tabs > .newtab-button-box {
-  margin: 0px -0.65em 0px -0.65em;
+  bottom: 0;
+  width: 100%;
 }
 .newtab-button {
   height: 32px;  
@@ -727,14 +728,9 @@ New tab button area
   margin-left: calc(var(--svg-small-icon-size) + 0.2em);
 }
 .newtab-button .extra-items-container {
-  margin-left: calc(var(--svg-small-icon-size) + var(--favicon-size) + 0.65em + 0.2em);
-  margin-right: calc(1em + var(--tab-margin-right));
-  left: 0;
-  right: 0;
-  justify-content:space-between;
-}
-#tabbar-container > .after-tabs > .newtab-button-box > .newtab-button > .extra-items-container {
-  margin-right: calc(1.25em + var(--tab-margin-right));
+  margin-left: calc(var(--favicon-size) + 0.65em);
+  margin-right: 0.65em;
+  justify-content: space-between;
 }
 .newtab-button .extra-items-container::before {
   content: "New tab";
@@ -747,9 +743,7 @@ New tab button area
 .after-tabs .newtab-action-selector-anchor,
 .after-tabs .contextual-identities-selector-anchor {
   position: absolute !important;
-  background: none;
   height: 100%;
-  z-index: 101;
   padding: 0;
 }
 .after-tabs .newtab-action-selector-anchor::after,
@@ -786,11 +780,9 @@ Bottom Tab Bar Area
 #subpanel-header.resizable {
   cursor: auto;
 }
-
 #subpanel-header-main {
   height: var(--subpanel-header-height);
 }
-
 #subpanel-selector-anchor > .icon {
   margin: 0 8px;
   display: flex !important;
@@ -991,7 +983,7 @@ Hover-over sidebar layout
     min-width: 258px !important; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
   }
   :root.have-pinned-tabs > body > #tabbar-container > #tabbar::before {
-    width: calc(48px - 1.5em);
+    width: calc(0.58 * 48px);
   }
       
   /** Tab items **/
@@ -1020,15 +1012,12 @@ Hover-over sidebar layout
     margin-left: -2.65em !important;
     opacity: 1.0;
     background: var(--tab-surface-active);
+    border-radius: var(--tab-border-radius-size);
   }
-  tab-item tab-sound-button::before {
-    border-radius: var(--tab-border-radius-size) !important;
-  }
-
-  /** New Tab Button **/
   
-  .after-tabs {
-    width: calc(48px - calc(var(--tab-margin-right) * 2));
+  /** New Tab Button **/
+  .after-tabs.vbox::before {
+    width: calc(0.58 * 48px);
   }
   .newtab-button::after {
     margin-left: calc(var(--tab-item-substance-height) - var(--svg-small-icon-size)) !important;
