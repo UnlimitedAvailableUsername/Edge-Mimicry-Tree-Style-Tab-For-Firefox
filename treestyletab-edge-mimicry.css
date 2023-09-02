@@ -498,7 +498,7 @@ tab-counter.counter {
   font-size: 10px;
   line-height: 1;
   border: 1px solid;
-  border-radius: 45%;
+  border-radius: 8px;
   padding: 0em 0.3em;
   margin-left: 0.3em;
 }
@@ -718,6 +718,7 @@ New tab button area
   width: 100%;
 }
 .newtab-button {
+  position: absolute;
   height: 32px;  
   line-height: 32px;
   width: 100%;
@@ -728,23 +729,27 @@ New tab button area
   margin-left: calc(var(--svg-small-icon-size) + 0.2em);
 }
 .newtab-button .extra-items-container {
-  margin-left: calc(var(--favicon-size) + 0.65em);
-  margin-right: 0.65em;
+  left: 0 !important;
+  width: 100%;
   justify-content: space-between;
+  z-index: 1;
 }
 .newtab-button .extra-items-container::before {
+  margin-left: calc(var(--svg-small-icon-size) + var(--favicon-size) + 0.2em + 0.65em);
   content: "New tab";
 }
 .newtab-button .extra-items-container::after {
+  margin-right: calc(var(--svg-small-icon-size) + 0.5em);
   opacity: 0.75;
   content: "Ctrl+T";
 }
 
-.after-tabs .newtab-action-selector-anchor,
-.after-tabs .contextual-identities-selector-anchor {
+.newtab-action-selector-anchor,
+.contextual-identities-selector-anchor {
   position: absolute !important;
   height: 100%;
-  padding: 0;
+  padding: 0 !important;
+  z-index: 10000;
 }
 .after-tabs .newtab-action-selector-anchor::after,
 .after-tabs .contextual-identities-selector-anchor::after {
