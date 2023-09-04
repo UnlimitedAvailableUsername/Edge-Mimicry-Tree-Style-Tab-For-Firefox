@@ -306,17 +306,16 @@ Main body layout
   --scrollbar-placeholder-size: 1.2em;
   --favicon-size: 16px;
   --color-animation: 0s ease-out;
+  --new-tab-button-size: 36px;
   --scrollbar-placeholder-size: 10px;
+  --separator-pinned-overflow-tabs: calc(100% - calc(var(--tab-margin-left) * 2));
   --subpanel-header-height: 28px;
   --subpanel-toggler-font-size: 8px;
   --subpanel-toggler-width: 20px;
   --tab-border-radius-size: 0.35em;
   --tab-dropshadow-size: 0.2em;
-  --new-tab-button-size: 36px;
-  --new-tab-button-margin-left: 0.65em;
-  --new-tab-button-margin-right:  0.65em;
   --tab-margin-left: 0.65em;
-  --tab-margin-right: 0.65em;
+  --tab-margin-right: var(--tab-margin-left);
   --tab-dropmarker-size: 2px;
   --tab-item-substance-height: 32px;
   overflow-x: hidden !important;
@@ -360,7 +359,7 @@ Tab Bar
   --after-tabs-area-size: calc(32px + 5px) !important;
   display: inline;
   padding-right: 0.2em;
-  bottom: calc(var(--after-tabs-area-size) + var(--tabbar-bottom-area-size));
+  bottom: var(--after-tabs-area-size);
 }
 :root.have-pinned-tabs > body > #tabbar-container > #tabbar::before {
   content: "" !important;
@@ -369,9 +368,10 @@ Tab Bar
   top: 0;
   opacity: 0.45 !important;
   height: 1px !important;
-  width: 92%;
-  left: 4%;
-  background-color: var(--tab-text); !important;
+  width: var(--separator-pinned-overflow-tabs);
+  left: var(--tab-margin-left);
+  background: var(--tab-text);
+  z-index: 10000;
 }
 #all-tabs {
   margin-bottom: 4px;
@@ -707,8 +707,8 @@ New tab button area
   background: var(--tab-sidebar-border-color);
   position: absolute;
   top: 0;
-  left: 4%;
-  width: 92%;
+  left: var(--tab-margin-left);
+  width: var(--separator-pinned-overflow-tabs);
   height: 1px !important;
 }
 .newtab-button-box {
@@ -818,6 +818,7 @@ Bottom Tab Bar Area
   height: var(--subpanel-header-height);
   width: var(--subpanel-toggler-width) !important;
 }
+#subpanel-container.collapsed #subpanel-toggler::before,
 #subpanel-toggler.clickable::before{
   content: "";
   position: absolute;
@@ -829,7 +830,6 @@ Bottom Tab Bar Area
   background: var(--tab-text);
   opacity: 0.1;
 }
-
 #subpanel-toggler.clickable::after,
 #subpanel-container.collapsed #subpanel-toggler.clickable::after {
   width: inherit;
@@ -844,7 +844,6 @@ Bottom Tab Bar Area
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
 }
-
 
 /*************************
 Context menu/popup theming
@@ -921,14 +920,6 @@ ul:not(#subpanel-selector).menu-ui li:hover::before,
   max-width: 100%;
   min-width: 152px;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog::before {
-  display: inline-block;
-  content: "Close Tabs?";
-  font-size: 130%;
-  font-weight: 600;
-  padding-left: 1.15em;
-  margin-top: 1em;
-}
 :root:not([data-user-agent*="Linux"]) .rich-confirm-dialog > div,
 :root:not([data-user-agent*="Linux"]) .rich-confirm-dialog > label {
   padding-left: 1.5em;
@@ -981,14 +972,12 @@ Hover-over sidebar layout
   /** Main body layout **/
   
   :root {
+    --separator-pinned-overflow-tabs: calc(48px - calc(var(--tab-margin-left) * 2));
     --tab-sound-button-background-size: 32px;
     --tab-sound-button-icon-size: 24px;
   }
   #tabbar-container {
     min-width: 258px !important; /*This must be set to prevent "favicons only" from wrapping around the small width of the sidebar*/
-  }
-  :root.have-pinned-tabs > body > #tabbar-container > #tabbar::before {
-    width: calc(0.58 * 48px);
   }
       
   /** Tab items **/
@@ -1021,9 +1010,7 @@ Hover-over sidebar layout
   }
   
   /** New Tab Button **/
-  .after-tabs.vbox::before {
-    width: calc(0.58 * 48px);
-  }
+  
   .newtab-button::after {
     margin-left: calc(var(--tab-item-substance-height) - var(--svg-small-icon-size)) !important;
   }
