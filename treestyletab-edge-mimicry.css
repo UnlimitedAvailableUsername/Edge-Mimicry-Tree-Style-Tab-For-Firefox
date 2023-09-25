@@ -1,4 +1,3 @@
-@import url("/resources/ui-color.css");
 :root {
   /* https://hg.mozilla.org/mozilla-central/raw-file/tip/toolkit/themes/shared/in-content/common.inc.css */
   --in-content-page-color: var(--grey-90);
@@ -106,13 +105,12 @@
   --dark-toolbar-field-border: transparent;
   --dark-toolbar-field-separator: #5F6670;
   --dark-toolbar-field-text: rgb(251,251,254);
-
-  /* https://searchfox.org/mozilla-central/rev/35873cfc312a6285f54aa5e4ec2d4ab911157522/browser/themes/shared/tabs.inc.css#24 */
   --tab-loading-fill: #0A84FF;
-  --focus-outline-color: #0061E0; /* https://searchfox.org/mozilla-central/rev/f60e5304300b286376664b25143cdc6b38a0f0d7/browser/themes/shared/browser-shared.css#124 */
+  --focus-outline-color: #0061E0;
   --focus-outline-color-a40: #0061E066; /* 40% alpha */
   --bg-color: var(--grey-10);
   --text-color: var(--grey-90);
+  
   /*** from proton.css ***/
   --context-menu-background-color: var(--theme-colors-popup, var(--context-menu-background-color-default));
   --context-menu-border-color: var(--theme-colors-popup_border, var(--tab-sidebar-border-color));
@@ -121,7 +119,6 @@
   --in-content-page-background: rgb(255,255,255);
   --toolbar-non-lwt-bgcolor: var(--in-content-page-background);
   --toolbar-non-lwt-textcolor: var(--in-content-page-color);
-  /* linear-gradient is from https://searchfox.org/mozilla-central/rev/6338ce9f059dbcf98072ad29033f3a4327085ddb/browser/themes/shared/tabs.inc.css#599 */
   --toolbar-non-lwt-bgimage: linear-gradient(var(--browser-selected-tab-bg, var(--non-lwt-selected-tab-background-color-proton, transparent)),
                                              var(--browser-selected-tab-bg, var(--non-lwt-selected-tab-background-color-proton, transparent))),
                              linear-gradient(var(--toolbar-bgcolor, transparent),
@@ -248,11 +245,11 @@ option:hover {
     #subpanel-selector-anchor,
   :root[color-scheme="system-color"][data-user-agent*="Linux"]
     #background {
-    --toolbar-non-lwt-bgcolor: MenuText;
+    --toolbar-non-lwt-bgcolor: Menu;
     --toolbar-non-lwt-textcolor: Menu;
     --tabbar-bg: var(--toolbar-non-lwt-bgcolor);
     /* these colors need to redefined here to apply new --toolbar-non-lwt-textcolor */
-    --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
+    --tab-text-regular: var(--browser-fg, var(--toolbar-textcolor));
     --tab-text-active: var(--browser-fg-active, var(--toolbar-non-lwt-textcolor));
     --tab-dropmarker: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
   }
@@ -305,9 +302,7 @@ body,
 Tab Bar
 ********/
 
-:root.have-pinned-tabs {
-  --visual-gap-offset: 4px !important;
-}
+
 #tabbar-container {
   transition: none;
 }
@@ -320,34 +315,37 @@ Tab Bar
 #tabbar.overflow {
   padding-right: 0.2em;
 }
-:root.have-pinned-tabs .tabs::before {
+:root{
+  --tabbar-margin-top: calc(var(--pinned-tabs-area-size) + var(--tab-margin-left));
+}
+:root.have-pinned-tabs #tabbar-container::before {
   content: "";
-  position: sticky;
+  position: absolute;
   display: block;
-  top: 0;
+  top: var(--tabbar-margin-top);
   opacity: 0.45 !important;
   border-top: 1px solid var(--tab-text);
   width: var(--separator-pinned-overflow-tabs) !important;
   left: var(--tab-margin-left) !important;
   z-index: 101 !important;
 }
-:root.have-pinned-tabs .tabs {
-  padding-top: 0.2em;
+#tabbar-container {
+  top: 0;
 }
-.tabs {
-  padding-bottom: 4px;
+:root, * > * {
+  --visual-gap-offset: 0.65em !important;
+}
+:root.have-pinned-tabs #tabbar {
+  margin-top: calc(var(--tabbar-margin-top) + var(--tab-margin-left));
+}
+.tabs-spacer {
+  display: none !important;
 }
 
-:root:not(.have-pinned-tabs) .tabs {
-  padding-top: 0.25em;
-}
 
 /** Tab Items **/
 
 
-#all-tabs {
-  position: relative !important;
-}
 tab-item {
   --faviconized-tab-size: 32px;
   --tab-size: 32px;
@@ -463,7 +461,6 @@ tab-item.discarded:hover tab-item-substance {
   min-height: calc(var(--tab-item-substance-height)*0.72) !important;
 }
 tab-item.faviconized {
-  --visual-gap-offset: 0.65em;
   max-width: var(--tab-size) !important;
   outline: 1px solid rgba(0,0,0,0); /**debug purposes only**/
 }
@@ -814,9 +811,7 @@ tab-item.faviconized {
 .faviconized tab-sound-button::after {
   mask-size: 85% !important;
 }
-.tabs-spacer {
-  display: none !important;
-}
+
 
 /******************
 New tab button area
@@ -1059,7 +1054,11 @@ ul:not(#subpanel-selector).menu-ui li:hover::before,
 .rich-confirm.type-common-dialog.windows.show {
   scale: 1.03;
 }
-
+.rich-confirm-dialog.windows[role="dialog"] {
+  align-self: middle;
+  max-width: 90% !important;
+  margin: 1em !important;
+}
 :root:not([data-user-agent*="Linux"]) .rich-confirm-dialog {
   border-radius: calc(var(--tab-border-radius-size)*1.75);
   padding: 0em;
