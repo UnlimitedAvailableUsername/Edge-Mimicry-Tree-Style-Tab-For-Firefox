@@ -1,220 +1,20 @@
 :root {
-  /* https://hg.mozilla.org/mozilla-central/raw-file/tip/toolkit/themes/shared/in-content/common.inc.css */
-  --in-content-page-color: var(--grey-90);
-  --in-content-page-background: var(--grey-10);
-  --in-content-text-color: var(--in-content-page-color);
-  --in-content-deemphasized-text: var(--grey-60);
-  --in-content-selected-text: #fff;
-  --in-content-box-background: #fff;
-  --in-content-box-background-hover: var(--grey-20);
-  --in-content-box-background-active: var(--grey-30);
-  --in-content-box-border-color: var(--grey-90-a30);
-  --in-content-box-border-color-mixed: rgb(calc((249 * 0.7) + (12 * 0.3)), calc((249 * 0.7) + (12 * 0.3)), calc((250 * 0.7) + (13 * 0.3)));
-  --in-content-box-info-background: var(--grey-20);
-  --in-content-item-hover: rgba(69, 161, 255, 0.2); /* blue 40 a20 */
-  --in-content-item-hover-mixed: rgb(calc((249 * 0.8) + (69 * 0.2)), calc((249 * 0.8) + (161 * 0.2)), calc((250 * 0.8) + (255 * 0.2)));
-  --in-content-item-selected: var(--blue-50);
-  --in-content-border-highlight: var(--blue-50);
-  --in-content-border-focus: var(--blue-50);
-  --in-content-border-hover: var(--grey-90-a50);
-  --in-content-border-hover-mixed: rgb(calc((249 * 0.5) + (12 * 0.5)), calc((249 * 0.5) + (12 * 0.5)), calc((250 * 0.5) + (13 * 0.5)));
-  --in-content-border-active: var(--blue-50);
-  --in-content-border-active-shadow: var(--blue-50-a30);
-  --in-content-border-invalid: var(--red-50);
-  --in-content-border-invalid-shadow: var(--red-50-a30);
-  --in-content-border-color: var(--grey-30);
-  --in-content-border-color-mixed: #d7d7db;
-  --in-content-category-outline-focus: 1px dotted var(--blue-50);
-  --in-content-category-text-selected: var(--blue-50);
-  --in-content-category-text-selected-active: var(--blue-60);
-  --in-content-category-background-hover: rgba(12,12,13,0.1);
-  --in-content-category-background-active: rgba(12,12,13,0.15);
-  --in-content-category-background-selected-hover: rgba(12,12,13,0.15);
-  --in-content-category-background-selected-active: rgba(12,12,13,0.2);
-  --in-content-tab-color: #424f5a;
-  --in-content-link-color: var(--blue-60);
-  --in-content-link-color-hover: var(--blue-70);
-  --in-content-link-color-active: var(--blue-80);
-  --in-content-link-color-visited: var(--blue-60);
-  --in-content-button-background: var(--grey-90-a10);
-  --in-content-button-background-mixed: rgb(calc((249 * 0.9) + (12 * 0.1)), calc((249 * 0.9) + (12 * 0.1)), calc((250 * 0.9) + (13 * 0.1)));
-  --in-content-button-background-hover: var(--grey-90-a20);
-  --in-content-button-background-hover-mixed: rgb(calc((249 * 0.8) + (12 * 0.2)), calc((249 * 0.8) + (12 * 0.2)), calc((250 * 0.8) + (13 * 0.2)));
-  --in-content-button-background-active: var(--grey-90-a30);
-  --in-content-button-background-active-mixed: rgb(calc((249 * 0.7) + (12 * 0.3)), calc((249 * 0.7) + (12 * 0.3)), calc((250 * 0.7) + (13 * 0.3)));
-  --blue-40: #45a1ff;
-  --blue-40-a10: rgb(69, 161, 255, 0.1);
-  --blue-50: #0a84ff;
-  --blue-50-a30: rgba(10, 132, 255, 0.3);
-  --blue-60: #0060df;
-  --blue-70: #003eaa;
-  --blue-80: #002275;
-  --grey-10: #f9f9fa;
-  --grey-10-a015: rgba(249, 249, 250, 0.015);
-  --grey-10-a20: rgba(249, 249, 250, 0.2);
-  --grey-20: #ededf0;
-  --grey-30: #d7d7db;
-  --grey-40: #b1b1b3;
-  --grey-60: #4a4a4f;
-  --grey-90: #0c0c0d;
-  --grey-90-a10: rgba(12, 12, 13, 0.1);
-  --grey-90-a11: rgba(12, 12, 13, 0.11);
-  --grey-90-a20: rgba(12, 12, 13, 0.2);
-  --grey-90-a30: rgba(12, 12, 13, 0.3);
-  --grey-90-a40: rgba(12, 12, 13, 0.4);
-  --grey-90-a50: rgba(12, 12, 13, 0.5);
-  --grey-90-a60: rgba(12, 12, 13, 0.6);
-  --green-50: #30e60b;
-  --green-60: #12bc00;
-  --green-70: #058b00;
-  --green-80: #006504;
-  --green-90: #003706;
-  --orange-50: #ff9400;
-  --purple-70: #6200a4;
-  --red-50: #ff0039;
-  --red-50-a10: rgba(255, 0, 57, 0.1);
-  --red-50-a30: rgba(255, 0, 57, 0.3);
-  --red-60: #d70022;
-  --red-70: #a4000f;
-  --red-80: #5a0002;
-  --red-90: #3e0200;
-  --yellow-10: #ffff98;
-  --yellow-50: #ffe900;
-  --yellow-60: #d7b600;
-  --yellow-60-a30: rgba(215, 182, 0, 0.3);
-  --yellow-70: #a47f00;
-  --yellow-80: #715100;
-  --yellow-90: #3e2800;
-
-  /* https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/themes/addons/dark/manifest.json */
-  --dark-frame: #1c1b22;
-  --dark-icons: rgb(251,251,254);
-  --dark-ntp-background: #2A2A2E;
-  --dark-ntp-text: rgb(251, 251, 254);
-  --dark-popup: rgb(66,65,77);
-  --dark-popup-border: rgb(82,82,94);
-  --dark-popup-text: rgb(251,251,254);
-  --dark-sidebar: #38383D;
-  --dark-sidebar-text: rgb(249, 249, 250);
-  --dark-sidebar-border: rgba(255, 255, 255, 0.1);
-  --dark-tab-background-text: #fbfbfe;
-  --dark-tab-line: transparent;
-  --dark-toolbar: rgb(43,42,51);
-  --dark-toolbar-bottom-separator: hsl(240, 5%, 5%);
-  --dark-toolbar-field: rgb(28,27,34);
-  --dark-toolbar-field-border: transparent;
-  --dark-toolbar-field-separator: #5F6670;
-  --dark-toolbar-field-text: rgb(251,251,254);
-  --tab-loading-fill: #0A84FF;
-  --focus-outline-color: #0061E0;
-  --focus-outline-color-a40: #0061E066; /* 40% alpha */
-  --bg-color: var(--grey-10);
-  --text-color: var(--grey-90);
-  
-  /*** from proton.css ***/
-  --context-menu-background-color: var(--theme-colors-popup, var(--context-menu-background-color-default));
-  --context-menu-border-color: var(--theme-colors-popup_border, var(--tab-sidebar-border-color));
-  --context-menu-list-highlight: var(--theme-colors-popup_highlight, var(--tab-hover-background));
-  --context-menu-list-text-color: var(--theme-colors-popup_text);
-  --in-content-page-background: rgb(255,255,255);
-  --toolbar-non-lwt-bgcolor: var(--in-content-page-background);
-  --toolbar-non-lwt-textcolor: var(--in-content-page-color);
-  --toolbar-non-lwt-bgimage: linear-gradient(var(--browser-selected-tab-bg, var(--non-lwt-selected-tab-background-color-proton, transparent)),
-                                             var(--browser-selected-tab-bg, var(--non-lwt-selected-tab-background-color-proton, transparent))),
-                             linear-gradient(var(--toolbar-bgcolor, transparent),
-                                             var(--toolbar-bgcolor, transparent)),
-                             var(--lwt-header-image, none);
-  --tab-like-surface: var(--theme-colors-toolbar, var(--browser-bg-active-for-header-image, var(--browser-bg-base, var(--toolbar-non-lwt-bgcolor))));
-  --tab-surface-regular: transparent;
-  --tab-surface-active-bgimage: var(--toolbar-non-lwt-bgimage);
-  --tab-text-regular: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
-  --tab-text-inverted: var(--browser-bg-more-lighter, var(--toolbar-non-lwt-bgcolor));
-  --tab-text-active: var(--browser-fg-active, var(--toolbar-non-lwt-textcolor));
-  --tab-text-active-inverted: var(--toolbar-non-lwt-bgcolor);
-  --tab-border: var(--browser-border, var(--browser-bg-more-darker, var(--in-content-box-border-color-mixed)));
-  --tab-active-border-near: var(--browser-bg-active-for-header-image, var(--grey-90-a40) /* color-mix(in srgb, var(--grey-90, currentcolor) 40%, transparent) */);
-  --tab-active-border-far: var(--browser-bg-active-for-header-image, var(--grey-90-a20) /* color-mix(in srgb, var(--grey-90, currentcolor) 20%, transparent) */);
-  --tab-surface-active: var(--browser-selected-tab-bg, var(--tab-like-surface, var(--in-content-button-background-mixed)));
-  --tab-sidebar-border-color: var(--theme-colors-sidebar_border, var(--theme-colors-toolbar_top_separator, var(--tab-sidebar-border-default-color)));
-  --tab-dropmarker: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
-  --throbber-color: var(--browser-loading-indicator, var(--tab-loading-fill)); /**/
-  --throbber-color-active: var(--browser-loading-indicator, var(--tab-loading-fill)); /**/
-  --tabbar-bg: var(--theme-colors-toolbar, var(--sidebar-background-color-default));
-  --tab-highlighted-glow: rgb(42, 195, 162); /* https://searchfox.org/mozilla-central/rev/74f3c420ee54001059e1850bef3be876749ff873/browser/themes/shared/tabs.inc.css#927 */
-  --multiselected-color: var(--tab-surface-active);
+  --tab-border-radius-size: 0.35em; /* proton */
+  --tab-dropshadow-blur: 0 !important;
+  --tab-dropshadow-padding: 0 !important;
+  --tab-closebox-offset: 0 !important;
+  --tab-closebox-negative-offset: 0 !important;
 }
 
-button,
-select {
-  background: var(--in-content-button-background-mixed);
-  border: 0 none transparent;
-  color: var(--in-content-text-color);
-}
-button:hover,
-select:hover {
-  background: var(--in-content-button-background-hover-mixed);
-}
-button:focus,
-select:focus {
-  background: var(--in-content-button-background-active-mixed);
-  box-shadow: 0 0 0 1px var(--in-content-border-active),
-              0 0 0 4px var(--in-content-border-active-shadow);
-}
-option {
-  background: var(--bg-color);
-  color: var(--text-color);
-}
-option:active,
-option:focus {
-  background: var(--in-content-item-selected);
-}
-option:hover {
-  background: var(--in-content-item-hover-mixed);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root.sidebar,
-  :root:not(.sidebar) {
-    /* https://hg.mozilla.org/mozilla-central/raw-file/tip/toolkit/themes/shared/in-content/common.inc.css */
-    --in-content-page-background: #2A2A2E /* rgb(42, 42, 46) */;
-    --in-content-page-color: rgb(249, 249, 250);
-    --in-content-text-color: var(--in-content-page-color);
-    --in-content-deemphasized-text: var(--grey-40);
-    --in-content-box-background: #202023;
-    --in-content-box-background-hover: /* rgba(249,249,250,0.15) */ rgb(calc((42 * 0.85) + (249 * 0.15)), calc((42 * 0.85) + (249 * 0.15)), calc((46 * 0.85) + (250 * 0.15)));
-    --in-content-box-background-active: /*rgba(249,249,250,0.2) */ rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
-    --in-content-box-background-odd: rgba(249,249,250,0.05);
-    --in-content-box-info-background: rgba(249,249,250,0.15);
-    --in-content-border-color: rgba(249,249,250,0.2);
-    --in-content-border-color-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
-    --in-content-border-hover: rgba(249,249,250,0.3);
-    --in-content-border-hover-mixed: rgb(calc((42 * 0.7) + (249 * 0.3)), calc((42 * 0.7) + (249 * 0.3)), calc((46 * 0.7) + (250 * 0.3)));
-    --in-content-box-border-color: rgba(249,249,250,0.2);
-    --in-content-box-border-color-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
-    --in-content-button-background: rgba(249,249,250,0.1);
-    --in-content-button-background-mixed: rgb(calc((42 * 0.9) + (249 * 0.1)), calc((42 * 0.9) + (249 * 0.1)), calc((46 * 0.9) + (250 * 0.1)));
-    --in-content-button-background-hover: rgba(249,249,250,0.15);
-    --in-content-button-background-hover-mixed: rgb(calc((42 * 0.85) + (249 * 0.15)), calc((42 * 0.85) + (249 * 0.15)), calc((46 * 0.85) + (250 * 0.15)));
-    --in-content-button-background-active: rgba(249,249,250,0.2);
-    --in-content-button-background-active-mixed: rgb(calc((42 * 0.8) + (249 * 0.2)), calc((42 * 0.8) + (249 * 0.2)), calc((46 * 0.8) + (250 * 0.2)));
-    --in-content-link-color: var(--blue-40);
-    --in-content-link-color-hover: var(--blue-50);
-    --in-content-link-color-active: var(--blue-60);
-    --focus-outline-color-a40: #00DDFF66; /* 40% alpha */
-    --bg-color: var(--in-content-page-background);
-    --text-color: var(--in-content-text-color);
-  }
-}
 @media (prefers-color-scheme: dark) {
   :root {
     --context-menu-background-color-default: #3b3b3b;
     --sidebar-background-color-default: #3B3B3B;
-    --tab-highlighter: var(--browser-tab-highlighter, var(--dark-tab-line));
-    --tab-highlighted-glow: rgb(84, 255, 189);
 	--tab-hover-background: #ffffff45;
     --tab-sidebar-border-default-color: #686868;
     --toolbar-non-lwt-bgcolor: rgb(66,65,77);
     --contextual-identity-brightness: 115%;
+    --b-top: gray;
   }
 }
 @media not (prefers-color-scheme: dark) {
@@ -224,36 +24,231 @@ option:hover {
     --tab-sidebar-border-default-color: #B8B8B8;
     --sidebar-background-color-default: #F7F7F7;
     --contextual-identity-brightness: 85%;
+    --b-top: lightgray;
   }
-:root[color-scheme="system-color"][data-user-agent*="Linux"] {
-  --toolbar-non-lwt-textcolor: -moz-dialogtext;
-  --toolbar-non-lwt-bgcolor: -moz-dialog;
-  --in-content-box-border-color-mixed: ThreeDShadow;
-}
-:root[color-scheme="system-color"][data-user-agent*="Linux"] #background {
-  --tabbar-bg: AppWorkspace;
 }
 
-  /* we cannot know the GNOME3 "headerbar" color, so use inverted menu color instead. */
-  :root[color-scheme="system-color"][data-user-agent*="Linux"]
-    tab-item:not(.active):not(.bundled-active):not(.highlighted),
-  :root[color-scheme="system-color"][data-user-agent*="Linux"]
-    .after-tabs button,
-  :root[color-scheme="system-color"][data-user-agent*="Linux"]
-    .after-tabs [role="button"],
-  :root[color-scheme="system-color"][data-user-agent*="Linux"]
-    #subpanel-selector-anchor,
-  :root[color-scheme="system-color"][data-user-agent*="Linux"]
-    #background {
-    --toolbar-non-lwt-bgcolor: Menu;
-    --toolbar-non-lwt-textcolor: Menu;
-    --tabbar-bg: var(--toolbar-non-lwt-bgcolor);
-    /* these colors need to redefined here to apply new --toolbar-non-lwt-textcolor */
-    --tab-text-regular: var(--browser-fg, var(--toolbar-textcolor));
-    --tab-text-active: var(--browser-fg-active, var(--toolbar-non-lwt-textcolor));
-    --tab-dropmarker: var(--browser-fg, var(--toolbar-non-lwt-textcolor));
-  }
+
+/** OVERRIDING PROTON.CSS **/
+
+
+tab-item-substance,
+.after-tabs button,
+.after-tabs [role="button"],
+#subpanel-selector-anchor {
+  border: unset;
+  border-width: unset;
+  position: unset;
 }
+
+tab-item,
+.after-tabs button,
+.after-tabs [role="button"],
+#subpanel-container,
+#dummy-tab-color-box {
+  --tab-surface: var(--tab-surface-regular);
+  --tab-text: var(--tab-text-regular);
+  --tab-text-shadow: var(--browser-textshadow-for-header-image, none);
+}
+tab-item-substance,
+.after-tabs button,
+.after-tabs [role="button"],
+#subpanel-container,
+#dummy-tab-color-box {
+  background: unset;
+  color: unset;
+  line-height: unset;
+  text-shadow: unset;
+}
+
+tab-item.active,
+tab-item.active:hover,
+tab-item.bundled-active,
+tab-item.bundled-active:hover,
+.mutiple-highlighted > tab-item.highlighted,
+.mutiple-highlighted > tab-item.highlighted:hover {
+  --tab-surface: var(--tab-surface-active);
+  --tab-surface-bgimage: var(--tab-surface-active-bgimage);
+  --throbber-color: var(--throbber-color-active);
+  --tab-text: var(--tab-text-active);
+  --tab-text-inverted: var(--tab-text-active-inverted);
+}
+
+tab-item:not(.active):not(.bundled-active):not(.highlighted):hover,
+.after-tabs button:hover,
+.after-tabs [role="button"]:hover,
+#subpanel-selector-anchor:hover {
+  --tab-surface: var(--tab-text-regular);
+  --tab-text: var(--tab-text-regular);
+}
+
+tab-item-substance {
+  padding: unset;
+  z-index: unset;
+}
+
+.after-tabs button,
+.after-tabs [role="button"] {
+  --tab-like-button-padding: unset !important;
+  padding: unset;
+  z-index: unset;
+}
+
+:root.left tab-item:not(.pinned) tab-item-substance,
+:root.left .after-tabs button:not([data-menu-ui]),
+:root.left .after-tabs [role="button"]:not([data-menu-ui]) {
+  padding-right: unset;
+}
+
+:root.right tab-item:not(.pinned) tab-item-substance,
+:root.right .after-tabs button:not([data-menu-ui]),
+:root.right .after-tabs [role="button"]:not([data-menu-ui]) {
+  padding-left: unset;
+}
+
+
+/* tab background */
+
+.after-tabs button::before,
+.after-tabs [role="button"]::before,
+#subpanel-selector-anchor::before {
+  content: unset;
+  display: unset;
+  position: unset;
+}
+
+tab-item .background,
+.after-tabs button:hover::before,
+.after-tabs [role="button"]:hover::before,
+#subpanel-selector-anchor:hover::before {
+  background-color: var(--tab-surface);
+  background-image: var(--tab-surface-bgimage);
+  border-radius: var(--tab-border-radius-size);
+}
+
+tab-item.faviconized .background {
+  --tab-dropshadow-padding: unset;
+}
+
+#subpanel-selector-anchor:hover::before {
+  bottom: unset;
+  left: unset;
+  right: unset;
+  top: unset;
+}
+
+tab-item.active .background,
+tab-item.active tab-item-substance:hover .background,
+tab-item.bundled-active .background,
+tab-item.bundled-active tab-item-substance:hover .background,
+.mutiple-highlighted > tab-item.highlighted .background,
+.mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
+  box-shadow: unset;
+  outline: unset;
+  outline-offset: unset;
+}
+
+tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover .background,
+.after-tabs button:hover::before,
+.after-tabs [role="button"]:hover::before,
+#subpanel-selector-anchor:hover::before {
+  opacity: unset;
+}
+.mutiple-highlighted > tab-item.highlighted .background,
+.mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
+  outline: unset;
+  outline-offset: unset;
+}
+.mutiple-highlighted > tab-item.highlighted.active .background,
+.mutiple-highlighted > tab-item.highlighted.active tab-item-substance:hover .background {
+  outline-width: unset;
+  outline-offset: unset;
+}
+
+
+tab-item * {
+  color: unset;
+}
+
+tab-item tab-label {
+  margin-left: unset;
+  padding: unset;
+}
+
+tab-item tab-favicon {
+  margin-bottom: unset;
+  margin-top: unset;
+}
+
+tab-item tab-closebox {
+  background: unset;
+  border: unset;
+  margin: unset;
+  padding: unset;
+}
+
+tab-item tab-closebox::before,
+tab-item:not(.faviconized) tab-sound-button::before {
+  border-radius: unset;
+  content: unset;
+  display: unset;
+  height: unset;
+  margin-left: unset;
+  margin-top: unset;
+  width: unset;
+  position: unset;
+}
+
+tab-item tab-closebox:hover::before,
+tab-item:not(.faviconized) tab-sound-button:hover::before {
+  background: unset;
+  box-shadow: unset;
+  opacity: unset;
+}
+
+tab-item tab-closebox:active::before,
+tab-item:not(.faviconized) tab-sound-button:active::before {
+  opacity: unset;
+}
+
+tab-item.active tab-closebox:hover::before,
+tab-item:not(.faviconized).active tab-sound-button:hover::before {
+  background: unset;
+}
+
+tab-item tab-closebox::after {
+  position: unset;
+}
+
+tab-item .burster {
+  --throbber-color: var(--tab-loading-fill);
+}
+
+.highlighter::before,
+tab-item:not(.faviconized).subtree-collapsed.some-descendants-highlighted .highlighter::after,
+tab-item:not(.faviconized).subtree-collapsed.all-descendants-highlighted .highlighter::after {
+  display: unset;
+}
+
+:root.left tab-item:not(.faviconized) .contextual-identity-marker {
+  right: unset;
+}
+
+:root.right tab-item:not(.faviconized) .contextual-identity-marker {
+  left: unset;
+}
+
+tab-item.faviconized .contextual-identity-marker {
+  bottom: unset;
+  top: unset;
+}
+
+.after-tabs button.newtab-action-selector-anchor::after,
+.after-tabs button.contextual-identities-selector-anchor::after {
+    margin-top: unset;
+}
+
+
 
 /***************
 Main body layout
@@ -281,6 +276,10 @@ Main body layout
   --newtab-margin-left: calc(var(--svg-small-icon-size) - 0.45em);
   overflow: hidden;
 }
+* {
+  font-family: Arial, sans-serif !important;
+}
+
 
 /** Container background **/
 
@@ -306,6 +305,15 @@ Tab Bar
 #tabbar-container {
   transition: none;
 }
+#tabbar {
+  padding: var(--tab-margin-left);
+}
+#tabbar > div {
+  margin: calc(0px - var(--tab-margin-left));
+}
+.tabs {
+  overflow: visible;
+}
 :root.left #tabbar {
   direction: ltr;
 }
@@ -328,12 +336,6 @@ Tab Bar
   width: var(--separator-pinned-overflow-tabs) !important;
   left: var(--tab-margin-left) !important;
   z-index: 101 !important;
-}
-#tabbar-container {
-  top: 0;
-}
-:root, * > * {
-  --visual-gap-offset: 0.65em !important;
 }
 :root.have-pinned-tabs #tabbar {
   margin-top: calc(var(--tabbar-margin-top) + var(--tab-margin-left));
@@ -377,17 +379,19 @@ tab-item-substance .contextual-identity-marker {
   border-radius: var(--tab-border-radius-size);
 }
 
-tab-item.active > tab-item-substance,
-.pinned.in-visible-area.active {
-  box-shadow: 0 0.2em 0.4em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
+tab-item.active tab-item-substance,
+.in-visible-area.active tab-item-substance {
+  box-shadow: 
+    0 0.2em 0.4em var(--browser-tab-highlighter, var(--tab-active-border-near, var(--tab-text))), 
+    0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far, var(--tab-text)));
   outline: 1px solid var(--theme-colors-tab_line);
 }
 tab-item.group-tab.active > tab-item-substance {
   outline: 2px solid var(--theme-colors-tab_line);
 }
 
-.bundled-active,
-.pinned.bundled-active.in-visible-area {
+.bundled-active tab-item-substance,
+.bundled-active.in-visible-area tab-item-substance {
   box-shadow: 0 0em 0.2em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
 }
 tab-item:not(.group-tab).active,
@@ -417,32 +421,27 @@ tab-item.dragging {
   opacity: 1.0 !important;
 }
 
-/** auto-hidden scrollbar placeholder workaround **/
-
-:root #tabbar.overflow.scrollbar-autohide tab-item:not(.pinned) tab-item-substance {
-  margin-left: var(--scrollbar-placeholder-size) !important;
-  margin-right: var(--scrollbar-placeholder-size) !important;
-}
-
-tab-item[data-drop-position="self"] {
-  outline: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
-}
 tab-item[data-drop-position="self"] tab-item-substance {
   outline: unset !important;
+}
+tab-item[data-drop-position="self"]:not(.faviconized),
+tab-item[data-drop-position="self"].faviconized tab-item-substance {
+  outline: var(--tab-dropmarker-size) solid var(--tab-dropmarker) !important;
 }
 tab-item-substance::before {
   display: none !important;
 }
 tab-item[data-drop-position]:not([data-drop-position="self"])::before {
-  display: block;
-  width: 100%;
-  position: absolute;
   content: "";
-  z-index: 10000 !important;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+tab-item[data-drop-position="before"]:not(.faviconized)::before {
   border-top: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
 }
-tab-item[data-drop-position="after"]:not([data-drop-position="before"])::before {
-  bottom: 0;
+tab-item[data-drop-position="after"]:not(.faviconized)::before {
+  border-bottom: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
 }
 
 tab-item.discarded tab-item-substance {
@@ -458,11 +457,13 @@ tab-item.discarded:hover tab-item-substance {
 
 /*Workaround - https://github.com/piroor/treestyletab/issues/1704#issuecomment-362404420*/
 #dummy-favicon-size-box {
-  min-height: calc(var(--tab-item-substance-height)*0.72) !important;
+  --fav-tab-size: calc(calc(var(--tab-size) + var(--tab-margin-left))/1.75);
+  min-width: var(--fav-tab-size) !important;
+  min-height: var(--fav-tab-size) !important;
 }
 tab-item.faviconized {
-  max-width: var(--tab-size) !important;
-  outline: 1px solid rgba(0,0,0,0); /**debug purposes only**/
+  margin: var(--tab-margin-left) !important;
+  outline: 1px solid rgb(0,0,0); /**debug purposes only**/
 }
 tab-item.faviconized .contextual-identity-marker {
   --contextual-identity-marker-margin: unset;
@@ -470,6 +471,22 @@ tab-item.faviconized .contextual-identity-marker {
 }
 tab-item.faviconized tab-item-substance {
   padding: 0 !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+}
+
+.faviconized[data-drop-position]:not([data-drop-position="self"]) tab-item-substance::before {
+  display: block;
+  width: 100%;
+  position: absolute;
+  content: "";
+  z-index: 1000 !important;
+}
+.faviconized[data-drop-position="before"]::before {
+  border-left: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
+}
+.faviconized[data-drop-position="after"]::before {
+  border-right: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
 }
 
 
@@ -595,8 +612,6 @@ tab-item.faviconized tab-item-substance {
 }
 
 
-
-
 /***********
 Tab contents
 ************/
@@ -651,7 +666,7 @@ tab-label {
   flex: 1 1 auto;
   height: auto;
   padding: 6px 0;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.1em;
 }
 
 .favicon {
@@ -719,12 +734,6 @@ tab-tem:not(.faviconized) .closebox::after {
 .closebox:active::before,
 .sound-button:active::before {
   opacity: 0.4;
-}
-
-
-tab-item:not(.subtree-collapsed).group-tab .background,
-tab-item:not(.subtree-collapsed).group-tab .contextual-identity-marker {
-  grid-area: 1/1/1/span 3 !important;
 }
 
 /**Order of Tab Contents**/
@@ -813,9 +822,8 @@ tab-item.faviconized {
 }
 
 
-/******************
-New tab button area
-*******************/
+/** New tab button area **/
+
 
 .after-tabs button,
 .after-tabs [role="button"] {
@@ -824,15 +832,12 @@ New tab button area
   line-height: 32px;
   position: relative !important;
 }
-.after-tabs button::before,
-.after-tabs [role="button"]::before {
+.after-tabs button:hover::before,
+.after-tabs [role="button"]:hover::before {
   background-color: var(--tab-text);
   border-radius: 0.2em;
   content: "";
   position: absolute;
-}
-.after-tabs button:hover::before,
-.after-tabs [role="button"]:hover::before {
   height: 100%;
   width: 100%;
   opacity: 0.1;
@@ -973,13 +978,6 @@ New tab button area
 /*************************
 Context menu/popup theming
 *************************/
-.menu-ui.panel {
-  transform: scale(1.2);
-  transition: transform 0.2s ease-out, opacity 100ms ease-out !important;
-}
-.menu-ui.panel.open {
-  transform: scale(1.0);
-}
 
 .menu-ui {
   box-shadow: none !important;
@@ -1054,59 +1052,96 @@ ul:not(#subpanel-selector).menu-ui li:hover::before,
 .rich-confirm.type-common-dialog.windows.show {
   scale: 1.03;
 }
-.rich-confirm-dialog.windows[role="dialog"] {
-  align-self: middle;
-  max-width: 90% !important;
-  margin: 1em !important;
+.rich-confirm.windows,
+.rich-confirm-row.windows {
+  align-items: center !important;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog {
+.rich-confirm-row.windows {
+  margin: 2em;
+}
+.rich-confirm-dialog.windows {
   border-radius: calc(var(--tab-border-radius-size)*1.75);
-  padding: 0em;
-  max-width: 100%;
   min-width: 152px;
+  min-width: 100%;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: 0em 0em 1.5em rgba(0,0,0,0.25) !important;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog > div,
-:root:not([data-user-agent*="Linux"]) .rich-confirm-dialog > label {
-  padding-left: 1.5em;
-  padding-right: 1.5em;
+.rich-confirm-dialog.windows > div,
+.rich-confirm-dialog.windows > label {
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-content {
-  padding-top: 0.5em;
+.rich-confirm-content.windows {
+  padding-top: 1.25em;
+  display: flex;
+  flex-direction: column;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-check-label {
+.rich-confirm-content > div:last-child {
+  margin-bottom: 1.5em !important;
+}
+.rich-confirm.windows ul {
+  max-height: 70% !important;
+  max-width: 100% !important;
+  border: 1px inset var(--in-content-button-background-active) !important;
+  border-radius: 0.3em;
+}
+.rich-confirm-check-label.windows {
   padding-bottom: 0.75em;
+  margin: 0 !important;
+}
+.rich-confirm-check-checkbox {
+  scale: 1.2;
   margin: 0;
 }
-
-:root:not([data-user-agent*="Linux"]) .rich-confirm-check-checkbox {
-  border: none;
-  position: absolute;
+.rich-confirm-check-message.windows {
+  margin: 0 0 0 0.75em;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-check-message {
-  margin-left: 24px;
-}
-:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons {
-  flex-direction: row;
+.rich-confirm-buttons.windows {
+  overflow: hidden;
+  flex-direction: column !important;
   box-shadow : 0 -1px 0 var(--in-content-button-background-active);
   background: var(--in-content-category-background-hover);
-  padding: 0.75em;
-  margin: 0;
+  padding: 0.75em 0 1.25em 0 !important;
+  margin: 0 !important;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons button {
+.rich-confirm button {
+  box-shadow: 0 0.8px 1px 0 gray, 0 2px 0.9px -1.5px var(--b-top) inset;
   background: var(--in-content-page-background);
   border-radius: calc(var(--tab-border-radius-size)*0.75);
-  width: 50%;
-  margin: 0.25em;
+  margin: 0.5em 0 0 0 !important;
   padding: 0.4em;
-  box-shadow: 0 0 0 1px var(--in-content-button-background-active);
+  position: relative;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons button[title="Close tabs"] {
-  color: var(--in-content-page-background);
-  background: var(--in-content-link-color);
+.rich-confirm.windows button[title="Close tabs"],
+.rich-confirm.windows button[title="Save"],
+.rich-confirm.windows button:hover[title="Close tabs"],
+.rich-confirm.windows button:hover[title="Save"] {
+  color: var(--in-content-page-background) !important;
+  background: var(--in-content-link-color) !important;
 }
-:root:not([data-user-agent*="Linux"]) .rich-confirm-buttons button:hover {
-  opacity: 0.6;
+
+.rich-confirm.windows button:hover {
+  opacity: 0.8;
 }
+.rich-confirm.windows button:hover[title="Close tabs"],
+.rich-confirm.windows button:hover[title="Save"] {
+  opacity: 1;
+  filter: brightness(90%);
+}
+.rich-confirm.windows button:active {
+  opacity: 0.8;
+}
+.rich-confirm.windows button:active[title="Close tabs"],
+.rich-confirm.windows button:active[title="Save"] {
+  opacity: 0.8;
+}
+.rich-confirm.windows button:active {
+  filter: brightness(95%);
+}
+
 
 /************************
 Hover-over sidebar layout
