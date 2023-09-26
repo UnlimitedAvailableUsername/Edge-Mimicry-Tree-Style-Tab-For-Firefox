@@ -1,251 +1,185 @@
-:root {
-  --tab-border-radius-size: 0.35em; /* proton */
-  --tab-dropshadow-blur: 0 !important;
-  --tab-dropshadow-padding: 0 !important;
-  --tab-closebox-offset: 0 !important;
-  --tab-closebox-negative-offset: 0 !important;
-}
-
-@media (prefers-color-scheme: dark) {
+  margin: 0 var(--tab-margin-left) -4px var(--tab-margin-left);
   :root {
-    --context-menu-background-color-default: #3b3b3b;
-    --sidebar-background-color-default: #3B3B3B;
-	--tab-hover-background: #ffffff45;
-    --tab-sidebar-border-default-color: #686868;
-    --toolbar-non-lwt-bgcolor: rgb(66,65,77);
-    --contextual-identity-brightness: 115%;
-    --b-top: gray;
+    --tab-border-radius-size: 0.35em; /* proton */
+    --tab-dropshadow-blur: 0 !important;
+    --tab-dropshadow-padding: 0 !important;
+    --tab-closebox-offset: 0 !important;
+    --tab-closebox-negative-offset: 0 !important;
   }
-}
-@media not (prefers-color-scheme: dark) {
-  :root {
-    --context-menu-background-color-default: #F7F7F7;
-    --tab-hover-background:#0000000F;
-    --tab-sidebar-border-default-color: #B8B8B8;
-    --sidebar-background-color-default: #F7F7F7;
-    --contextual-identity-brightness: 85%;
-    --b-top: lightgray;
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --context-menu-background-color-default: #3b3b3b;
+      --sidebar-background-color-default: #3B3B3B;
+    --tab-hover-background: #ffffff45;
+      --tab-sidebar-border-default-color: #686868;
+      --toolbar-non-lwt-bgcolor: rgb(66,65,77);
+      --contextual-identity-brightness: 115%;
+      --b-top: gray;
+    }
   }
-}
-
-
-/** OVERRIDING PROTON.CSS **/
-
-
-tab-item-substance,
-.after-tabs button,
-.after-tabs [role="button"],
-#subpanel-selector-anchor {
-  border: unset;
-  border-width: unset;
-  position: unset;
-}
-
-tab-item,
-.after-tabs button,
-.after-tabs [role="button"],
-#subpanel-container,
-#dummy-tab-color-box {
-  --tab-surface: unset;
-  --tab-text: unset;
-  --tab-text-shadow: unset;
-}
-tab-item-substance,
-.after-tabs button,
-.after-tabs [role="button"],
-#subpanel-container,
-#dummy-tab-color-box {
-  background: unset;
-  color: unset;
-  line-height: unset;
-  text-shadow: unset;
-}
-
-tab-item.active,
-tab-item.active:hover,
-tab-item.bundled-active,
-tab-item.bundled-active:hover,
-.mutiple-highlighted > tab-item.highlighted,
-.mutiple-highlighted > tab-item.highlighted:hover {
-  --tab-surface: unset;
-  --tab-surface-bgimage: unset;
-  --throbber-color: unset;
-  --tab-text: unset;
-  --tab-text-inverted: unset;
-}
-
-tab-item:not(.active):not(.bundled-active):not(.highlighted):hover,
-.after-tabs button:hover,
-.after-tabs [role="button"]:hover,
-#subpanel-selector-anchor:hover {
-  --tab-surface: unset;
-  --tab-text: unset;
-}
-
-tab-item-substance {
-  padding: unset;
-  z-index: unset;
-}
-
-.after-tabs button,
-.after-tabs [role="button"] {
-  --tab-like-button-padding: unset !important;
-  padding: unset;
-  z-index: unset;
-}
-
-:root.left tab-item:not(.pinned) tab-item-substance,
-:root.left .after-tabs button:not([data-menu-ui]),
-:root.left .after-tabs [role="button"]:not([data-menu-ui]) {
-  padding-right: unset;
-}
-
-:root.right tab-item:not(.pinned) tab-item-substance,
-:root.right .after-tabs button:not([data-menu-ui]),
-:root.right .after-tabs [role="button"]:not([data-menu-ui]) {
-  padding-left: unset;
-}
-
-
-/* tab background */
-
-.after-tabs button::before,
-.after-tabs [role="button"]::before,
-#subpanel-selector-anchor::before {
-  content: unset;
-  display: unset;
-  position: unset;
-}
-
-tab-item .background,
-.after-tabs button:hover::before,
-.after-tabs [role="button"]:hover::before,
-#subpanel-selector-anchor:hover::before {
-  background-color: var(--tab-surface);
-  background-image: var(--tab-surface-bgimage);
-  border-radius: var(--tab-border-radius-size);
-}
-
-tab-item.faviconized .background {
-  --tab-dropshadow-padding: unset;
-}
-
-#subpanel-selector-anchor:hover::before {
-  bottom: unset;
-  left: unset;
-  right: unset;
-  top: unset;
-}
-
-tab-item.active .background,
-tab-item.active tab-item-substance:hover .background,
-tab-item.bundled-active .background,
-tab-item.bundled-active tab-item-substance:hover .background,
-.mutiple-highlighted > tab-item.highlighted .background,
-.mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
-  box-shadow: unset;
-  outline: unset;
-  outline-offset: unset;
-}
-
-tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover .background,
-.after-tabs button:hover::before,
-.after-tabs [role="button"]:hover::before,
-#subpanel-selector-anchor:hover::before {
-  opacity: unset;
-}
-.mutiple-highlighted > tab-item.highlighted .background,
-.mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
-  outline: unset;
-  outline-offset: unset;
-}
-.mutiple-highlighted > tab-item.highlighted.active .background,
-.mutiple-highlighted > tab-item.highlighted.active tab-item-substance:hover .background {
-  outline-width: unset;
-  outline-offset: unset;
-}
-
-
-tab-item * {
-  color: unset;
-}
-
-tab-item tab-label {
-  margin-left: unset;
-  padding: unset;
-}
-
-tab-item tab-favicon {
-  margin-bottom: unset;
-  margin-top: unset;
-}
-
-tab-item tab-closebox {
-  background: unset;
-  border: unset;
-  margin: unset;
-  padding: unset;
-}
-
-tab-item tab-closebox::before,
-tab-item:not(.faviconized) tab-sound-button::before {
-  border-radius: unset;
-  content: unset;
-  display: unset;
-  height: unset;
-  margin-left: unset;
-  margin-top: unset;
-  width: unset;
-  position: unset;
-}
-
-tab-item tab-closebox:hover::before,
-tab-item:not(.faviconized) tab-sound-button:hover::before {
-  background: unset;
-  box-shadow: unset;
-  opacity: unset;
-}
-
-tab-item tab-closebox:active::before,
-tab-item:not(.faviconized) tab-sound-button:active::before {
-  opacity: unset;
-}
-
-tab-item.active tab-closebox:hover::before,
-tab-item:not(.faviconized).active tab-sound-button:hover::before {
-  background: unset;
-}
-
-tab-item tab-closebox::after {
-  position: unset;
-}
-
-tab-item .burster {
-  --throbber-color: var(--tab-loading-fill);
-}
-
-.highlighter::before,
-tab-item:not(.faviconized).subtree-collapsed.some-descendants-highlighted .highlighter::after,
-tab-item:not(.faviconized).subtree-collapsed.all-descendants-highlighted .highlighter::after {
-  display: unset;
-}
-
-:root.left tab-item:not(.faviconized) .contextual-identity-marker {
-  right: unset;
-}
-
-:root.right tab-item:not(.faviconized) .contextual-identity-marker {
-  left: unset;
-}
-
-tab-item.faviconized .contextual-identity-marker {
-  bottom: unset;
-  top: unset;
-}
-
-.after-tabs button.newtab-action-selector-anchor::after,
-.after-tabs button.contextual-identities-selector-anchor::after {
+  @media not (prefers-color-scheme: dark) {
+    :root {
+      --context-menu-background-color-default: #F7F7F7;
+      --tab-hover-background:#0000000F;
+      --tab-sidebar-border-default-color: #B8B8B8;
+      --sidebar-background-color-default: #F7F7F7;
+      --contextual-identity-brightness: 85%;
+      --b-top: lightgray;
+    }
+  }
+  
+  
+  /** OVERRIDING PROTON.CSS **/
+  
+  
+  tab-item-substance,
+  .after-tabs button,
+  .after-tabs [role="button"],
+  #subpanel-selector-anchor {
+    border: unset;
+    border-width: unset;
+    position: unset;
+  }
+  
+  tab-item,
+  .after-tabs button,
+  .after-tabs [role="button"],
+  #subpanel-container,
+  #dummy-tab-color-box {
+    --tab-surface: unset;
+    --tab-text: unset;
+    --tab-text-shadow: unset;
+  }
+  tab-item-substance,
+  .after-tabs button,
+  .after-tabs [role="button"],
+  #subpanel-container,
+  #dummy-tab-color-box {
+    background: unset;
+    color: unset;
+    line-height: unset;
+    text-shadow: unset;
+  }
+  
+  tab-item.active,
+  tab-item.active:hover,
+  tab-item.bundled-active,
+  tab-item.bundled-active:hover,
+  .mutiple-highlighted > tab-item.highlighted,
+  .mutiple-highlighted > tab-item.highlighted:hover {
+    --tab-surface: unset;
+    --tab-surface-bgimage: unset;
+    --throbber-color: unset;
+    --tab-text: unset;
+    --tab-text-inverted: unset;
+  }
+  
+  tab-item:not(.active):not(.bundled-active):not(.highlighted):hover,
+  .after-tabs button:hover,
+  .after-tabs [role="button"]:hover,
+  #subpanel-selector-anchor:hover {
+    --tab-surface: unset;
+    --tab-text: unset;
+  }
+  
+  tab-item-substance {
+    padding: unset;
+    z-index: unset;
+  }
+  
+  .after-tabs button,
+  .after-tabs [role="button"] {
+    --tab-like-button-padding: unset !important;
+    padding: unset;
+    z-index: unset;
+  }
+  
+  :root.left tab-item:not(.pinned) tab-item-substance,
+  :root.left .after-tabs button:not([data-menu-ui]),
+  :root.left .after-tabs [role="button"]:not([data-menu-ui]) {
+    padding-right: unset;
+  }
+  
+  :root.right tab-item:not(.pinned) tab-item-substance,
+  :root.right .after-tabs button:not([data-menu-ui]),
+  :root.right .after-tabs [role="button"]:not([data-menu-ui]) {
+    padding-left: unset;
+  }
+  
+  
+  /* tab background */
+  
+  .after-tabs button::before,
+  .after-tabs [role="button"]::before,
+  #subpanel-selector-anchor::before {
+    content: unset;
+    display: unset;
+    position: unset;
+  }
+  
+  tab-item .background,
+  .after-tabs button:hover::before,
+  .after-tabs [role="button"]:hover::before,
+  #subpanel-selector-anchor:hover::before {
+    background-color: var(--tab-surface);
+    background-image: var(--tab-surface-bgimage);
+    border-radius: var(--tab-border-radius-size);
+  }
+  
+  tab-item.faviconized .background {
+    --tab-dropshadow-padding: unset;
+  }
+  
+  #subpanel-selector-anchor:hover::before {
+    bottom: unset;
+    left: unset;
+    right: unset;
+    top: unset;
+  }
+  
+  tab-item.active .background,
+  tab-item.active tab-item-substance:hover .background,
+  tab-item.bundled-active .background,
+  tab-item.bundled-active tab-item-substance:hover .background,
+  .mutiple-highlighted > tab-item.highlighted .background,
+  .mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
+    box-shadow: unset;
+    outline: unset;
+    outline-offset: unset;
+  }
+  
+  tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover .background,
+  .after-tabs button:hover::before,
+  .after-tabs [role="button"]:hover::before,
+  #subpanel-selector-anchor:hover::before {
+    opacity: unset;
+  }
+  .mutiple-highlighted > tab-item.highlighted .background,
+  .mutiple-highlighted > tab-item.highlighted tab-item-substance:hover .background {
+    outline: unset;
+    outline-offset: unset;
+  }
+  .mutiple-highlighted > tab-item.highlighted.active .background,
+  .mutiple-highlighted > tab-item.highlighted.active tab-item-substance:hover .background {
+    outline-width: unset;
+    outline-offset: unset;
+  }
+  
+  
+  tab-item * {
+    color: unset;
+  }
+  
+  tab-item tab-label {
+    margin-left: unset;
+    padding: unset;
+  }
+  
+  tab-item tab-favicon {
+    margin-bottom: unset;
     margin-top: unset;
+<<<<<<< HEAD
 }
 
 
@@ -1166,48 +1100,1037 @@ Hover-over sidebar layout
     --newtab-margin-left: calc(var(--svg-small-icon-size) - var(--tab-margin-left));
     --newtab-button-box-width: 32px;
     --tab-sound-button-icon-size: 70%;
+=======
+>>>>>>> d1640e3e9401f5051bcd4f052f0c65da2319a7e1
   }
+  
+  tab-item tab-closebox {
+    background: unset;
+    border: unset;
+    margin: unset;
+    padding: unset;
+  }
+  
+  tab-item tab-closebox::before,
+  tab-item:not(.faviconized) tab-sound-button::before {
+    border-radius: unset;
+    content: unset;
+    display: unset;
+    height: unset;
+    margin-left: unset;
+    margin-top: unset;
+    width: unset;
+    position: unset;
+  }
+  
+  tab-item tab-closebox:hover::before,
+  tab-item:not(.faviconized) tab-sound-button:hover::before {
+    background: unset;
+    box-shadow: unset;
+    opacity: unset;
+  }
+  
+  tab-item tab-closebox:active::before,
+  tab-item:not(.faviconized) tab-sound-button:active::before {
+    opacity: unset;
+  }
+  
+  tab-item.active tab-closebox:hover::before,
+  tab-item:not(.faviconized).active tab-sound-button:hover::before {
+    background: unset;
+  }
+  
+  tab-item tab-closebox::after {
+    position: unset;
+  }
+  
+  tab-item .burster {
+    --throbber-color: var(--tab-loading-fill);
+  }
+  
+  .highlighter::before,
+  tab-item:not(.faviconized).subtree-collapsed.some-descendants-highlighted .highlighter::after,
+  tab-item:not(.faviconized).subtree-collapsed.all-descendants-highlighted .highlighter::after {
+    display: unset;
+  }
+  
+  :root.left tab-item:not(.faviconized) .contextual-identity-marker {
+    right: unset;
+  }
+  
+  :root.right tab-item:not(.faviconized) .contextual-identity-marker {
+    left: unset;
+  }
+  
+  tab-item.faviconized .contextual-identity-marker {
+    bottom: unset;
+    top: unset;
+  }
+  
+  .after-tabs button.newtab-action-selector-anchor::after,
+  .after-tabs button.contextual-identities-selector-anchor::after {
+      margin-top: unset;
+  }
+  
+  
+  
+  /***************
+  Main body layout
+  ****************/
+  
+  :root{
+    --scrollbar-placeholder-size: 1.2em;
+    --favicon-size: 16px;
+    --color-animation: 0s ease-out;
+    --scrollbar-placeholder-size: 10px;
+    --separator-pinned-overflow-tabs: calc(100% - calc(var(--tab-margin-left) * 2));
+    --subpanel-header-height: 28px;
+    --subpanel-toggler-font-size: 8px;
+    --subpanel-toggler-width: 20px;
+    --tab-border-radius-size: 0.35em;
+    --tab-dropshadow-size: 0.2em;
+    --tab-margin-left: 0.65em;
+    --tab-margin-right: var(--tab-margin-left);
+    --tab-dropmarker-size: 2px;
+    --tab-item-substance-height: 32px;
+    --after-tabs-area-size: calc(var(--tab-item-substance-height) + calc(var(--tab-margin-left)*2)) !important;
+    --newtab-button-box-width: 100%;
+    --tab-sound-button-icon-size: 85%;
+    --sound-button-size: 20px;
+    --newtab-margin-left: calc(var(--svg-small-icon-size) - 0.45em);
+    overflow: hidden;
+  }
+  * {
+    font-family: Arial, sans-serif !important;
+  }
+  
+  
+  /** Container background **/
+  
+  :root,
+  body,
+  #background {
+    background-color: var(--browser-background, var(--tabbar-bg));
+    background-image: var(--browser-bg-images, none);
+    background-position: var(--browser-bg-position, left);
+    background-size: var(--browser-bg-size, auto);
+    background-repeat: repeat-y;
+  }
+  :root.right,
+  :root.right #background {
+    background-position: right;
+  }
+  
+  /*******
+  Tab Bar
+  ********/
+  
+  
   #tabbar-container {
-    min-width: 258px !important; /*for layout purpose!*/
+    transition: none;
+  }
+  #tabbar {
+    margin: 0 var(--tab-margin-left) -4px var(--tab-margin-left);
+    overflow: visible !important;
+  }
+  #tabbar > div {
+    margin: 0 calc(0px - var(--tab-margin-left));
   }
   .tabs {
-    width: 48px;
+    padding: 4px 0;
   }
-  
-  /** Tab items **/
-  
-  tab-item:not(.faviconized) {
-    --tab-indent: 0em !important;
+  #all-tabs {
+    position: relative;
+    overflow-y: scroll !important;
   }
-  /** Tab Contents **/
-  
-  .counter,
-  tab-item:not(.group-tab) .twisty,
-  .closebox {
+  :root.left #tabbar {
+    direction: ltr;
+  }
+  :root.right #tabbar {
+    direction: rtl;
+  }
+  #tabbar.overflow #all-tabs {
+    padding-right: 0.5em;
+  }
+  :root{
+    --tabbar-margin-top: calc(var(--pinned-tabs-area-size) + 4px);
+  }
+  :root.have-pinned-tabs #tabbar-container::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: var(--tabbar-margin-top);
+    opacity: 0.45 !important;
+    border-top: 1px solid var(--tab-text);
+    width: var(--separator-pinned-overflow-tabs) !important;
+    left: var(--tab-margin-left) !important;
+    z-index: 101 !important;
+  }
+  :root.have-pinned-tabs #tabbar {
+    margin-top: calc(var(--tabbar-margin-top) + var(--tab-margin-left));
+  }
+  .tabs-spacer {
     display: none !important;
+  }
+  
+  
+  /** Tab Items **/
+  
+  
+  tab-item {
+    --faviconized-tab-size: 32px;
+    --tab-size: 32px;
+    --tab-margin-top: 1.5px;
+    --tab-max-width-inline-block: calc(100% - calc(var(--tab-margin-right) + calc(var(--tab-margin-left) + var(--tab-indent))));
+    border-radius: var(--tab-border-radius-size) !important;
+    overflow: visible;
+    height: var(--tab-size);
+    max-width: var(--tab-max-width-inline-block);
+    margin-left: calc(var(--tab-margin-left) + var(--tab-indent)) !important;
+  }
+  tab-item:not(.collapsed):not(.faviconized) {
+    display: inline-block;
+    margin-top: 1.5px;
+    margin-bottom: 1.5px;
+  }
+  tab-item:not(.group-tab):not(.faviconized) {
+    min-width: var(--tab-max-width-inline-block);
+  }
+  
+  tab-item-substance {
+    margin: 0 !important;
+    overflow: visible !important;
+    min-width: var(--tab-size);
+  }
+  tab-item-substance,
+  tab-item-substance .background,
+  tab-item-substance .contextual-identity-marker {
+    border-radius: var(--tab-border-radius-size);
+  }
+  
+  tab-item.active tab-item-substance,
+  .in-visible-area.active tab-item-substance {
+    box-shadow: 
+      0 0.2em 0.4em var(--browser-tab-highlighter, var(--tab-active-border-near, var(--tab-text))), 
+      0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far, var(--tab-text)));
+    outline: 1px solid var(--theme-colors-tab_line);
+  }
+  tab-item.group-tab.active > tab-item-substance {
+    outline: 2px solid var(--theme-colors-tab_line);
+  }
+  
+  .bundled-active tab-item-substance,
+  .bundled-active.in-visible-area tab-item-substance {
+    box-shadow: 0 0em 0.2em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
+  }
+  tab-item:not(.group-tab).active tab-item-substance,
+  tab-item:not(.group-tab).active tab-item-substance:hover,
+  tab-item:not(.group-tab).bundled-active tab-item-substance,
+  tab-item:not(.group-tab).bundled-active tab-item-substance:hover,
+  .mutiple-highlighted > tab-item:not(.group-tab).highlighted tab-item-substance,
+  .mutiple-highlighted > tab-item:not(.group-tab).highlighted tab-item-substance:hover {
+    --tab-surface: var(--tab-surface-active);
+    --tab-surface-bgimage: var(--tab-surface-active-bgimage);
+    --tab-text: var(--tab-text-active);
+    --tab-text-inverted: var(--tab-text-active-inverted);
+  }
+  tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover,
+  tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:focus{
+    --tab-surface: var(--tab-text-regular);
+    --tab-text: var(--tab-text-regular);
+  }
+  tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance .background {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover .background {
+    opacity: 0.15;
+  }
+  tab-item.dragging {
+    opacity: 1.0 !important;
+  }
+  
+  tab-item[data-drop-position="self"] tab-item-substance {
+    outline: unset !important;
+  }
+  tab-item[data-drop-position="self"]:not(.faviconized),
+  tab-item[data-drop-position="self"].faviconized tab-item-substance {
+    outline: var(--tab-dropmarker-size) solid var(--tab-dropmarker) !important;
+  }
+  tab-item-substance::before {
+    display: none !important;
+  }
+  tab-item[data-drop-position]:not([data-drop-position="self"])::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  tab-item[data-drop-position="before"]:not(.faviconized)::before {
+    border-top: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
+  }
+  tab-item[data-drop-position="after"]:not(.faviconized)::before {
+    border-bottom: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
+  }
+  
+  tab-item.discarded tab-item-substance {
+    opacity: 0.4;
+  }
+  tab-item.discarded:hover tab-item-substance {
+    opacity: 0.8;
+  }
+  
+  /** Pinned Tabs **/
+  
+  /** Icon-Only Pinned Tabs **/
+  
+  /*Workaround - https://github.com/piroor/treestyletab/issues/1704#issuecomment-362404420*/
+  #dummy-favicon-size-box {
+    --fav-tab-size: calc(calc(var(--tab-size) + var(--tab-margin-left))/1.75);
+    min-width: var(--fav-tab-size) !important;
+    min-height: var(--fav-tab-size) !important;
+  }
+  tab-item.faviconized {
+    margin: var(--tab-margin-left) !important;
+    border: 1px solid rgb(0,0,0); /**debug purposes only**/
+  }
+  tab-item.faviconized .contextual-identity-marker {
+    --contextual-identity-marker-margin: unset;
+    --contextual-identity-marker-width: 100%;
+  }
+  tab-item.faviconized tab-item-substance {
+    padding: 0 !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+  }
+  
+  .faviconized[data-drop-position]:not([data-drop-position="self"]) tab-item-substance::before {
+    display: block;
+    width: 100%;
+    position: absolute;
+    content: "";
+    z-index: 1000 !important;
+  }
+  .faviconized[data-drop-position="before"]::before {
+    border-left: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
+  }
+  .faviconized[data-drop-position="after"]::before {
+    border-right: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
+  }
+  
+  
+  /* group tab */
+  
+  .group-tab {
+    --tab-size: 24px;
+    --tab-margin-top: 4px;
+    --tab-margin-bottom: 4px;
+    --tab-group-max-width-inline-block: calc(var(--tab-max-width-inline-block) - calc(8px + 48px));
+    overflow: visible;
+    max-width: var(--tab-group-max-width-inline-block);
+    height: var(--tab-size);
+    margin-left: calc(4px + var(--tab-margin-left) + var(--tab-indent)) !important;
+  }
+  .group-tab:not(.collapsed) {
+    margin-top: var(--tab-margin-top) !important;
+    margin-bottom: var(--tab-margin-bottom) !important;
+  }
+  .group-tab.collapsed {
+    margin: unset !important;
+    height: 0;
+  }
+  .group-tab tab-item-substance {
+    display: flex !important;
+    height: 100%;
+    padding: 0 !important;
+    position: relative;
+  }
+  .group-tab tab-item-substance * {
+    color: var(--tab-text-active-inverted) !important;
+  }
+  .group-tab .background,
+  .group-tab .contextual-identity-marker {
+    background: var(--tab-text);
+  }
+  .group-tab .twisty {
+    --favicon-size: none;
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+  }
+  .group-tab .twisty::before {
+    --favicon-size: 9px !important;
+    --svg-small-icon-size: 9px !important;
+    position: absolute;
+    margin: 0 !important;
+    translate: 85% calc(calc(24px/2) - calc(9px/1.75));
+    transform: rotateZ(0deg) scale(1.0) !important;
+    transform-origin: 100% 100%;
+    border-radius: 2px;
+    background: linear-gradient(315deg, var(--tab-text-active-inverted, black) 50%, transparent 0) !important;
+    mask: none !important;
+    transition: transform 0.05s ease-in !important;
+  }
+  .group-tab.subtree-collapsed tab-twisty::before {
+    transform: rotateZ(-45deg) translateY(-30%) translateX(30%) !important;
+    transition: transform 0.05s ease-in !important;
+  }
+  .group-tab .favicon,
+  .group-tab .extra-items-container:not(.indent),
+  .group-tab:not(.subtree-collapsed) .closebox {
+    display: none !important;
+  }
+  .group-tab .closebox {
+    position: absolute !important;
+    left: 0;
+    bottom: 12.5%;
+    margin-left: calc(100%);
+  }
+  .group-tab:not(.faviconized) .sound-button::after {
+    background: var(--tab-text-active-inverted);
+  }
+  .group-tab .contextual-identity-marker {
+    filter: brightness(var(--contextual-identity-brightness)) !important;
+  }
+  .group-tab:not(.has-sound-playing-member) .label {
+    margin-left: 8px;
+  }
+  .group-tab[data-child-ids]:not(.subtree-collapsed) .label,
+  .group-tab .counter {
+    margin-right: 8px;
+  }
+  .group-tab.some-descendants-highlighted .label,
+  .group-tab[data-child-ids]:not(.has-sound-playing-member) .label,
+  .group-tab.highlighted:not(.subtree-collapsed)[data-child-ids] .label,
+  .group-tab .sound-button {
+    margin-left: var(--tab-size);
+  }
+  
+  .group-tab .indent{
+    left: unset !important;
+    right: 0 !important;
+    top: unset !important;
+    bottom: unset !important;
+    margin-right: var(--tab-margin-right);
+    position: absolute !important;
+    float: right !important;
+    width: 18px !important;
+    height: 18px !important;
+    z-index: 1000000 !important;
+    color: var(--tab-text);
+    justify-content: center;
+    border-radius: 0.25em;
+    display: none;
+  }
+  .group-tab .indent::before {
+    position: absolute;
+    content:"";
+    height: inherit;
+    width: inherit;
+  }
+  .group-tab .indent:hover::before {
+    background: var(--tab-text);
+    opacity: 0.2;
+  }
+  .group-tab .indent::after {
+    font: normal normal bold 1em sans-serif;
+    content: "\2026" !important;
+  }
+  .group-tab .background {
+    opacity: 0.9;
+  }
+  
+  
+  /***********
+  Tab contents
+  ************/
+  
+  /** Tab Background **/
+  
+  .background {
+    background-color: var(--tab-surface);
+    background-image: var(--tab-surface-bgimage);
+  }
+  
+  /* YES ITS "MUTiple not MULTiple*/
+  .mutiple-highlighted > .highlighted .background,
+  .mutiple-highlighted > .highlighted .contextual-identity-marker {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: -2px;
+  }
+  .highlighted.active .background {
+    outline-width: 4px;
+    outline-offset: -4px;
+  }
+  tab-item {
+    color: var(--tab-text);
+  }
+  tab-item.removing, tab-item:not(.pinned).collapsed, tab-item.duplicating {
+    margin-top: calc(0px - var(--tab-current-size) - var(--tab-margin-bottom));
+    pointer-events: none;
+    z-index: var(--invisible-z-index);
+  }
+  
+  tab-item:not(.group-tab) .twisty {
+    margin-right: calc(0px - calc(calc(var(--tab-size)/2) - calc(16px/8)));
+  }
+  tab-item:not(.group-tab) .twisty::before {
+    margin: 0;
+    mask-size: 50% !important;
+    position: absolute;
+  }
+  .counter {
+    font-size: 10px;
+    line-height: 1;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 0em 0.3em;
+    margin-left: 0.3em;
+  }
+  .counter::before,
+  .counter::after {
+    display: none;
+  }
+  tab-label {
+    flex: 1 1 auto;
+    height: auto;
+    padding: 6px 0;
+    margin-bottom: 0.1em;
+  }
+  
+  .favicon {
+    --favicon-size: var(--tab-item-substance-height);
+    display: inline-block;
+  }
+  .favicon > * {
+    --favicon-size: 16px;
+    height: var(--favicon-size);
+    width: var(--favicon-size);
+    position: absolute !important;
+    translate: 50% 50% !important;
+  }
+  .throbber {
+    fill: var(--tab-text) !important;
+  }
+  
+  tab-item:not(.faviconized) .sound-button {
+    margin-right: 0.1em;
+  }
+  
+  .closebox {
+    flex: 0 0 18px;
+    height: 18px;
+    width: 18px;
+    margin-right: 0.5em;
+  }
+  .closebox::before,
+  .closebox::after {
+    position: absolute;
+    border-radius: 15%;
+    content: "";
+  }
+  .closebox::before {
+    height: inherit;
+    width: inherit;
+  }
+  .closebox::after {
+    height: 14px;
+    width: 14px;
+    transform-origin: 0% 0%;
+    transform: translate(12.5%, 12.5%);
+  }
+  tab-item:not(.faviconized) .sound-button::before,
+  tab-item:not(.faviconized) .sound-button::after {
+    content: "";
+    position: absolute;
+    border-radius: 100%;
+    height: inherit;
+    width: inherit;
+  }
+  tab-item:not(.faviconized) .sound-button::after {
+    mask-size: var(--tab-sound-button-icon-size) !important;
+    mask-position: 35% 50% !important;
+  }
+  tab-item:not(.faviconized) .sound-button::after,
+  tab-tem:not(.faviconized) .closebox::after {
+    background: var(--tab-text);
+  }
+  .closebox:hover::before,
+  .sound-button:hover::before {
+    background: var(--tab-text) !important;
+    opacity: 0.15;
+  }
+  .closebox:active::before,
+  .sound-button:active::before {
+    opacity: 0.4;
+  }
+  
+  /**Order of Tab Contents**/
+  
+  .favicon {
+    order: 0;
   }
   .sound-button {
-  	min-width: var(--tab-size) !important;
-    margin-left: calc(0px - var(--tab-size)) !important;
-    opacity: 1.0;
-    background: var(--tab-surface-active);
+    order: 1;
+  }
+  tab-item .label {
+    order: 2;
+  }
+  .counter {
+    order: 3;
   }
   
-  /** New Tab Button **/
-  .newtab-button .extra-items-container,
-  .newtab-action-selector-anchor,
-  .contextual-identities-selector-anchor {
+  .highlighter {
     display: none !important;
+  }
+  
+  /** Contextual identity marker in tab-item **/
+  
+  .contextual-identity-marker {
+    z-index: 10;
+    top: 0 !important;
+    bottom: 0 !important;
+    min-width: 100% !important;
+    opacity: 0.3;
+  }
+  .active .contextual-identity-marker {
+    opacity: 0.7;
+  }
+  .pinned .contextual-identity-marker {
+    opacity: 0.5;
+  }
+  .discarded .contextual-identity-marker {    
+    opacity: 0.2;
+  }
+  .group-tab .contextual-identity-marker {
+    opacity: 1.0;
+  }
+  
+  /**Pinned Tabs**/
+  
+  .pinned .closebox,
+  .pinned .twisty {
+    display: none !important;
+  }
+  
+  /**Icon-Only Pinned Tabs**/
+  
+  .faviconized {
+    padding: 0 !important;
+  }
+  .faviconized tab-label {
+    display: none !important;
+  }
+  tab-item.faviconized {
+    --attention-marker-x-offset: calc(0px);
+    --attention-marker-y-offset: calc(0px);
+    --attention-marker-gradient: #00000000;
+    --attention-marker-gradient-hover: var(--attention-marker-gradient);
+  }
+  .faviconized.unread tab-item-substance tab-favicon::before,
+  .attention tab-favicon::before {
+    height: 6px;
+    width: 6px;
+    outline: 1px solid var(--tab-text);
+    background: #FF0000;
+    z-index: 100;
+    border-radius: 100%;
+    position: absolute;
+    translate: 22px 6px;
+  }
+  .faviconized tab-sound-button {
+    border-radius: 100%;
+    background-color: var(--tab-surface-active);
+    opacity: 1.0;
+  }
+  .faviconized tab-sound-button::before {
+    transform: none !important;
+  }
+  .faviconized tab-sound-button::after {
+    mask-size: 85% !important;
+  }
+  
+  
+  /** New tab button area **/
+  
+  
+  .after-tabs button,
+  .after-tabs [role="button"] {
+    color: var(--tab-text);
+    height: 32px;  
+    line-height: 32px;
+    position: relative !important;
+  }
+  .after-tabs button:hover::before,
+  .after-tabs [role="button"]:hover::before {
+    background-color: var(--tab-text);
+    border-radius: 0.2em;
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.1;
+  }
+  .after-tabs {
+    height: var(--after-tabs-area-size) !important;
+    margin: 0 var(--tab-margin-left) 0 var(--tab-margin-right) !important;
+  }
+  #tabbar > .after-tabs {
+    margin: 0 !important;
+  }
+  .newtab-button-box {
+    border-top: 1px solid var(--tab-sidebar-border-color, var(--tab-text));
+    height: calc(var(--after-tabs-area-size) - 4px);
+    width: var(--newtab-button-box-width);
+    padding-top: 4px;
+    padding-bottom: var(--tab-margin-left);
+    flex-wrap: wrap-reverse !important;
+    flex-direction: column !important;
+    align-items: start;
   }
   .newtab-button {
-    transform: translateX(0px);
+    display: flex;
+    transform: translateX(16px);
+    width: 100%;
+    align-items: center;
+  }
+  .newtab-button::after {
+    height: 15px;
+    width: 15px;
+    margin-left: var(--newtab-margin-left);
+    background: linear-gradient(to bottom, #00000000 46%, var(--tab-text) 48%, var(--tab-text) 53%,  #00000000 0%),
+      linear-gradient(to right, #00000000 46%, var(--tab-text) 48%, var(--tab-text) 53%, #00000000 0%) !important;
+    mask: none !important;
+  }
+  .newtab-button .extra-items-container {
+    left: calc(var(--newtab-margin-left) + 15px + 0.75em) !important;
+    right: calc(var(--svg-small-icon-size) + 0.5em) !important;
+    justify-content: space-between;
+  }
+  .newtab-button .extra-items-container::before {
+    content: "New tab";
+  }
+  .newtab-button .extra-items-container::after {
+    opacity: 0.75;
+    content: "Ctrl+T";
   }
   
-  /** Subpanel/Bottom Tabbar **/
-  
-  #subpanel-selector-toggler,
-  #subpanel-selector-anchor .label,
-  #subpanel-selector-anchor::after {
-    display: none !important;
+  .newtab-action-selector-anchor,
+  .contextual-identities-selector-anchor {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 15px !important;
+    border: none !important;
   }
-}
+  
+  .newtab-action-selector-anchor.open::before,
+  .contextual-identities-selector-anchor.open::before {
+    background: var(--tab-text);
+    opacity: 0.1;
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  /**Bottom Tab Bar Area**/
+  
+  
+  #subpanel-container.collapsed {
+    pointer-events: none;
+    cursor: auto;
+  }
+  #subpanel-header {
+    border-top: 1px solid var(--tab-border, var(--theme-colors-sidebar_border));
+    padding: 0;
+    margin-bottom: 0.1em;
+    height: var(--subpanel-header-height);
+  }
+  #subpanel-container:not(.collapsed) #subpanel-header {
+    border-bottom: none;
+    box-shadow: 0 1px 0 var(--tab-border, var(--theme-colors-sidebar_border));
+  }
+  #subpanel-header-main,
+  #subpanel-toggler {
+    pointer-events: auto;
+  }
+  #subpanel-header > * {
+    height: var(--subpanel-header-height);
+  }
+  #subpanel-header-main {
+    flex-grow: 0;
+    padding: 2px;
+    width: auto;
+  }
+  #subpanel-selector-anchor {
+    position: relative;
+    padding: 0;
+    width: inherit;
+  }
+  #subpanel-selector-anchor > .icon {
+    margin: 0 8px;
+  }
+  #subpanel-toggler {
+    position: relative;
+    padding: 2px;
+    width: var(--subpanel-toggler-width);
+    max-width: none;
+    justify-content: center;
+  }
+  #subpanel-toggler::before{
+    position: absolute;
+    height: auto;
+    width: auto;
+    margin: 0;
+  }
+  
+  /** for buttons **/
+  
+  #subpanel-selector-anchor::before,
+  #subpanel-selector-anchor.open::before, 
+  #subpanel-toggler::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.3em;
+    z-index: -1;
+  }
+  #subpanel-toggler::after {
+    position: relative;
+  }
+  #subpanel-selector-anchor:hover::before,
+  #subpanel-selector-anchor.open::before,
+  #subpanel-toggler:hover::after {
+    background: var(--tab-text);
+    opacity: 0.1;
+  }
+  
+  
+  
+  /*************************
+  Context menu/popup theming
+  *************************/
+  
+  .menu-ui {
+    box-shadow: none !important;
+    padding: 8px !important;
+    border-color: var(--context-menu-border-color);
+    border-radius: calc(var(--tab-border-radius-size)*2);
+    border-width: 1px ;
+    border-style: solid;
+    --menu-ui-background-color: var(--context-menu-background-color);
+    --menu-ui-text-color: var(--tab-text);
+    --menu-ui-background-color-active: var(--tab-text);
+    --menu-ui-text-color-active: var(--tab-text);
+  }
+  .menu-ui-marker.panel.bottom,
+  .menu-ui-marker.panel.top {
+    display: none;
+  }
+  .menu-ui > li:not(.separator) {
+    height: 32px !important;
+    line-height: 32px !important;
+    min-width: 128px;
+    padding: 0em 6px;
+  }
+  #tabContextMenu > li.separator {
+    padding: 0px 0px !important;
+    margin: 4px 0px !important;
+    border: none;
+    height: 1px !important;
+    max-height: 1px;
+    background: var(--context-menu-border-color);
+  }
+  #newtab-action-selector > li,
+  #contextual-identities-selector > li {
+    padding-left: 2.5em;
+  }
+  .menu-ui > li:focus {
+    background-color: #00000000 !important;
+  }
+  
+  ul:not(#subpanel-selector).menu-ui li::before,
+  #subpanel-selector li::after {
+    content: "";
+    border-radius: var(--tab-border-radius-size);
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    height: inherit;
+    width: calc(100% - 16px);
+  }
+  #subpanel-selector > li::before {
+    position: relative;
+    left: 0;
+  }
+  ul:not(#subpanel-selector).menu-ui li:hover::before,
+  #subpanel-selector li:hover::after {
+    background: var(--tab-text);
+    opacity: 0.15;
+  }
+  #newtab-action-selector .icon {
+    min-height: 32px !important;
+    margin-left: 8px;
+  }
+  #subpanel-selector.menu-ui > li > .icon {
+    margin: 0em 0.5em;
+  }
+  
+  
+  .rich-confirm.type-common-dialog.windows.show.shown {
+    scale: 1.0;
+    transition: scale 0.15s ease-in, opacity 0.15s ease-in;
+  }
+  .rich-confirm.type-common-dialog.windows.show {
+    scale: 1.03;
+  }
+  .rich-confirm.windows,
+  .rich-confirm-row.windows {
+    align-items: center !important;
+  }
+  .rich-confirm-row.windows {
+    margin: 2em;
+  }
+  .rich-confirm-dialog.windows {
+    border-radius: calc(var(--tab-border-radius-size)*1.75);
+    min-width: 152px;
+    min-width: 100%;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: 0em 0em 1.5em rgba(0,0,0,0.25) !important;
+  }
+  .rich-confirm-dialog.windows > div,
+  .rich-confirm-dialog.windows > label {
+    padding-left: 1.5em !important;
+    padding-right: 1.5em !important;
+  }
+  .rich-confirm-content.windows {
+    padding-top: 1.25em;
+    display: flex;
+    flex-direction: column;
+  }
+  .rich-confirm-content > div:last-child {
+    margin-bottom: 1.5em !important;
+  }
+  .rich-confirm.windows ul {
+    max-height: 70% !important;
+    max-width: 100% !important;
+    border: 1px inset var(--in-content-button-background-active) !important;
+    border-radius: 0.3em;
+  }
+  .rich-confirm-check-label.windows {
+    padding-bottom: 0.75em;
+    margin: 0 !important;
+  }
+  .rich-confirm-check-checkbox {
+    scale: 1.2;
+    margin: 0;
+  }
+  .rich-confirm-check-message.windows {
+    margin: 0 0 0 0.75em;
+  }
+  .rich-confirm-buttons.windows {
+    overflow: hidden;
+    flex-direction: column !important;
+    box-shadow : 0 -1px 0 var(--in-content-button-background-active);
+    background: var(--in-content-category-background-hover);
+    padding: 0.75em 0 1.25em 0 !important;
+    margin: 0 !important;
+  }
+  .rich-confirm button {
+    box-shadow: 0 0.8px 1px 0 gray, 0 2px 0.9px -1.5px var(--b-top) inset;
+    background: var(--in-content-page-background);
+    border-radius: calc(var(--tab-border-radius-size)*0.75);
+    margin: 0.5em 0 0 0 !important;
+    padding: 0.4em;
+    position: relative;
+  }
+  .rich-confirm.windows button[title="Close tabs"],
+  .rich-confirm.windows button[title="Save"],
+  .rich-confirm.windows button:hover[title="Close tabs"],
+  .rich-confirm.windows button:hover[title="Save"] {
+    color: var(--in-content-page-background) !important;
+    background: var(--in-content-link-color) !important;
+  }
+  
+  .rich-confirm.windows button:hover {
+    opacity: 0.8;
+  }
+  .rich-confirm.windows button:hover[title="Close tabs"],
+  .rich-confirm.windows button:hover[title="Save"] {
+    opacity: 1;
+    filter: brightness(90%);
+  }
+  .rich-confirm.windows button:active {
+    opacity: 0.8;
+  }
+  .rich-confirm.windows button:active[title="Close tabs"],
+  .rich-confirm.windows button:active[title="Save"] {
+    opacity: 0.8;
+  }
+  .rich-confirm.windows button:active {
+    filter: brightness(95%);
+  }
+  
+  
+  /************************
+  Hover-over sidebar layout
+  ************************/
+  
+  @media screen and (min-width: 0px) and (max-width: 48px) {
+    
+    /** Main body layout **/
+    
+    :root {
+      --separator-pinned-overflow-tabs: calc(48px - calc(var(--tab-margin-left) * 2));
+      --sound-button-size: 32px;
+      --newtab-margin-left: calc(var(--svg-small-icon-size) - var(--tab-margin-left));
+      --newtab-button-box-width: 32px;
+      --tab-sound-button-icon-size: 70%;
+    }
+    #tabbar-container {
+      min-width: 258px !important; /*for layout purpose!*/
+    }
+    .tabs {
+      width: 48px;
+    }
+    
+    /** Tab items **/
+    
+    tab-item:not(.faviconized) {
+      --tab-indent: 0em !important;
+    }
+    /** Tab Contents **/
+    
+    .counter,
+    tab-item:not(.group-tab) .twisty,
+    .closebox {
+      display: none !important;
+    }
+    .sound-button {
+      min-width: var(--tab-size) !important;
+      margin-left: calc(0px - var(--tab-size)) !important;
+      opacity: 1.0;
+      background: var(--tab-surface-active);
+    }
+    
+    /** New Tab Button **/
+    .newtab-button .extra-items-container,
+    .newtab-action-selector-anchor,
+    .contextual-identities-selector-anchor {
+      display: none !important;
+    }
+    .newtab-button {
+      transform: translateX(0px);
+    }
+    
+    /** Subpanel/Bottom Tabbar **/
+    
+    #subpanel-selector-toggler,
+    #subpanel-selector-anchor .label,
+    #subpanel-selector-anchor::after {
+      display: none !important;
+    }
+  }
