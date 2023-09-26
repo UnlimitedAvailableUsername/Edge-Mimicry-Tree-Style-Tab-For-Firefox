@@ -306,7 +306,7 @@ Tab Bar
   transition: none;
 }
 #tabbar {
-  margin: 0 var(--tab-margin-left);
+  margin: 0 var(--tab-margin-left) -4px var(--tab-margin-left);
   overflow: visible !important;
 }
 #tabbar > div {
@@ -326,6 +326,7 @@ Tab Bar
   direction: rtl;
 }
 #tabbar.overflow #all-tabs {
+  margin-top: -4px;
   padding-right: 0.5em;
 }
 :root{
