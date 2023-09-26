@@ -46,9 +46,9 @@ tab-item,
 .after-tabs [role="button"],
 #subpanel-container,
 #dummy-tab-color-box {
-  --tab-surface: var(--tab-surface-regular);
-  --tab-text: var(--tab-text-regular);
-  --tab-text-shadow: var(--browser-textshadow-for-header-image, none);
+  --tab-surface: unset;
+  --tab-text: unset;
+  --tab-text-shadow: unset;
 }
 tab-item-substance,
 .after-tabs button,
@@ -67,19 +67,19 @@ tab-item.bundled-active,
 tab-item.bundled-active:hover,
 .mutiple-highlighted > tab-item.highlighted,
 .mutiple-highlighted > tab-item.highlighted:hover {
-  --tab-surface: var(--tab-surface-active);
-  --tab-surface-bgimage: var(--tab-surface-active-bgimage);
-  --throbber-color: var(--throbber-color-active);
-  --tab-text: var(--tab-text-active);
-  --tab-text-inverted: var(--tab-text-active-inverted);
+  --tab-surface: unset;
+  --tab-surface-bgimage: unset;
+  --throbber-color: unset;
+  --tab-text: unset;
+  --tab-text-inverted: unset;
 }
 
 tab-item:not(.active):not(.bundled-active):not(.highlighted):hover,
 .after-tabs button:hover,
 .after-tabs [role="button"]:hover,
 #subpanel-selector-anchor:hover {
-  --tab-surface: var(--tab-text-regular);
-  --tab-text: var(--tab-text-regular);
+  --tab-surface: unset;
+  --tab-text: unset;
 }
 
 tab-item-substance {
@@ -306,13 +306,18 @@ Tab Bar
   transition: none;
 }
 #tabbar {
-  padding: var(--tab-margin-left);
+  margin: 0 var(--tab-margin-left);
+  overflow: visible !important;
 }
 #tabbar > div {
-  margin: calc(0px - var(--tab-margin-left));
+  margin: 0 calc(0px - var(--tab-margin-left));
 }
 .tabs {
-  overflow: visible;
+  padding: 4px 0;
+}
+#all-tabs {
+  position: relative;
+  overflow-y: scroll !important;
 }
 :root.left #tabbar {
   direction: ltr;
@@ -320,11 +325,11 @@ Tab Bar
 :root.right #tabbar {
   direction: rtl;
 }
-#tabbar.overflow {
-  padding-right: 0.2em;
+#tabbar.overflow #all-tabs {
+  padding-right: 0.5em;
 }
 :root{
-  --tabbar-margin-top: calc(var(--pinned-tabs-area-size) + var(--tab-margin-left));
+  --tabbar-margin-top: calc(var(--pinned-tabs-area-size) + 4px);
 }
 :root.have-pinned-tabs #tabbar-container::before {
   content: "";
@@ -394,19 +399,19 @@ tab-item.group-tab.active > tab-item-substance {
 .bundled-active.in-visible-area tab-item-substance {
   box-shadow: 0 0em 0.2em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
 }
-tab-item:not(.group-tab).active,
-tab-item:not(.group-tab).active:hover,
-tab-item:not(.group-tab).bundled-active,
-tab-item:not(.group-tab).bundled-active:hover,
-.mutiple-highlighted > tab-item:not(.group-tab).highlighted,
-.mutiple-highlighted > tab-item:not(.group-tab).highlighted:hover {
+tab-item:not(.group-tab).active tab-item-substance,
+tab-item:not(.group-tab).active tab-item-substance:hover,
+tab-item:not(.group-tab).bundled-active tab-item-substance,
+tab-item:not(.group-tab).bundled-active tab-item-substance:hover,
+.mutiple-highlighted > tab-item:not(.group-tab).highlighted tab-item-substance,
+.mutiple-highlighted > tab-item:not(.group-tab).highlighted tab-item-substance:hover {
   --tab-surface: var(--tab-surface-active);
   --tab-surface-bgimage: var(--tab-surface-active-bgimage);
   --tab-text: var(--tab-text-active);
   --tab-text-inverted: var(--tab-text-active-inverted);
 }
-tab-item:not(.active):not(.bundled-active):not(.highlighted):hover,
-tab-item:not(.active):not(.bundled-active):not(.highlighted):focus{
+tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover,
+tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:focus{
   --tab-surface: var(--tab-text-regular);
   --tab-text: var(--tab-text-regular);
 }
@@ -463,7 +468,7 @@ tab-item.discarded:hover tab-item-substance {
 }
 tab-item.faviconized {
   margin: var(--tab-margin-left) !important;
-  outline: 1px solid rgb(0,0,0); /**debug purposes only**/
+  border: 1px solid rgb(0,0,0); /**debug purposes only**/
 }
 tab-item.faviconized .contextual-identity-marker {
   --contextual-identity-marker-margin: unset;
@@ -844,10 +849,13 @@ tab-item.faviconized {
 }
 .after-tabs {
   height: var(--after-tabs-area-size) !important;
-  margin: 0 var(--tab-margin-left) 0 var(--tab-margin-right);
+  margin: 0 var(--tab-margin-left) 0 var(--tab-margin-right) !important;
+}
+#tabbar > .after-tabs {
+  margin: 0 !important;
 }
 .newtab-button-box {
-  border-top: 1px solid var(--tab-sidebar-border-color);
+  border-top: 1px solid var(--tab-sidebar-border-color, var(--tab-text));
   height: calc(var(--after-tabs-area-size) - 4px);
   width: var(--newtab-button-box-width);
   padding-top: 4px;
