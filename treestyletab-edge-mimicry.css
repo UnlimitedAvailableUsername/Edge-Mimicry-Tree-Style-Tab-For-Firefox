@@ -306,6 +306,15 @@ Tab Bar
 #tabbar-container {
   transition: none;
 }
+.have-pinned-tabs #tabbar-container::before {
+  content: "";
+  position: absolute;
+  top: var(--tabbar-margin-top);
+  opacity: 0.5;
+  border-top: 1px solid var(--tab-text);
+  width: var(--separator-pinned-overflow-tabs) !important;
+  left: var(--tab-margin-left);
+}
 :root.left #tabbar {
   direction: ltr;
 }
@@ -325,23 +334,16 @@ Tab Bar
   padding-right: 0.5em;
 }
 .tabs {
-  padding-bottom: 4px;
-  margin-left: var(--tab-margin-left);
+  margin: 4px 0 4px var(--tab-margin-left);
 }
 #tabbar.overflow .tabs {
-  padding-bottom: 0px;
-}
-:root.have-pinned-tabs #tabbar-container::before {
-  content: "";
-  position: absolute;
-  top: var(--tabbar-margin-top);
-  opacity: 0.5;
-  border-top: 1px solid var(--tab-text);
-  width: var(--separator-pinned-overflow-tabs) !important;
-  left: var(--tab-margin-left);
+  margin-top: 0px;
 }
 .tabs-spacer {
   display: none !important;
+}
+#tabbar.overflow ~ .after-tabs {
+  margin-right: calc(var(--tab-margin-right) + 0.5em);
 }
 
 
@@ -795,10 +797,10 @@ tab-item .label {
   display: none !important;
 }
 tab-item.faviconized {
-  --attention-marker-x-offset: calc(0px);
-  --attention-marker-y-offset: calc(0px);
-  --attention-marker-gradient: #00000000;
-  --attention-marker-gradient-hover: var(--attention-marker-gradient);
+  --attention-marker-x-offset: unset;
+  --attention-marker-y-offset: unset;
+  --attention-marker-gradient: unset;
+  --attention-marker-gradient-hover: unset;
 }
 .faviconized.unread tab-item-substance tab-favicon::before,
 .attention tab-favicon::before {
@@ -830,7 +832,7 @@ tab-item.faviconized {
 .after-tabs button,
 .after-tabs [role="button"] {
   color: var(--tab-text);
-  height: 32px;  
+  height: 32px;
   line-height: 32px;
   position: relative !important;
 }
@@ -846,10 +848,9 @@ tab-item.faviconized {
 }
 .after-tabs {
   height: var(--after-tabs-area-size) !important;
-  margin: 0 var(--tab-margin-left) 0 var(--tab-margin-right) !important;
+  margin: 0 var(--tab-margin-left) 0 var(--tab-margin-right);
 }
 .newtab-button-box {
-  border-top: 1px solid var(--tab-sidebar-border-color, var(--tab-text));
   height: calc(var(--after-tabs-area-size) - 4px);
   width: var(--newtab-button-box-width);
   padding-top: 4px;
@@ -857,6 +858,16 @@ tab-item.faviconized {
   flex-wrap: wrap-reverse !important;
   flex-direction: column !important;
   align-items: start;
+  position: relative;
+}
+.newtab-button-box::before {
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  opacity: 0.5;
+  content:"";
+  background: var(--tab-sidebar-border-color, var(--tab-text));
 }
 .newtab-button {
   display: flex;
