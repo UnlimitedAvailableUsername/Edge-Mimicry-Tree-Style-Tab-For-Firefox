@@ -369,10 +369,8 @@ tab-item:not(.collapsed):not(.faviconized) {
 tab-item:not(.group-tab):not(.faviconized) {
   min-width: var(--tab-max-width-inline-block);
 }
-
 tab-item-substance {
   margin: 0 !important;
-  overflow: visible !important;
   min-width: var(--tab-size);
 }
 tab-item-substance,
@@ -382,16 +380,24 @@ tab-item-substance .contextual-identity-marker {
 }
 
 tab-item.active tab-item-substance,
-.in-visible-area.active tab-item-substance {
-  box-shadow: 
-    0 0.25em 0.8em -0.3em var(--browser-tab-highlighter, var(--tab-active-border-near, var(--tab-text))), 
-    0 0 0.1em 0 var(--browser-tab-highlighter, var(--tab-active-border-far, transparent));
+tab-item.in-visible-area.active tab-item-substance {
+  box-shadow: 0 0 0.1em 0 var(--browser-tab-highlighter, var(--tab-active-border-far, transparent));
   outline: 1px solid var(--theme-colors-tab_line);
 }
-tab-item.group-tab.active > tab-item-substance {
+.group-tab.active > tab-item-substance {
   outline: 2px solid var(--theme-colors-tab_line);
 }
-
+.active::before,
+.in-visible-area.active::before {
+  height: 100%;
+  width: 100%;
+  background: var(--browser-tab-highlighter, var(--tab-active-border-near, var(--tab-text)));
+  filter: blur(3px);
+  top: 2px;
+  opacity: 0.4;
+  position: absolute;
+  content: "";
+}
 .bundled-active tab-item-substance,
 .bundled-active.in-visible-area tab-item-substance {
   box-shadow: 0 0em 0.2em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
@@ -446,10 +452,10 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
   border-bottom: var(--tab-dropmarker-size) solid var(--tab-dropmarker);
 }
 
-tab-item.discarded tab-item-substance {
+.discarded tab-item-substance {
   opacity: 0.4;
 }
-tab-item.discarded:hover tab-item-substance {
+.discarded:hover tab-item-substance {
   opacity: 0.8;
 }
 
@@ -832,8 +838,8 @@ tab-item.faviconized {
 .after-tabs button,
 .after-tabs [role="button"] {
   color: var(--tab-text);
-  height: 32px;
-  line-height: 32px;
+  height: var(--tab-size);
+  line-height: var(--tab-size);
   position: relative !important;
 }
 .after-tabs button:hover::before,
@@ -853,10 +859,9 @@ tab-item.faviconized {
 .newtab-button-box {
   height: calc(var(--after-tabs-area-size) - 4px);
   width: var(--newtab-button-box-width);
-  padding-top: 4px;
-  padding-bottom: var(--tab-margin-left);
-  flex-wrap: wrap-reverse !important;
-  flex-direction: column !important;
+  padding: 4px 0 var(--tab-margin-left) 0;
+  flex-wrap: wrap-reverse;
+  flex-direction: column;
   align-items: start;
   position: relative;
 }
@@ -867,7 +872,7 @@ tab-item.faviconized {
   width: 100%;
   opacity: 0.5;
   content:"";
-  background: var(--tab-sidebar-border-color, var(--tab-text));
+  background: var(--tab-text);
 }
 .newtab-button {
   display: flex;
