@@ -1,23 +1,54 @@
 /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_sidebar.css made available under Mozilla Public License v. 2.0
 See the above repository for updates as well as full license text. */
 
-#sidebar-box{
-  --sidebar-background-color: var(--toolbar-bgcolor) !important;
-  --sidebar-transition-delay: 500ms;
-  --sidebar-width: 48px;
-  --sidebar-hover-width: calc(calc(calc(var(--sidebar-width) - 0.65em) * 6) + 0.65em);
-  /* If you want to adjust sidebar-hover-width, change the default number multiplied here (which is 6 - follows the number of icon-only pinned tabs per row) */
-  --autohide-sidebar-delay: 250ms; /* Delay before hiding the sidebar */
-  position: relative;
-  min-width: var(--sidebar-width) !important;
-  width: var(--sidebar-width) !important;
-  max-width: var(--sidebar-width) !important;
-  margin-top: -1px;
-  z-index:1;
+#browser {
+  --collapsed-width: 48px;
+  --faviconized-count: 6;
+  --tab-margin-left: 0.65em;
+  --width-hover: calc(calc(calc(var(--collapsed-width) - var(--tab-margin-left)) * var(--faviconized-count)) + var(--tab-margin-left));
+  z-index: 0;
+}
+body::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: var(--lwt-header-image, var(--lwt-additional-images));
+  background-repeat: var(--lwt-background-tiling);
+  background-position: var(--lwt-background-alignment);
+  background-color: var(--lwt-accent-color);
+  z-index: 0;
+}
+.toolbar-items,
+#toolbar-menubar {
+  z-index: 3;
+}
+body * {
+  z-index: 3;
+}
+#nav-bar {
+  z-index: 4;
 }
 
-#sidebar-title { 
-  display: none !important;
+#sidebar-box {
+  min-width: var(--collapsed-width) !important;
+  max-width: var(--collapsed-width) !important;
+  background: transparent !important;
+  border: none !important;
+  z-index: 1; /** important to allow overflow of content**/
+}
+
+#sidebar-box > * {
+  will-change: min-width;
+  transition: min-width 0s linear;
+  min-width: var(--collapsed-width) !important;
+  border-right: 1px solid var(--chrome-content-separator-color) !important;
+  overflow: hidden;
+}
+#sidebar-box:hover > * {
+  will-change: min-width;
+  transition: min-width 0s linear;
+  min-width: var(--width-hover) !important;
 }
 #sidebar-box[positionend]{ 
   direction: rtl;
@@ -26,123 +57,24 @@ See the above repository for updates as well as full license text. */
   direction: ltr;
 }
 
-#sidebar-box[positionend]:-moz-locale-dir(rtl){ 
-  direction: ltr;
-}
-#sidebar-box[positionend]:-moz-locale-dir(rtl) > *{ 
-  direction: rtl;
-}
-
 #sidebar-splitter{ 
   display: none !important;
 }
-
-#sidebar,
-#sidebar-header{
-  transition: box-shadow 0.1s linear, min-width 25ms linear var(--autohide-sidebar-delay) !important;
-  min-width: var(--sidebar-width) !important;
-  will-change:  min-width !important;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.3) !important;
-  border-right: 1px solid var(--chrome-content-separator-color) !important;
+#sidebar-box[hidden="true"] {
+  display: none !important;
 }
-
-#sidebar-box:hover > #sidebar,
-#sidebar-box:hover > #sidebar-header{
-  transition: box-shadow 0.1s linear, min-width 50ms linear var(--autohide-sidebar-delay) !important;
-  transition-delay: var(--sidebar-transition-delay) !important;
-  min-width: var(--sidebar-hover-width) !important;
-  box-shadow: 3px 8px 6px rgba(0, 0, 0, 0.25) !important;
-  border-right: 1px solid var(--chrome-content-separator-color) !important;
-}
-
-#sidebar-box {
-  box-shadow: 0 20px 0 rgba(0, 0, 0, 0.25) !important;
-  transition: box-shadow 0.1s linear !important;
-}
-
-#sidebar-box:hover {	
-  box-shadow: 3px 16px 6px rgba(0, 0, 0, 0.2) !important;
-}
-
-.sidebar-panel{
-  background-color: transparent !important;
-  color: var(--newtab-text-primary-color) !important;
-}
-
-.sidebar-panel #search-box{
-  -moz-appearance: none !important;
-  background-color: rgba(249,249,250,0.1) !important; 
-  color: inherit !important;
-}
-
-/* Add sidebar background */
-
-#sidebar,
 #sidebar-header {
-  background-image: var(--lwt-additional-images);
-  background-size: auto;
-  background-repeat: no-repeat;
+	background-color: var(--toolbar-bgcolor);
+	background-clip: padding-box;
+	color: var(--toolbar-color);
+  font-size: unset !important; /* Needed for the header to follow sidebar-width*/
 }
 
-#sidebar {
-  background-color: var(--lwt-accent-color) !important;
+#sidebar-box:hover ~ #appcontent {
+  --width-hover-minus: calc(var(--width-hover) - calc(var(--collapsed-width)));
+  clip-path: polygon(var(--width-hover-minus) 0%, 100% 0%, 100% 100%, var(--width-hover-minus) 100%);
 }
 
-#sidebar-header{
-  height: 40px !important;
-  font-size: inherit !important;
-  background-color: var(--toolbar-bgcolor) !important;
-  border-bottom: none !important;
+#sidebar-box[positionend="true"]:hover ~ #appcontent {
+  clip-path: polygon(calc(100% - var(--width-hover-minus)) 0%, 0% 0%, 0% 100%, calc(100% - var(--width-hover-minus)) 100%);
 }
-
-#sidebar-box:not([positionend]):hover ~ #appcontent #statuspanel{ inset-inline: auto 0px !important; }
-#sidebar-box:not([positionend]):hover ~ #appcontent #statuspanel-label{ margin-inline: 0px !important; border-left-style: solid !important; }
-
-
-#browser {
-  --sidebar-border-color: var(--chrome-content-separator-color) !important;
-}
-
-#sidebar-switcher-target {
-  padding: 2px 0px !important;
-}
-
-#sidebar-icon{
-  -moz-box-ordinal-group: 0;
-  margin: 2px 6px !important; 
-  min-height: 16px !important;
-  min-width: 16px !important;
-}
-
-#sidebar-box #sidebar-close,
-#sidebar-box #sidebar-switcher-arrow {
-  transition: visibility 25ms linear var(--autohide-sidebar-delay) !important;
-  will-change: visibility !important;
-  visibility: collapse !important;
-}
-
-#sidebar-box:hover #sidebar-close,
-#sidebar-box:hover #sidebar-switcher-arrow {
-  transition: visibility 50ms linear var(--autohide-sidebar-delay) !important;
-  transition-delay: var(--sidebar-transition-delay) !important;
-  visibility: visible !important;
-}
-
-#sidebar-header::after{
-  content:"";
-  display: flex;
-  position: absolute;
-  top: 0;
-  height: 1px;
-  width: calc(var(--sidebar-width) - 16px) !important;
-  background-color: var(--chrome-content-separator-color);
-  transition: width 25ms linear var(--autohide-sidebar-delay) !important;
-  will-change: width !important;
-}
-
-#sidebar-box:hover #sidebar-header::after{
-  transition: width 50ms linear var(--autohide-sidebar-delay) !important;
-  transition-delay: var(--sidebar-transition-delay) !important;
-  width: calc(var(--sidebar-hover-width) - 16px) !important;
-}
-
