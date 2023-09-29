@@ -1,17 +1,66 @@
-/* hides the native tabs without changing height */
-#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
-  opacity: 0;
-  pointer-events: none;
+:root {
+  --tab-min-height: unset !important;
 }
-
-/* adjust toolbar position to make use of title bar whitespace left after hiding tabs */
 #nav-bar {
-  margin-top: -36px;
-	margin-right: 182px;
-	margin-bottom: 0px;
+  --tab-min-height: 42px !important;
+  max-width: 100% !important;
+}
+#main-window[tabsintitlebar] #nav-bar {
+  max-width: calc(100% - 188px) !important;
+}
+#TabsToolbar {
+  --tab-min-height: 42px !important;
+  justify-content: flex-end;
+  display: flex;
+}
+#nav-bar,
+#TabsToolbar,
+#TabsToolbar > .titlebar-buttonbox-container,
+.titlebar-buttonbox {
+  min-height: var(--tab-min-height) !important;
+}
+.titlebar-spacer[type="pre-tabs"],
+.toolbar-items,
+#private-browsing-indicator-with-label,
+#toolbar-menubar > .titlebar-buttonbox-container,
+#main-window[privatebrowsingmode] .titlebar-spacer {
+  display: none !important;
+}
+#TabsToolbar > .titlebar-buttonbox-container {
+  visibility: visible !important;
+  display: inline-block;
+}
+#main-window[privatebrowsingmode] .private-browsing-indicator {
+  display: block !important;
+}
+#nav-bar {
+  order: -1;
+  flex-grow: 1;
+  z-index: 4;
+}
+#toolbar-menubar {
+	--tab-min-height: unset !important;
+  --tabs-navbar-shadow-size: unset !important;
+}
+#toolbar-menubar[inactive="true"] > * {
+	width: 0;
+}
+#toolbar-menubar > spacer {
+  display: none;
+}
+#titlebar {
+  flex-shrink: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+#navigator-toolbox {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-/* hides the tabs and changes the height of title bar */
-#tabbrowser-tabs {
-  visibility: collapse !important;
-} 
+#PersonalToolbar,
+#tab-notification-deck-template {
+  flex-basis: 100%;
+}
