@@ -1,34 +1,3 @@
-:root {
-  --tab-border-radius-size: 0.35em; /* proton */
-  --tab-dropshadow-blur: 0 !important;
-  --tab-dropshadow-padding: 0 !important;
-  --tab-closebox-offset: 0 !important;
-  --tab-closebox-negative-offset: 0 !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --context-menu-background-color-default: #3b3b3b;
-    --sidebar-background-color-default: #3B3B3B;
-	--tab-hover-background: #ffffff45;
-    --tab-sidebar-border-default-color: #686868;
-    --toolbar-non-lwt-bgcolor: rgb(66,65,77);
-    --contextual-identity-brightness: 115%;
-    --b-top: gray;
-  }
-}
-@media not (prefers-color-scheme: dark) {
-  :root {
-    --context-menu-background-color-default: #F7F7F7;
-    --tab-hover-background:#0000000F;
-    --tab-sidebar-border-default-color: #B8B8B8;
-    --sidebar-background-color-default: #F7F7F7;
-    --contextual-identity-brightness: 85%;
-    --b-top: lightgray;
-  }
-}
-
-
 /** OVERRIDING PROTON.CSS **/
 
 
@@ -248,11 +217,46 @@ tab-item.faviconized .contextual-identity-marker {
     margin-top: unset;
 }
 
+/** END **/
 
 
-/***************
-Main body layout
-****************/
+
+
+:root {
+  --tab-border-radius-size: 0.35em; /* proton */
+  --tab-dropshadow-blur: 0 !important;
+  --tab-dropshadow-padding: 0 !important;
+  --tab-closebox-offset: 0 !important;
+  --tab-closebox-negative-offset: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-default: var(--dark-toolbar);
+    --context-menu-background-color-default: #3b3b3b;
+    --sidebar-background-color-default: #3B3B3B;
+	--tab-hover-background: #ffffff45;
+    --tab-sidebar-border-default-color: #686868;
+    --toolbar-non-lwt-bgcolor: rgb(66,65,77);
+    --contextual-identity-brightness: 115%;
+    --b-top: gray;
+  }
+}
+@media not (prefers-color-scheme: dark) {
+  :root {
+    --bg-default: var(--grey-10);
+    --context-menu-background-color-default: #F7F7F7;
+    --tab-hover-background:#0000000F;
+    --tab-sidebar-border-default-color: #B8B8B8;
+    --sidebar-background-color-default: #F7F7F7;
+    --contextual-identity-brightness: 85%;
+    --b-top: lightgray;
+  }
+}
+
+
+/** Main body layout **/
+
 
 :root{
   --scrollbar-placeholder-size: 1.2em;
@@ -273,7 +277,6 @@ Main body layout
   --newtab-button-box-width: 100%;
   --tab-sound-button-icon-size: 85%;
   --sound-button-size: 20px;
-  --newtab-margin-left: calc(var(--svg-small-icon-size) - 0.45em);
   --tabbar-margin-top: calc(var(--pinned-tabs-area-size) + 5px);
   overflow: hidden;
 }
@@ -287,8 +290,11 @@ Main body layout
 :root,
 body,
 #background {
-  background-color: var(--browser-background, var(--tabbar-bg));
-  background-image: var(--browser-bg-images, none);
+  background-color: unset;
+  background-image: 
+    linear-gradient(0deg, var(--theme-colors-toolbar, var(--bg-default)), var(--theme-colors-toolbar, var(--bg-default))),
+    var(--browser-bg-images, none),
+    linear-gradient(0deg, var(--browser-background, var(--tabbar-bg)), var(--browser-background, var(--tabbar-bg)));
   background-position: var(--browser-bg-position, left);
   background-size: var(--browser-bg-size, auto);
   background-repeat: repeat-y;
@@ -334,6 +340,9 @@ Tab Bar
   padding-right: 0.5em;
 }
 .tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin: 4px 0 4px var(--tab-margin-left);
 }
 #tabbar.overflow .tabs {
@@ -359,7 +368,8 @@ tab-item {
   overflow: visible;
   height: var(--tab-size);
   max-width: var(--tab-max-width-inline-block);
-  margin-left: var(--tab-indent) !important;
+  margin-left: var(--tab-indent);
+  scroll-padding: 1.5px 0px;
 }
 tab-item:not(.collapsed):not(.faviconized) {
   display: inline-block;
@@ -381,26 +391,19 @@ tab-item-substance .contextual-identity-marker {
 
 tab-item.active tab-item-substance,
 tab-item.in-visible-area.active tab-item-substance {
-  box-shadow: 0 0 0.1em 0 var(--browser-tab-highlighter, var(--tab-active-border-far, transparent));
+  box-shadow: 
+    0 0.2em 0.5em var(--browser-tab-highlighter, var(--tab-active-border-near, var(--in-content-category-background-selected-active))),
+    0 0 0.1em var(--browser-tab-highlighter, var(--tab-active-border-far, var(--in-content-category-background-selected-active)));
   outline: 1px solid var(--theme-colors-tab_line);
 }
 .group-tab.active > tab-item-substance {
   outline: 2px solid var(--theme-colors-tab_line);
 }
-.active::before,
-.in-visible-area.active::before {
-  height: 100%;
-  width: 100%;
-  background: var(--browser-tab-highlighter, var(--tab-active-border-near, var(--tab-text)));
-  filter: blur(3px);
-  top: 2px;
-  opacity: 0.4;
-  position: absolute;
-  content: "";
-}
 .bundled-active tab-item-substance,
 .bundled-active.in-visible-area tab-item-substance {
-  box-shadow: 0 0em 0.2em var(--browser-tab-highlighter, var(--tab-active-border-near)), 0 0 var(--tab-dropshadow-size) var(--browser-tab-highlighter, var(--tab-active-border-far));
+  box-shadow: 
+    0 0.2em 0.5em var(--browser-tab-highlighter, var(--tab-active-border-near, var(--in-content-category-background-selected-active))),
+    0 0 0.1em var(--browser-tab-highlighter, var(--tab-active-border-far, var(--in-content-category-background-selected-active)));
 }
 tab-item:not(.group-tab).active tab-item-substance,
 tab-item:not(.group-tab).active tab-item-substance:hover,
@@ -420,10 +423,10 @@ tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:
 }
 tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance .background {
   opacity: 0;
-  transition: opacity 0.3s;
 }
 tab-item:not(.active):not(.bundled-active):not(.highlighted) tab-item-substance:hover .background {
   opacity: 0.15;
+  transition: opacity 0.3s;
 }
 tab-item.dragging {
   opacity: 1.0 !important;
@@ -460,6 +463,11 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
 }
 
 /** Pinned Tabs **/
+.pinned:not(.faviconized) {
+  --tab-max-width-inline-block: calc(100% - calc(var(--tab-margin-left) * 2));
+  --visual-gap-offset: 0.65em;
+  margin-left: var(--tab-margin-left) !important;
+}
 
 /** Icon-Only Pinned Tabs **/
 
@@ -505,6 +513,7 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
 
 /* group tab */
 
+
 .group-tab {
   --tab-size: 24px;
   --tab-margin-top: 4px;
@@ -513,7 +522,7 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
   overflow: visible;
   max-width: var(--tab-group-max-width-inline-block);
   height: var(--tab-size);
-  margin-left: calc(4px + var(--tab-margin-left) + var(--tab-indent)) !important;
+  margin-left: calc(4px + var(--tab-indent)) !important;
 }
 .group-tab:not(.collapsed) {
   margin-top: var(--tab-margin-top) !important;
@@ -656,12 +665,14 @@ tab-item.removing, tab-item:not(.pinned).collapsed, tab-item.duplicating {
 }
 
 tab-item:not(.group-tab) .twisty {
-  margin-right: calc(0px - calc(calc(var(--tab-size)/2) - calc(16px/8)));
+  --favicon-size: var(--tab-size);
+  position: absolute;
+  display: flex;
+  align-items: center;
 }
 tab-item:not(.group-tab) .twisty::before {
-  margin: 0;
-  mask-size: 50% !important;
-  position: absolute;
+  margin: 0 0 0 -0.1em;
+  mask-size: 60% !important;
 }
 .counter {
   font-size: 10px;
@@ -734,11 +745,11 @@ tab-item:not(.faviconized) .sound-button::after {
 }
 tab-item:not(.faviconized) .sound-button::after,
 tab-tem:not(.faviconized) .closebox::after {
-  background: var(--tab-text);
+  background: currentcolor;
 }
 .closebox:hover::before,
 .sound-button:hover::before {
-  background: var(--tab-text) !important;
+  background: currentcolor !important;
   opacity: 0.15;
 }
 .closebox:active::before,
@@ -881,16 +892,20 @@ tab-item.faviconized {
   align-items: center;
 }
 .newtab-button::after {
-  height: 15px;
-  width: 15px;
-  margin-left: var(--newtab-margin-left);
+  height: var(--tab-size);
+  width: var(--tab-size);
+  scale: 0.46875;
   background: linear-gradient(to bottom, #00000000 46%, var(--tab-text) 48%, var(--tab-text) 53%,  #00000000 0%),
     linear-gradient(to right, #00000000 46%, var(--tab-text) 48%, var(--tab-text) 53%, #00000000 0%) !important;
   mask: none !important;
 }
 .newtab-button .extra-items-container {
-  left: calc(var(--newtab-margin-left) + 15px + 0.75em) !important;
-  right: calc(var(--svg-small-icon-size) + 0.5em) !important;
+  left: unset !important;
+  right: unset !important;
+  padding-right: calc(var(--svg-small-icon-size) * 1.25);
+  flex-grow: 1;
+  position: relative;
+  order: 2;
   justify-content: space-between;
 }
 .newtab-button .extra-items-container::before {
@@ -1172,21 +1187,30 @@ Hover-over sidebar layout
   :root {
     --separator-pinned-overflow-tabs: calc(48px - calc(var(--tab-margin-left) * 2));
     --sound-button-size: 32px;
-    --newtab-margin-left: calc(var(--svg-small-icon-size) - var(--tab-margin-left));
     --newtab-button-box-width: 32px;
     --tab-sound-button-icon-size: 70%;
   }
-  #tabbar-container {
+  #tabbar-container,
+  #tabbar {
     min-width: 258px !important; /*for layout purpose!*/
+    width: 258px !important;
   }
+  #all-tabs,
   .tabs {
-    width: 48px;
+    width: 48px !important;
+    max-width: 48px !important;
+  }
+  .group-tab {
+    min-width: var(--tab-size);
+    margin-right: var(--tab-margin-right);
+    position: relative;
   }
   
   /** Tab items **/
   
   tab-item:not(.faviconized) {
     --tab-indent: 0em !important;
+    --tab-max-width-inline-block: var(--tab-size);
   }
   /** Tab Contents **/
   
