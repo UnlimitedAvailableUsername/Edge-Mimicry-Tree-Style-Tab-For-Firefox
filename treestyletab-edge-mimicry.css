@@ -332,9 +332,11 @@ Tab Bar
 }
 #tabbar.overflow {
   bottom: calc(calc(var(--after-tabs-area-size) + var(--tabbar-bottom-area-size)) - 5px);
+  scroll-padding: 1.5px 0px;
 }
 #all-tabs {
   position: relative;
+  scroll-padding: 1.5px 0px;
 }
 #tabbar.overflow #all-tabs {
   padding-right: 0.5em;
@@ -463,9 +465,9 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
 }
 
 /** Pinned Tabs **/
-.pinned:not(.faviconized) {
+.pinned {
   --tab-max-width-inline-block: calc(100% - calc(var(--tab-margin-left) * 2));
-  --visual-gap-offset: 0.65em;
+  --visual-gap-offset: var(--tab-margin-left);
   margin-left: var(--tab-margin-left) !important;
 }
 
@@ -480,7 +482,6 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
   min-height: var(--fav-tab-size) !important;
 }
 .faviconized {
-  margin: var(--tab-margin-left) !important;
   border: 1px solid rgb(0,0,0,0); /**debug purposes only**/
 }
 .faviconized tab-item-substance {
@@ -1189,6 +1190,7 @@ Hover-over sidebar layout
     --sound-button-size: 32px;
     --newtab-button-box-width: 32px;
     --tab-sound-button-icon-size: 70%;
+    --collapse-animation: 0s;
   }
   #tabbar-container,
   #tabbar {
@@ -1216,7 +1218,8 @@ Hover-over sidebar layout
   
   .counter,
   tab-item:not(.group-tab) .twisty,
-  .closebox {
+  .closebox,
+  tab-label {
     display: none !important;
   }
   .sound-button {
