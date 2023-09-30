@@ -56,12 +56,27 @@
   margin-left: auto;
 }
 #navigator-toolbox {
-  background: var(--toolbar-bgcolor) !important;
+  background: none !important;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  position: relative;
+  border: none !important;
 }
-
+#navigator-toolbox::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: var(--toolbar-bgcolor) !important;
+  opacity: 0.5;
+}
+#appcontent {
+  border-top: 1px solid var(--chrome-content-separator-color);
+}
+#PersonalToolbar {
+  background: none !important;
+}
 #PersonalToolbar,
 #tab-notification-deck-template {
   flex-basis: 100%;
