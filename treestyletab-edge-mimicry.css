@@ -466,6 +466,7 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
 
 /** Pinned Tabs **/
 .pinned {
+  --pinned-position-right: 0.65em !important;
   --tab-max-width-inline-block: calc(100% - calc(var(--tab-margin-left) * 2));
   --visual-gap-offset: var(--tab-margin-left);
   margin-left: var(--tab-margin-left) !important;
