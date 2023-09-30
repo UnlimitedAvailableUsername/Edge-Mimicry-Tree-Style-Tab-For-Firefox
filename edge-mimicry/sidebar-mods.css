@@ -23,38 +23,87 @@ body::before {
 #toolbar-menubar {
   z-index: 3;
 }
-body * {
-  z-index: 3;
+body > * {
+  z-index: 1;
 }
 #nav-bar {
   z-index: 4;
 }
-
+#main-window[BookmarksToolbarOverlapsBrowser] #browser {
+  clip-path: polygon(0% var(--bookmarks-toolbar-overlapping-browser-height), 100% var(--bookmarks-toolbar-overlapping-browser-height), 100% 100%, 0% 100%);
+}
 #sidebar-box {
   min-width: var(--collapsed-width) !important;
   max-width: var(--collapsed-width) !important;
   background: transparent !important;
   border: none !important;
+  margin-top: 0 !important;
+  position: relative;
   z-index: 1; /** important to allow overflow of content**/
 }
 
+#browser {
+  --animation-delay-expand: 0.35s;
+  --animation-delay-collapse: 0.6s;
+  --animation-dur-expand: 0.2s;
+  --animation-dur-collapse: 0.1s;
+  --animation-expand: var(--animation-dur-expand) cubic-bezier(.77,0,.18,1);
+  --animation-collapse: var(--animation-dur-collapse) cubic-bezier(.77,0,.18,1);
+}
+#sidebar-box::before {
+  --clip-width: var(--collapsed-width);
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  z-index: -1;
+  background: black;
+  filter: blur(0.2em);
+  clip-path: polygon(calc(var(--clip-width) + 2em) 0, calc(var(--clip-width) + 2em) 100%, 0 100%, 0 42px, var(--clip-width) 42px, var(--clip-width) 0);
+  transition: clip-path var(--animation-expand), width var(--animation-expand);
+  transition-delay: var(--animation-delay-expand) !important;
+}
+#sidebar-box:hover::before {
+  --clip-width: var(--width-hover);
+  width: var(--width-hover);
+  transition: clip-path var(--animation-collapse), width var(--animation-collapse);
+  transition-delay: var(--animation-delay-collapse) !important;
+}
 #sidebar-box > * {
   will-change: min-width;
-  transition: min-width 0s linear;
   min-width: var(--collapsed-width) !important;
-  border-right: 1px solid var(--chrome-content-separator-color) !important;
   overflow: hidden;
+  border-right: 1px solid var(--chrome-content-separator-color) !important;
+  transition: min-width var(--animation-expand);
+  transition-delay: var(--animation-delay-expand) !important;
 }
 #sidebar-box:hover > * {
   will-change: min-width;
-  transition: min-width 0s linear;
   min-width: var(--width-hover) !important;
+  transition: min-width var(--animation-collapse);
+  transition-delay: var(--animation-delay-collapse) !important;
+}
+#appcontent {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  transition: clip-path var(--animation-expand);
+  transition-delay: var(--animation-delay-expand) !important;
+}
+#sidebar-box:hover ~ #appcontent {
+  --width-hover-minus: calc(var(--width-hover) - calc(var(--collapsed-width)));
+  clip-path: polygon(var(--width-hover-minus) 0%, 100% 0%, 100% 100%, var(--width-hover-minus) 100%);
+  transition: clip-path var(--animation-collapse);
+  transition-delay: var(--animation-delay-collapse) !important;
+}
+#sidebar-box[positionend="true"]:hover ~ #appcontent {
+  clip-path: polygon(calc(100% - var(--width-hover-minus)) 0%, 0% 0%, 0% 100%, calc(100% - var(--width-hover-minus)) 100%);
 }
 #sidebar-box[positionend]{ 
   direction: rtl;
 }
 #sidebar-box[positionend] > *{ 
   direction: ltr;
+  border-left: 1px solid var(--chrome-content-separator-color) !important;
 }
 
 #sidebar-splitter{ 
@@ -64,17 +113,49 @@ body * {
   display: none !important;
 }
 #sidebar-header {
-	background-color: var(--toolbar-bgcolor);
-	background-clip: padding-box;
+  position: relative;
+	background-color: transparent !important;
+  height: 42px;
+  align-items: flex-end;
+	padding: 0px !important;
+  border-bottom: unset !important;
 	color: var(--toolbar-color);
   font-size: unset !important; /* Needed for the header to follow sidebar-width*/
 }
-
-#sidebar-box:hover ~ #appcontent {
-  --width-hover-minus: calc(var(--width-hover) - calc(var(--collapsed-width)));
-  clip-path: polygon(var(--width-hover-minus) 0%, 100% 0%, 100% 100%, var(--width-hover-minus) 100%);
+#sidebar-header::before {
+	position: absolute;
+	content: "";
+	height: 100%;
+	width: 100%;
+	background-color: var(--toolbar-bgcolor);
+	opacity: 0.5;
+  z-index: -1;
 }
-
-#sidebar-box[positionend="true"]:hover ~ #appcontent {
-  clip-path: polygon(calc(100% - var(--width-hover-minus)) 0%, 0% 0%, 0% 100%, calc(100% - var(--width-hover-minus)) 100%);
+#sidebar-header > * {
+	margin: auto 0 0 0 !important;
+}
+#sidebar-switcher-target {
+  margin-left: var(--tab-margin-left) !important;
+  padding: 6px 7px !important;
+}
+#sidebar-title {
+  display: none;
+}
+#sidebar-box:hover #sidebar-title {
+  display: block;
+}
+#sidebar-title[value="Tree Style Tab"] {
+  display: none !important;
+}
+#sidebar-switcher-arrow {
+  display: none;
+}
+#sidebar-box:hover #sidebar-switcher-arrow {
+  display: block;
+}
+#sidebar-close {
+  padding: 6px 7px !important;
+  width: unset !important;
+  height: unset !important;
+  margin-right: var(--tab-margin-left) !important;
 }
