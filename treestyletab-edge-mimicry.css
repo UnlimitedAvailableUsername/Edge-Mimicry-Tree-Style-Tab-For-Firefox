@@ -228,6 +228,21 @@ tab-item.faviconized .contextual-identity-marker {
   --tab-dropshadow-padding: 0 !important;
   --tab-closebox-offset: 0 !important;
   --tab-closebox-negative-offset: 0 !important;
+  --tab-animation: 
+    background var(--color-animation), 
+    bottom var(--collapse-animation), 
+    color var(--color-animation), 
+    left var(--collapse-animation), 
+    margin-bottom var(--collapse-animation), 
+    margin-top var(--collapse-animation), 
+    max-height var(--collapse-animation), 
+    max-width 0s, 
+    min-height var(--collapse-animation), 
+    min-width 0s, 
+    opacity var(--collapse-animation), 
+    padding var(--collapse-animation), 
+    right var(--collapse-animation), 
+    top var(--collapse-animation);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -290,18 +305,27 @@ tab-item.faviconized .contextual-identity-marker {
 :root,
 body,
 #background {
-  background-color: unset;
-  background-image: 
-    linear-gradient(0deg, var(--theme-colors-toolbar, var(--bg-default)), var(--theme-colors-toolbar, var(--bg-default))),
-    var(--browser-bg-images, none),
-    linear-gradient(0deg, var(--browser-background, var(--tabbar-bg)), var(--browser-background, var(--tabbar-bg)));
+  background: none !important;
+}
+:root.right #background::before {
+  background-position: right;
+}
+#background::before {
+  background: var(--browser-bg-images, none);
   background-position: var(--browser-bg-position, left);
   background-size: var(--browser-bg-size, auto);
-  background-repeat: repeat-y;
+  background-repeat: var(--browser-bg-repeat, none);
 }
-:root.right,
-:root.right #background {
-  background-position: right;
+#background::before,
+#background::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+#background::after {
+  opacity: 0.8;
+  background: var(--theme-colors-toolbar, var(--tabbar-bg, var(--bg-default))) !important;
 }
 
 /*******
@@ -1182,7 +1206,7 @@ ul:not(#subpanel-selector).menu-ui li:hover::before,
 Hover-over sidebar layout
 ************************/
 
-@media screen and (min-width: 0px) and (max-width: 48px) {
+@media screen and (min-width: 0px) and (max-width: 10em) {
   
   /** Main body layout **/
   
@@ -1192,6 +1216,7 @@ Hover-over sidebar layout
     --newtab-button-box-width: 32px;
     --tab-sound-button-icon-size: 70%;
     --collapse-animation: 0s;
+    --tab-indent-animation: unset;
   }
   #tabbar-container,
   #tabbar {
