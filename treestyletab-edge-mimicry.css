@@ -324,7 +324,7 @@ body,
   width: 100%;
 }
 #background::after {
-  opacity: 0.8;
+  opacity: 0.5;
   background: var(--theme-colors-toolbar, var(--tabbar-bg, var(--bg-default))) !important;
 }
 
@@ -492,8 +492,11 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
 .pinned {
   --pinned-position-right: 0.65em !important;
   --tab-max-width-inline-block: calc(100% - calc(var(--tab-margin-left) * 2));
-  --visual-gap-offset: var(--tab-margin-left);
+  --visual-gap-offset: var(--tab-margin-left) !important;
   margin-left: var(--tab-margin-left) !important;
+}
+tab-item.pinned:not(.in-visible-area) {
+  visibility: collapse !important;
 }
 
 /** Icon-Only Pinned Tabs **/
@@ -690,6 +693,27 @@ tab-item.removing, tab-item:not(.pinned).collapsed, tab-item.duplicating {
   z-index: var(--invisible-z-index);
 }
 
+.highlighter {
+  width: 2px;
+  height: calc(var(--tab-size) + 3px) !important;
+}
+.highlighter::before {
+  display: none !important;
+}
+tab-item:not(.collapsed):not([data-level="0"]) .highlighter {
+  position: absolute;
+  translate: calc(0em - var(--tab-margin-left)) -1.5px;
+  background: var(--tab-text);
+}
+tab-item.active:not(.collapsed):not([data-level="0"]) .highlighter {
+  background: var(--tab-highlighter);
+}
+tab-item.group-tab:not(.collapsed) .highlighter {
+  height: calc(var(--tab-size) + 9px) !important;
+  translate: calc(0em - calc(var(--tab-margin-left) + 4px)) -4px;
+}
+
+
 tab-item:not(.group-tab) .twisty {
   --favicon-size: var(--tab-size);
   position: absolute;
@@ -721,14 +745,18 @@ tab-label {
 
 .favicon {
   --favicon-size: var(--tab-item-substance-height);
-  display: inline-block;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 .favicon > * {
   --favicon-size: 16px;
+}
+.favicon .favicon-builtin.favicon-default {
   height: var(--favicon-size);
-  width: var(--favicon-size);
-  position: absolute !important;
-  translate: 50% 50% !important;
+}
+.throbber::before {
+  background: var(--tab-text) !important;
 }
 
 tab-item:not(.faviconized) .sound-button {
@@ -798,10 +826,6 @@ tab-item .label {
   order: 3;
 }
 
-.highlighter {
-  display: none !important;
-}
-
 /** Contextual identity marker in tab-item **/
 
 .contextual-identity-marker {
@@ -850,11 +874,11 @@ tab-item.faviconized {
   height: 6px;
   width: 6px;
   outline: 1px solid var(--tab-text);
-  background: #FF0000;
+  background: var(--tab-highlighted-glow);
   z-index: 100;
   border-radius: 100%;
   position: absolute;
-  translate: 22px 6px;
+  translate: 10px -8px;
 }
 .faviconized tab-sound-button {
   border-radius: 100%;
@@ -918,12 +942,10 @@ tab-item.faviconized {
   align-items: center;
 }
 .newtab-button::after {
-  height: var(--tab-size);
+  height: inherit;
   width: var(--tab-size);
-  scale: 0.46875;
-  background: linear-gradient(to bottom, #00000000 46%, var(--tab-text) 48%, var(--tab-text) 53%,  #00000000 0%),
-    linear-gradient(to right, #00000000 46%, var(--tab-text) 48%, var(--tab-text) 53%, #00000000 0%) !important;
-  mask: none !important;
+  background: currentColor;
+  clip-path: polygon(15px 8px, 16px 8px, 16px 15px, 23px 15px, 23px 16px, 16px 16px, 16px 24px, 15px 24px, 15px 16px, 8px 16px, 8px 15px, 15px 15px);
 }
 .newtab-button .extra-items-container {
   left: unset !important;
@@ -952,7 +974,7 @@ tab-item.faviconized {
 
 .newtab-action-selector-anchor.open::before,
 .contextual-identities-selector-anchor.open::before {
-  background: var(--tab-text);
+  background: currentColor;
   opacity: 0.1;
   height: 100%;
   width: 100%;
