@@ -59,41 +59,45 @@ body > * {
   opacity: 0.75;
   z-index: -1;
   background: black;
-  filter: blur(0.2em);
   clip-path: polygon(calc(var(--clip-width) + 2em) 0, calc(var(--clip-width) + 2em) 100%, 0 100%, 0 42px, var(--clip-width) 42px, var(--clip-width) 0);
-  transition: clip-path var(--animation-expand), width var(--animation-expand);
-  transition-delay: var(--animation-delay-expand) !important;
+  transition: 
+    clip-path var(--animation-expand) var(--animation-delay-expand), 
+    width var(--animation-expand) var(--animation-delay-expand),
+    filter var(--animation-expand);
 }
 #sidebar-box:hover::before {
   --clip-width: var(--width-hover);
+  filter: blur(0.2em);
   width: var(--width-hover);
-  transition: clip-path var(--animation-collapse), width var(--animation-collapse);
-  transition-delay: var(--animation-delay-collapse) !important;
+  transition: 
+    clip-path var(--animation-collapse) var(--animation-delay-collapse), 
+    width var(--animation-collapse) var(--animation-delay-collapse),
+    filter var(--animation-collapse);
 }
 #sidebar-box > * {
   will-change: min-width;
   min-width: var(--collapsed-width) !important;
   overflow: hidden;
   border-right: 1px solid var(--chrome-content-separator-color) !important;
-  transition: min-width var(--animation-expand);
-  transition-delay: var(--animation-delay-expand) !important;
+  transition: 
+    min-width var(--animation-expand) var(--animation-delay-expand);
 }
 #sidebar-box:hover > * {
   will-change: min-width;
   min-width: var(--width-hover) !important;
-  transition: min-width var(--animation-collapse);
-  transition-delay: var(--animation-delay-collapse) !important;
+  transition: 
+    min-width var(--animation-collapse) var(--animation-delay-collapse);
 }
 #appcontent {
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  transition: clip-path var(--animation-expand);
-  transition-delay: var(--animation-delay-expand) !important;
+  transition: 
+    clip-path var(--animation-expand) var(--animation-delay-expand);
 }
 #sidebar-box:hover ~ #appcontent {
   --width-hover-minus: calc(var(--width-hover) - calc(var(--collapsed-width)));
   clip-path: polygon(var(--width-hover-minus) 0%, 100% 0%, 100% 100%, var(--width-hover-minus) 100%);
-  transition: clip-path var(--animation-collapse);
-  transition-delay: var(--animation-delay-collapse) !important;
+  transition: 
+    clip-path var(--animation-collapse) var(--animation-delay-collapse);
 }
 #sidebar-box[positionend="true"]:hover ~ #appcontent {
   clip-path: polygon(calc(100% - var(--width-hover-minus)) 0%, 0% 0%, 0% 100%, calc(100% - var(--width-hover-minus)) 100%);
@@ -148,10 +152,14 @@ body > * {
   display: none !important;
 }
 #sidebar-switcher-arrow {
-  display: none;
+  visibility: collapse;
+  transition: 
+    visibility var(--animation-expand) var(--animation-delay-expand);
 }
 #sidebar-box:hover #sidebar-switcher-arrow {
-  display: block;
+  visibility: visible;
+  transition: 
+    visibility var(--animation-collapse) var(--animation-delay-collapse);
 }
 #sidebar-close {
   padding: 6px 7px !important;
