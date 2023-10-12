@@ -785,13 +785,16 @@ tab-item:not(.faviconized) .sound-button {
   transform-origin: 0% 0%;
   transform: translate(12.5%, 12.5%);
 }
-tab-item:not(.faviconized) .sound-button::before,
-tab-item:not(.faviconized) .sound-button::after {
-  content: "";
-  position: absolute;
-  border-radius: 100%;
-  height: inherit;
-  width: inherit;
+.sound-button {
+  border-radius: 100% !important;
+}
+tab-item .sound-button::before,
+tab-item .sound-button::after {
+  content: "" !important;
+  position: absolute !important;
+  height: inherit !important;
+  width: inherit !important;
+  border-radius: 100% !important;
 }
 tab-item:not(.faviconized) .sound-button::after {
   mask-size: var(--tab-sound-button-icon-size) !important;
@@ -804,11 +807,11 @@ tab-tem:not(.faviconized) .closebox::after {
 .closebox:hover::before,
 .sound-button:hover::before {
   background: currentcolor !important;
-  opacity: 0.15;
+  opacity: 0.15 !important;
 }
 .closebox:active::before,
 .sound-button:active::before {
-  opacity: 0.4;
+  opacity: 0.4 !important;
 }
 
 /**Order of Tab Contents**/
@@ -863,6 +866,7 @@ tab-item .label {
 .faviconized tab-label {
   display: none !important;
 }
+tab-item,
 tab-item.faviconized {
   --attention-marker-x-offset: unset;
   --attention-marker-y-offset: unset;
@@ -870,7 +874,7 @@ tab-item.faviconized {
   --attention-marker-gradient-hover: unset;
 }
 .faviconized.unread tab-item-substance tab-favicon::before,
-.attention tab-favicon::before {
+tab-item.attention tab-favicon::before {
   height: 6px;
   width: 6px;
   outline: 1px solid var(--tab-text);
@@ -1272,9 +1276,10 @@ Hover-over sidebar layout
   }
   .sound-button {
   	min-width: var(--tab-size) !important;
-    margin-left: calc(0px - var(--tab-size)) !important;
     opacity: 1.0;
-    background: var(--tab-surface-active);
+  }
+  tab-item.sound-playing tab-favicon {
+    visibility: collapse;
   }
   
   /** New Tab Button **/
