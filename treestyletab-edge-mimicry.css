@@ -700,12 +700,12 @@ tab-item.removing, tab-item:not(.pinned).collapsed, tab-item.duplicating {
 .highlighter::before {
   display: none !important;
 }
-tab-item:not(.collapsed):not([data-level="0"]) .highlighter {
+tab-item:not(.collapsed):not([data-level="0"]):not(.pinned) .highlighter {
   position: absolute;
   translate: calc(0em - var(--tab-margin-left)) -1.5px;
   background: var(--tab-text);
 }
-tab-item.active:not(.collapsed):not([data-level="0"]) .highlighter {
+tab-item.active:not(.collapsed):not([data-level="0"]):not(.pinned) .highlighter {
   background: var(--tab-highlighter);
 }
 tab-item.group-tab:not(.collapsed) .highlighter {
@@ -716,13 +716,31 @@ tab-item.group-tab:not(.collapsed) .highlighter {
 
 tab-item:not(.group-tab) .twisty {
   --favicon-size: var(--tab-size);
-  position: absolute;
+  margin-right: calc(0em - var(--favicon-size));
   display: flex;
   align-items: center;
+  transition: margin-right 0.2s ease;
+}
+tab-item:not(.collapsed).subtree-collapsed:not(.group-tab) tab-twisty::before {
+  transform: rotatez(-90deg) scale(1.0) !important;
 }
 tab-item:not(.group-tab) .twisty::before {
-  margin: 0 0 0 -0.1em;
-  mask-size: 60% !important;
+  margin: 0;
+  margin-left: -0.1em;
+  transition: margin-left 0.2s ease, transform 0.2s ease-out, opacity 0.15s ease-out !important;
+}
+tab-item:not(.group-tab) .twisty:hover {
+  margin-right: calc(0em - calc(var(--favicon-size)/2));
+  transition: margin-right 0.2s ease;
+}
+tab-item:not(.collapsed).subtree-collapsed:not(.group-tab) tab-twisty:hover::before {
+  transform: rotatez(-90deg) scale(1.5) !important;
+}
+tab-item:not(.group-tab) .twisty:hover::before {
+  margin: 0;
+  margin-left: 0.1em;
+  transform: rotatez(0deg) scale(1.5) !important;
+  transition: margin-left 0.2s ease, transform 0.2s ease-out, opacity 0.15s ease-out !important;
 }
 .counter {
   font-size: 10px;
