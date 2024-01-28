@@ -1167,3 +1167,8 @@ Hover-over sidebar layout
     display: none !important;
   }
 }
+
+  /* fixe builtin favicon misplaced issue#11 */
+  tab-item .favicon-builtin::before {
+    position: absolute;!important;
+  }
