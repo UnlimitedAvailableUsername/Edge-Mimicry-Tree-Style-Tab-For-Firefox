@@ -772,6 +772,7 @@ tab-label {
 }
 .favicon .favicon-builtin.favicon-default {
   height: var(--favicon-size);
+  display: flex;
 }
 .throbber::before {
   background: var(--tab-text) !important;
