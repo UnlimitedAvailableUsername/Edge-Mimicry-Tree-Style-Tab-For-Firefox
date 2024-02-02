@@ -16,7 +16,6 @@ body::before {
   background-image: var(--lwt-header-image, var(--lwt-additional-images));
   background-repeat: var(--lwt-background-tiling);
   background-position: var(--lwt-background-alignment);
-  background-color: var(--lwt-accent-color);
   z-index: 0;
 }
 .toolbar-items,
