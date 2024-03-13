@@ -336,10 +336,12 @@ Tab Bar
 #tabbar-container {
   transition: none;
 }
+#pinned-tabs-container {
+ padding-top: 4px; 
+}
 .have-pinned-tabs #tabbar-container::before {
   content: "";
   position: absolute;
-  top: var(--tabbar-margin-top);
   opacity: 0.5;
   border-top: 1px solid var(--tab-text);
   width: var(--separator-pinned-overflow-tabs) !important;
@@ -350,9 +352,6 @@ Tab Bar
 }
 :root.right #tabbar {
   direction: rtl;
-}
-:root.have-pinned-tabs #tabbar {
-  margin-top: calc(var(--tabbar-margin-top) + 4px);
 }
 #tabbar.overflow {
   bottom: calc(calc(var(--after-tabs-area-size) + var(--tabbar-bottom-area-size)) - 5px);
@@ -396,6 +395,9 @@ tab-item {
   max-width: var(--tab-max-width-inline-block);
   margin-left: var(--tab-indent);
   scroll-padding: 1.5px 0px;
+}
+tab-item:not(.faviconized) .ui {
+  max-width: 100%;
 }
 tab-item:not(.collapsed):not(.faviconized) {
   display: inline-block;
@@ -489,15 +491,7 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
 }
 
 /** Pinned Tabs **/
-.pinned {
-  --pinned-position-right: 0.65em !important;
-  --tab-max-width-inline-block: calc(100% - calc(var(--tab-margin-left) * 2));
-  --visual-gap-offset: var(--tab-margin-left) !important;
-  margin-left: var(--tab-margin-left) !important;
-}
-tab-item.pinned:not(.in-visible-area) {
-  visibility: collapse !important;
-}
+
 
 /** Icon-Only Pinned Tabs **/
 
@@ -772,6 +766,8 @@ tab-label {
 }
 .favicon .favicon-builtin.favicon-default {
   height: var(--favicon-size);
+}
+.favicon-builtin::before {
   display: flex;
 }
 .throbber::before {
