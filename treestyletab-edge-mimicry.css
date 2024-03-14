@@ -336,8 +336,9 @@ Tab Bar
 #tabbar-container {
   transition: none;
 }
-#pinned-tabs-container {
- padding-top: 4px; 
+#pinned-tabs-container > .tabs.pinned {
+  margin-top: var(--tab-margin-left);
+  margin-right: var(--tab-margin-left);
 }
 .have-pinned-tabs #tabbar-container::before {
   content: "";
@@ -354,7 +355,6 @@ Tab Bar
   direction: rtl;
 }
 #tabbar.overflow {
-  bottom: calc(calc(var(--after-tabs-area-size) + var(--tabbar-bottom-area-size)) - 5px);
   scroll-padding: 1.5px 0px;
 }
 #all-tabs {
@@ -370,9 +370,6 @@ Tab Bar
   align-items: flex-start;
   margin: 4px 0 4px var(--tab-margin-left);
 }
-#tabbar.overflow .tabs {
-  margin-top: 0px;
-}
 .tabs-spacer {
   display: none !important;
 }
@@ -387,7 +384,7 @@ Tab Bar
 tab-item {
   --faviconized-tab-size: 32px;
   --tab-size: 32px;
-  --tab-margin-top: 1.5px;
+  --tab-argin-top: 1.5px;
   --tab-max-width-inline-block: calc(100% - calc(var(--tab-margin-left) + var(--tab-indent)));
   border-radius: var(--tab-border-radius-size) !important;
   overflow: visible;
@@ -396,7 +393,8 @@ tab-item {
   margin-left: var(--tab-indent);
   scroll-padding: 1.5px 0px;
 }
-tab-item:not(.faviconized) .ui {
+tab-item-substance .ui {
+  flex-shrink: 0;
   max-width: 100%;
 }
 tab-item:not(.collapsed):not(.faviconized) {
@@ -497,9 +495,9 @@ tab-item[data-drop-position="after"]:not(.faviconized)::before {
 
 /*Workaround - https://github.com/piroor/treestyletab/issues/1704#issuecomment-362404420*/
 :root {
-  --fav-tab-size: calc(calc(var(--tab-size) + var(--tab-margin-left))/1.75) !important;
+  --fav-tab-size: calc(calc(var(--tab-size) + var(--tab-margin-left))/1) !important;
 }
-#dummy-favicon-size-box {
+#dummy-faviconized-tab {
   min-width: var(--fav-tab-size) !important;
   min-height: var(--fav-tab-size) !important;
 }
@@ -897,11 +895,11 @@ tab-item.attention tab-favicon::before {
   z-index: 100;
   border-radius: 100%;
   position: absolute;
-  translate: 10px -8px;
+  translate: 10px x;
 }
 .faviconized tab-sound-button {
   border-radius: 100%;
-  background-color: var(--tab-surface-active);
+  background-color: var(--tab-suurface-active);
   opacity: 1.0;
 }
 .faviconized tab-sound-button::before {
@@ -1104,8 +1102,7 @@ Context menu/popup theming
 #tabContextMenu > li.separator {
   padding: 0px 0px !important;
   margin: 4px 0px !important;
-  border: none;
-  height: 1px !important;
+  border: none;  height: 1px !important;
   max-height: 1px;
   background: var(--context-menu-border-color);
 }
@@ -1242,6 +1239,13 @@ ul:not(#subpanel-selector).menu-ui li:hover::before,
   filter: brightness(95%);
 }
 
+
+
+
+
+.tabs.pinned {
+  padding-right: 0 !important;
+}
 
 /************************
 Hover-over sidebar layout
